@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+
+  searchfield: boolean = false;
+  myControl = new FormControl('');
+
+
+  openSearchfield(){
+    this.searchfield = !this.searchfield
+  }
 
 }

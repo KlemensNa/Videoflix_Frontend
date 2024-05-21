@@ -1,0 +1,66 @@
+.navbarContainer{
+    width: 100%;
+    height: 120px;
+
+    mat-toolbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: black;
+        height: 100%;
+        width: 100%;
+
+        button{
+            background-color: black;
+            border: unset;
+        }
+
+        mat-icon{
+            transform: scale(1.7);
+            color: white;
+        }
+
+        .toolbar-left{
+            display: flex;
+            gap: 24px;
+
+            .appName{
+                font-size: 48px;
+                color: red
+            }
+        }
+
+        .toolbar-right{
+            margin-right: 32px;
+            display: flex;
+            gap: 40px
+        }
+
+        .searchField{            
+            height: 29px;
+            min-width: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;            
+
+                input{
+                    width: 100%;
+                    height: 100%;
+                    background-color: black;
+                    border: 4px solid grey !important;
+                    padding-inline-start: 8px;
+                    color: white;
+                    font-size: 20px;
+
+                    &:focus{
+                        border: 4px solid blue;
+                    }
+                };
+            
+
+        }
+    }
+
+}
+

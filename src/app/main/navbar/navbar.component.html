@@ -1,1 +1,32 @@
-<p>navbar works!</p>
+<div class="navbarContainer">
+    <mat-toolbar *ngIf="searchfield == true">
+        <div class="toolbar-left">
+            <button mat-icon-button>
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span class="appName">VideoFlix</span>
+        </div>
+
+        <div class="toolbar-right">
+            <button mat-icon-button (click)="openSearchfield()">
+                <mat-icon>search</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon>more_horiz</mat-icon>
+            </button>
+        </div>
+    </mat-toolbar>
+
+    <mat-toolbar *ngIf="searchfield == false">
+        <button mat-icon-button (click)="openSearchfield()">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <div class="searchField">
+            <mat-icon>search</mat-icon>
+            <input type="text" placeholder="Suche" [formControl]="myControl" matInput>
+            <!-- hier mat-autocomplete einfügen, siehe material angular autocomplete -->
+        </div>
+        <div class="emptyDiv"></div>
+    </mat-toolbar>
+
+</div>
