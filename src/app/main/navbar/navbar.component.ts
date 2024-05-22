@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-navbar',
@@ -8,12 +9,24 @@ import { FormControl } from '@angular/forms';
 })
 export class NavbarComponent {
 
+  @ViewChild('menuTrigger') menuTrigger!: MatMenuTrigger;
+
+  menuOpen: boolean = false;
   searchfield: boolean = false;
   myControl = new FormControl('');
 
 
-  openSearchfield(){
+  openSearchfield() {
     this.searchfield = !this.searchfield
+  }
+
+  toggleMenuo() { 
+      debugger;
+      this.menuOpen = !this.menuOpen
+  }
+
+  toggleMenuc(){
+    this.menuOpen = !this.menuOpen
   }
 
 }
