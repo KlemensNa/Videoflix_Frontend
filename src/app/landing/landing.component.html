@@ -4,7 +4,7 @@
             <span class="appName">VideoFlix</span>
         </div>
         <div class="toolbar-right">
-            <button mat-flat-button>Einloggen</button>
+            <button mat-flat-button (click)="toLoginPage()">Einloggen</button>
         </div>
     </mat-toolbar>
 
@@ -14,14 +14,10 @@
         <h3>Bock? Geben Sie Ihre Email-Adresse ein, um Ihre Mitgliedschaft zu beginnen.</h3>
         
         <div class="sendEmailForm">
-            <form class="example-form">
-                <mat-form-field>
-                  <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
-                </mat-form-field>
-              </form>
-            <button mat-flat-button>
-                <span>Loslegen</span>
+            <button mat-flat-button (click)="toRegister()">
+                <span>Loslegen
                 <mat-icon>arrow_forward_ios</mat-icon>
+                </span>
             </button>
         </div>
 

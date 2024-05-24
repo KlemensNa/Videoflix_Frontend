@@ -29,6 +29,10 @@ export class LoginComponent {
     });
   }
 
+  toLandingPage(){
+    this.router.navigateByUrl('landing')
+  }
+
   async login(){
     // let user = await this.authService.login(this.form.value.username, this.form.value.password);
     // if(!user){

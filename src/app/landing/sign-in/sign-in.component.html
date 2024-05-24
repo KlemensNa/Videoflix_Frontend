@@ -1,1 +1,32 @@
-<p>sign-in works!</p>
+<div class="signInMain">
+        <div class="toolbar-left">
+            <div class="appName">VideoFlix</div>
+            <div class="loginBtn" (click)="toLogin()">Einloggen</div>
+        </div>
+    <div class="mainContainer">
+        <div class="loginForm">
+            <h1>Erstellen Sie einen Account, um Ihre VideoFlix-Mitgliedschaft zu beginnen</h1>
+            <form [formGroup]="form" [class.error-visible]="isErrorVisible">
+                <mat-form-field class="formField">
+                    <mat-label >E-Mail-Adresse</mat-label>
+                    <input type="email" matInput  formControlName="username">
+                    <mat-error>
+                        <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
+                        Die Email-Adresse ist erforderlich.
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="formField">
+                    <mat-label>Password</mat-label>
+                    <input matInput  formControlName="password">
+                    <mat-error >
+                        <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
+                        Ihr Password muss mindestens 8 Zeichen beinhalten.
+                    </mat-error>
+                </mat-form-field>
+                <div class="loginBtns">
+                    <button class="loginBtn" mat-raised-button color="primary">Weiter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

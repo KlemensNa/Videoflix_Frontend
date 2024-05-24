@@ -18,6 +18,7 @@ import { LoginComponent } from './landing/login/login.component';
 import { LandingComponent } from './landing/landing.component';
 import { MainComponent } from './main/main.component';
 import {MatCardModule} from '@angular/material/card';
+import { SignInComponent } from './landing/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {MatCardModule} from '@angular/material/card';
     LoginComponent,
     LandingComponent,
     MainComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
