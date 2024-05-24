@@ -8,4 +8,6 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class LandingComponent {
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+
+
 }

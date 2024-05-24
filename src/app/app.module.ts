@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './landing/login/login.component';
 import { LandingComponent } from './landing/landing.component';
 import { MainComponent } from './main/main.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MainComponent } from './main/main.component';
     AppRoutingModule,
     FormsModule,
     MatToolbarModule,
+    MatCardModule,
     MatInputModule,
     MatIconModule,
     MatAutocompleteModule,

@@ -35,6 +35,10 @@
         .toolbar-right{
             height: 100%;
             display: flex;
+
+            .btnMenu{
+                border-radius: unset !important;
+            }
         }
 
         .searchField{            
@@ -66,6 +70,16 @@
 
 
 .bg-grey{
-    background-color: grey !important;
+    background-color: rgb(58, 57, 57) !important;
+}
+
+::ng-deep .noPadding{
+
+    padding: 0
+    
+}
+
+.font-white{
+    color: white;
 }
 

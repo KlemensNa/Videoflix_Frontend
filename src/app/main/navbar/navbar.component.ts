@@ -21,7 +21,6 @@ export class NavbarComponent {
   }
 
   toggleMenuo() { 
-      debugger;
       this.menuOpen = !this.menuOpen
   }
 

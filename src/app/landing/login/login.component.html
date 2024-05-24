@@ -1,2 +1,38 @@
-
-sss
+<div class="loginMain">
+    <mat-toolbar>
+        <div class="toolbar-left">
+            <span class="appName">VideoFlix</span>
+        </div>
+    </mat-toolbar>
+    <div class="loginContainer">
+        <div class="loginForm">
+            <h1>Einloggen</h1>
+            <form [formGroup]="form" [class.error-visible]="isErrorVisible">
+                <mat-form-field class="formField">
+                    <mat-label >E-Mail-Adresse</mat-label>
+                    <input type="email" matInput  formControlName="username">
+                    <mat-error>
+                        <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
+                        Bitte geben Sie eine gültige E-Mail-Adresse ein.
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="formField">
+                    <mat-label>Password</mat-label>
+                    <input matInput  formControlName="password">
+                    <mat-error >
+                        <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
+                        Ihr Password muss mindestens 8 Zeichen beinhalten.
+                    </mat-error>
+                </mat-form-field>
+                <div class="loginBtns">
+                    <button class="loginBtn" mat-raised-button color="primary" (click)="login()">Einloggen</button>
+                    <div class="passwordForgotten">Password vergessen?</div>
+                    <div class="new">
+                        Neu bei Filmflix?
+                        <span class="registerLink">Jetzt registrieren</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
