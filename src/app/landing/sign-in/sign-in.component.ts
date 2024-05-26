@@ -29,7 +29,7 @@ export class SignInComponent {
   }
 
   toLogin(){
-    this.router.navigateByUrl('')
+    this.router.navigateByUrl('login')
   }
   
 }

@@ -15,7 +15,7 @@ export class LandingComponent {
   }
 
   toLoginPage(){
-    this.router.navigateByUrl('')
+    this.router.navigateByUrl('login')
   }
 
   toRegister(){

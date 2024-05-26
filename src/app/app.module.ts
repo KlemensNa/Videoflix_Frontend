@@ -19,6 +19,7 @@ import { LandingComponent } from './landing/landing.component';
 import { MainComponent } from './main/main.component';
 import {MatCardModule} from '@angular/material/card';
 import { SignInComponent } from './landing/sign-in/sign-in.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { SignInComponent } from './landing/sign-in/sign-in.component';
     MatFormFieldModule,
     MatMenuModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     

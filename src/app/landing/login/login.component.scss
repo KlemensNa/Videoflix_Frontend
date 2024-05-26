@@ -60,34 +60,38 @@
                 flex-direction: column;
                 width: 100%;
 
-                mat-form-field{
-                    
+                mat-form-field {
 
-                    mat-label{                        
+                    mat-label {
                         color: rgba(255, 255, 255, 0.7);
                         ;
                     }
 
-                    mat-error{
+                    mat-error {
                         padding: 24px;
                         font-size: 18px;
                     }
 
-                    input{
+                    input {
                         font-size: 24px;
                         padding: 24px 16px 8px
                     }
+
+                    .requiredError{
+                        color:red;
+                        background-color: transparent;
+                    }
                 }
-                
+
             }
 
-            .loginBtns{
+            .loginBtns {
 
                 display: flex;
                 flex-direction: column;
                 gap: 32px;
 
-                .passwordForgotten{
+                .passwordForgotten {
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -95,13 +99,13 @@
                     color: white;
                     cursor: pointer;
 
-                    &:hover{
+                    &:hover {
                         text-decoration: underline;
                         color: rgba(255, 255, 255, 0.7);
                     }
                 }
 
-                .new{
+                .new {
                     display: flex;
                     justify-content: flex-start;
                     color: rgba(255, 255, 255, 0.7);
@@ -110,16 +114,16 @@
                     margin-top: 36px;
                     cursor: pointer;
 
-                    .registerLink{
+                    .registerLink {
                         color: white;
 
-                        &:hover{
+                        &:hover {
                             text-decoration: underline;
                         }
                     }
                 }
 
-                .loginBtn{
+                .loginBtn {
                     width: 100%;
                     height: auto;
                     background-color: #E50914;
@@ -129,45 +133,32 @@
                     font-size: 20px;
                     padding: 16px;
 
-                    &:hover{
+                    &:hover {
                         background-color: #e50914d8;
                     }
                 }
             }
-
-
-            
         }
     }
-
-
 }
 
 ::ng-deep .mat-mdc-form-field .mdc-text-field {
-    background-color: #171717; /* Ihre gewünschte Farbe */
-    padding: 0  /* Sicherstellen, dass das Padding beibehalten wird */
+    background-color: #171717;
+    /* Ihre gewünschte Farbe */
+    padding: 0
+        /* Sicherstellen, dass das Padding beibehalten wird */
 }
 
 ::ng-deep .mat-mdc-form-field .mat-mdc-text-field-wrapper .mat-mdc-form-field-infix {
-    background-color: #171717; /* Ihre gewünschte Farbe */
+    background-color: #171717;
+    /* Ihre gewünschte Farbe */
     padding-top: 24px;
     padding-bottom: 8px;
 }
 
 ::ng-deep .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
-     top: 50% !important;  
-     left: 16px !important;
-     font-size: 24px;
-     letter-spacing: 1.5px;
+    top: 50% !important;
+    left: 16px !important;
+    font-size: 24px;
+    letter-spacing: 1.5px;
 }
-
-mat-form-field + mat-form-field {
-    margin-top: 16px; /* Anfangsabstand zwischen den Formularfeldern */
-  }
-  
-  .error-visible mat-form-field + mat-form-field {
-    margin-top: 32px; /* Abstand, wenn ein Fehler sichtbar ist */
-  }
-
-
-
