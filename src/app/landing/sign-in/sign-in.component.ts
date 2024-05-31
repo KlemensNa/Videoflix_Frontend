@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.development';
+import { lastValueFrom } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -9,23 +13,44 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent {
 
-  form: FormGroup = this.fb.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required]
-  });
   isErrorVisible: boolean = false;
+  signInPageOne: boolean = true;
+  email: string =  "";
+  username: string =  "";
+  password: string =  "";
 
   constructor(  
                 // private authService: AuthService,
                 private fb: FormBuilder, 
-                private router: Router){
+                private router: Router,
+                private http: HttpClient){
 
   }
 
   ngOnInit(){
-    this.form.valueChanges.subscribe(() => {
-      this.isErrorVisible = this.form.invalid; // isErrorVisible wird true, wenn das Formular ungültig ist, andernfalls false
-    });
+    return
+  }
+
+  async signIn(){
+    try {
+      let resp = await this.signInWithEmailAndPassword();
+      console.log("Successful")
+      this.toLogin()
+    } catch (e) {
+      console.error("Error", e)
+    }
+  }
+
+  async signInWithEmailAndPassword(){
+
+    console.log(this.email)
+    const url = environment.baseURL + "/register/";
+    const body = {
+      "email": this.email,
+      "username": this.username,
+      "password": this.password
+    }
+    return lastValueFrom(this.http.post(url, body))
   }
 
   toLogin(){

@@ -30,6 +30,11 @@ export class NavbarComponent {
     this.menuOpen = !this.menuOpen
   }
 
+  logout(){
+    localStorage.removeItem("token")
+    localStorage.removeItem("username")
+    this.toLandingPage()
+  }
   
 
   toLandingPage(){

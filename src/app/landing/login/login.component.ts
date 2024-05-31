@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment.development';
 })
 export class LoginComponent {
 
-  username: string = '';
+  email: string = '';
   password: string = '';
   disableInput: boolean = false;
   isUsernameRequired: boolean = false;
@@ -31,7 +31,7 @@ export class LoginComponent {
     
   }
 
-  onUsernameChange(value: string) {
+  onEmailChange(value: string) {
     this.isEmailValid = this.validateEmail(value);
     this.isUsernameRequired = !this.isEmailValid; // Setzt isUsernameRequired auf true, wenn die E-Mail ungültig ist
   }
@@ -54,28 +54,28 @@ export class LoginComponent {
   async loginWithEmailAndPassword(){
     const url = environment.baseURL + "/login/";
     const body = {
-      "username": this.username,
+      "username": this.email,
       "password": this.password
     }
     return lastValueFrom(this.http.post(url, body))
   }
 
 
-  async loginWithMailAndPassword() {
+  async login() {
 
     this.disableInput = true;
 
     try {
-      let resp = await this.loginWithEmailAndPassword();
-      console.log(resp)
-      // if (resp.ok) {
-      //   let json = await resp.json();
-      //   localStorage.setItem('token', json.token);
-      //   this.router.navigateByUrl('main')
-      // } else {
-      //   this.username = '';
-      //   this.password = ''
-      // }
+      let resp: any = await this.loginWithEmailAndPassword();
+
+      if (resp && resp.token) {
+        localStorage.setItem('token', resp.token);
+        localStorage.setItem('username', resp.username);
+        this.router.navigateByUrl('main')
+      } else {
+        this.email = '';
+        this.password = ''
+      }
       this.disableInput = false;
     } catch (e) {
       console.error("Error", e)

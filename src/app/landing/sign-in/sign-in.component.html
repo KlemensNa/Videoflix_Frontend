@@ -6,25 +6,33 @@
     <div class="mainContainer">
         <div class="loginForm">
             <h1>Erstellen Sie einen Account, um Ihre VideoFlix-Mitgliedschaft zu beginnen</h1>
-            <form [formGroup]="form" [class.error-visible]="isErrorVisible">
+            <form [class.error-visible]="isErrorVisible" (ngSubmit)="signIn()">
                 <mat-form-field class="formField">
                     <mat-label >E-Mail-Adresse</mat-label>
-                    <input type="email" matInput  formControlName="username">
+                    <input type="email" matInput [(ngModel)]="email" name="email" required>
                     <mat-error>
                         <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
                         Die Email-Adresse ist erforderlich.
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field class="formField">
+                    <mat-label >Username</mat-label>
+                    <input type="text" matInput [(ngModel)]="username" name="username" required>
+                    <mat-error>
+                        <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
+                        Bitte gib einen Usernamen ein.
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="formField">
                     <mat-label>Password</mat-label>
-                    <input matInput  formControlName="password">
+                    <input matInput [(ngModel)]="password" name="password" required>
                     <mat-error >
                         <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
                         Ihr Password muss mindestens 8 Zeichen beinhalten.
                     </mat-error>
                 </mat-form-field>
                 <div class="loginBtns">
-                    <button class="loginBtn" mat-raised-button color="primary">Weiter</button>
+                    <button class="loginBtn" type="submit" mat-raised-button color="primary" >Weiter</button>
                 </div>
             </form>
         </div>

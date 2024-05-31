@@ -7,11 +7,11 @@
     <div class="loginContainer">
         <div class="loginForm">
             <h1>Einloggen</h1>
-            <form (ngSubmit)="loginWithMailAndPassword()">
+            <form (ngSubmit)="login()">
                 <mat-form-field class="formField">
                     <mat-label>E-Mail-Adresse</mat-label>
-                    <input type="email" matInput [(ngModel)]="username" name="username" [required]="isUsernameRequired" [disabled]="disableInput" (ngModelChange)="onUsernameChange($event)">
-                    <div class="requiredError" *ngIf="isUsernameRequired && (!username || !isEmailValid)">
+                    <input type="email" matInput [(ngModel)]="email" name="email" [required]="isUsernameRequired" [disabled]="disableInput" (ngModelChange)="onEmailChange($event)">
+                    <div class="requiredError" *ngIf="isUsernameRequired && (!email || !isEmailValid)">
                         <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
                         Bitte geben Sie eine gültige E-Mail-Adresse ein.
                     </div>
