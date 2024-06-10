@@ -1,0 +1,71 @@
+.moviecontainer {
+
+    flex: 1;
+    margin: 30px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .videoContainer {
+
+        width: 20%;
+        height: 300px !important;
+        margin-left: 20px;
+
+
+        .thumbnail {
+            width: 100%;
+            max-height: 100%;
+
+            img {
+                width: 100%;
+                max-height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .videowrapperoutside {
+
+            position: absolute;
+            left: 15%;
+            right: 15%;
+            top: 20%;
+            bottom: 20%;
+            max-width: 70%;
+            width: 70%;
+
+            .videowrapperinside{
+                width: 100%;
+                height: auto;
+                position: relative;
+                display: flex;
+
+                .closeButton {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    background-color: red;
+                    color: white;
+                    border: none;
+                    padding: 5px 10px;
+                    cursor: pointer;
+                    font-size: 16px;
+                    z-index: 10;
+
+                    &:hover{
+                        background-color: darkred;
+                    }
+                }
+
+                video{
+                    width: 100%;
+                    height: auto
+                }
+            }
+
+            
+        }
+
+
+    }
+
+}

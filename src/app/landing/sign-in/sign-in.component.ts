@@ -42,8 +42,6 @@ export class SignInComponent {
   }
 
   async signInWithEmailAndPassword(){
-
-    console.log(this.email)
     const url = environment.baseURL + "/register/";
     const body = {
       "email": this.email,
