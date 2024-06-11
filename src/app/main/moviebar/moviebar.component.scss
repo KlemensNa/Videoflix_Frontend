@@ -3,13 +3,30 @@
     flex: 1;
     margin: 30px;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+
+    .sportscontainer{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .categoryname{
+            width: 100%;
+            background-color: rgba(192, 190, 190, 0.712);
+            color: red;
+        }
+
+        .allVideosOfCategory{
+            width: 100%;
+            display: flex;
+        }
+    }
 
     .videoContainer {
 
         width: 20%;
         height: 300px !important;
-        margin-left: 20px;
+        margin-right: 20px;
 
 
         .thumbnail {
