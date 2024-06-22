@@ -4,7 +4,7 @@
             <button mat-icon-button>
                 <mat-icon>menu</mat-icon>
             </button>
-            <span class="appName">VideoFlix</span>
+            <span class="appName">SportFlix</span>
         </div>
 
         <div class="toolbar-right">
@@ -31,7 +31,7 @@
         </button>
         <div class="searchField">
             <mat-icon>search</mat-icon>
-            <input type="text" placeholder="Suche" [formControl]="myControl" matInput>
+            <input type="text" placeholder="Suche" [formControl]="myControl" (input)="onSearch($event)" matInput>
             <!-- hier mat-autocomplete einfügen, siehe material angular autocomplete -->
         </div>
         <div class="emptyDiv"></div>

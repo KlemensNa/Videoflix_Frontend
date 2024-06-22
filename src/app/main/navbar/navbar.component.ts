@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,7 +17,10 @@ export class NavbarComponent {
   searchfield: boolean = false;
   myControl = new FormControl('');
 
-  constructor(private router: Router){}
+  constructor(
+    private router: Router,
+    private searchService: SearchService
+  ){}
 
   openSearchfield() {
     this.searchfield = !this.searchfield
@@ -39,6 +43,11 @@ export class NavbarComponent {
 
   toLandingPage(){
     this.router.navigateByUrl('')
+  }
+
+  onSearch(event: any) {
+    const searchTerm = event.target.value.toLowerCase();
+    this.searchService.updateSearchTerm(searchTerm);
   }
 
 }

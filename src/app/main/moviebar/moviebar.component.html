@@ -1,91 +1,32 @@
 <div class="moviecontainer">
 
-    <div class="golfcontainer sportscontainer" *ngIf="golf">
-        <div class="categoryname">GOLF</div>
-        <div class="allVideosOfCategory">
-            <div class="videoContainer" *ngFor="let video of golf">
-                <h2>{{ video.title }}</h2>
-                <div class="thumbnail" (click)="toggleVideo(video)">
-                    <img [src]="getVideoUrl(video.thumbnail)">
-                </div>
-                <div class="videowrapperoutside" *ngIf="video.isplaying">
-                    <div class="videowrapperinside">
-                        <button class="closeButton" (click)="toggleVideo(video)">X</button>
-                        <video controls >
-                            <source [src]='getVideoUrl(video.videos_file)' type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+    <div *ngFor="let sport of sportsData" class="sportscontainer">
+        <div *ngIf="sport.filteredVideos.length != 0">
+            <div class="categoryname">{{ sport.name }}</div>
+            <div class="videoScrollContainer">
+                <div class="scrollArrow left" [id]="sport.name + 'ScrollLeft'"
+                    (click)="scrollLeft(sport.name + 'Scroll')">&#9664;</div>
+                <div class="allVideosOfCategory" [id]="sport.name + 'Scroll'" #scrollContainer>
+                    <div class="videoContainer" *ngFor="let video of sport.videos">
+                        <div class="thumbnail" (click)="toggleVideo(video)">
+                            <img [src]="getVideoUrl(video.thumbnail)">
+                        </div>
+                        <div class="videowrapperoutside" *ngIf="video.isplaying">
+                            <div class="videowrapperinside">
+                                <button class="closeButton" (click)="toggleVideo(video)">X</button>
+                                <video controls>
+                                    <source [src]="getVideoUrl(video.videos_file)" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="scrollArrow right" [id]="sport.name + 'ScrollRight'"
+                    (click)="scrollRight(sport.name + 'Scroll')">&#9654;</div>
             </div>
-        </div>        
+        </div>
+
     </div>
-    
-
-    <div class="footballContainer sportscontainer" *ngIf="football">
-        <div class="categoryname">Fußball</div>
-        <div class="allVideosOfCategory">
-            <div class="videoContainer" *ngFor="let video of football">
-                <h2>{{ video.title }}</h2>
-                <div class="thumbnail" (click)="toggleVideo(video)">
-                    <img [src]="getVideoUrl(video.thumbnail)">
-                </div>
-                <div class="videowrapperoutside" *ngIf="video.isplaying">
-                    <div class="videowrapperinside">
-                        <button class="closeButton" (click)="toggleVideo(video)">X</button>
-                        <video controls >
-                            <source [src]='getVideoUrl(video.videos_file)' type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </div>
-            </div>
-        </div>        
-    </div>
-
-
-    <div class="footballContainer sportscontainer" *ngIf="ballsport.length != 0">
-        <div class="categoryname">Ballsport</div>
-        <div class="allVideosOfCategory">
-            <div class="videoContainer" *ngFor="let video of ballsport">
-                <h2>{{ video.title }}</h2>
-                <div class="thumbnail" (click)="toggleVideo(video)">
-                    <img [src]="getVideoUrl(video.thumbnail)">
-                </div>
-                <div class="videowrapperoutside" *ngIf="video.isplaying">
-                    <div class="videowrapperinside">
-                        <button class="closeButton" (click)="toggleVideo(video)">X</button>
-                        <video controls >
-                            <source [src]='getVideoUrl(video.videos_file)' type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </div>
-            </div>
-        </div>        
-    </div>
-
-    <div class="footballContainer sportscontainer" *ngIf="ussport.length != 0">
-        <div class="categoryname">US-Sport</div>
-        <div class="allVideosOfCategory">
-            <div class="videoContainer" *ngFor="let video of ussport">
-                <h2>{{ video.title }}</h2>
-                <div class="thumbnail" (click)="toggleVideo(video)">
-                    <img [src]="getVideoUrl(video.thumbnail)">
-                </div>
-                <div class="videowrapperoutside" *ngIf="video.isplaying">
-                    <div class="videowrapperinside">
-                        <button class="closeButton" (click)="toggleVideo(video)">X</button>
-                        <video controls >
-                            <source [src]='getVideoUrl(video.videos_file)' type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </div>
-            </div>
-        </div>        
-    </div>
-    
-
 
 </div>
