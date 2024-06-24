@@ -12,7 +12,6 @@ import {MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './landing/login/login.component';
 import { LandingComponent } from './landing/landing.component';
@@ -20,6 +19,8 @@ import { MainComponent } from './main/main.component';
 import {MatCardModule} from '@angular/material/card';
 import { SignInComponent } from './landing/sign-in/sign-in.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ImpressumComponent } from './landing/impressum/impressum.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,9 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     LandingComponent,
     MainComponent,
-    SignInComponent
+    SignInComponent,
+    ImpressumComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
