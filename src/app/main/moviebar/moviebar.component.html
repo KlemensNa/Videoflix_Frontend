@@ -1,6 +1,14 @@
 <div class="moviecontainer">
 
-    <div *ngIf="preview">HUHUHUHU</div>
+    <div *ngIf="preview" class="previewWindow" >
+        <div class="previewThumbnail">
+            <img [src]="loadThumbnail()">
+        </div>
+        <div class="previewInformations">
+            <div id="previewTitle">{{actualTitle}}</div>
+            <div id="previewDescription">{{actualDescription}}</div>
+        </div>
+    </div>
 
     <div *ngFor="let sport of sportsData" class="sportscontainer">
         <div *ngIf="sport.filteredVideos.length != 0">
@@ -10,10 +18,10 @@
                     (click)="scrollLeft(sport.name + 'Scroll')">&#9664;</div>
                 <div class="allVideosOfCategory" [id]="sport.name + 'Scroll'" #scrollContainer>
                     <div class="videoContainer" *ngFor="let video of sport.videos">
-                        <div class="thumbnail" (click)="toggleVideo(video)">
+                        <div class="thumbnail" (click)="openPreview(video.thumbnail, video)">
                             <img [src]="getVideoUrl(video.thumbnail)">
                         </div>
-                        <div class="videowrapperoutside" *ngIf="video.isplaying">
+                        <!-- <div class="videowrapperoutside" *ngIf="video.isplaying">
                             <div class="videowrapperinside">
                                 <button class="closeButton" (click)="toggleVideo(video)">X</button>
                                 <video controls>
@@ -21,7 +29,7 @@
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="scrollArrow right" [id]="sport.name + 'ScrollRight'"

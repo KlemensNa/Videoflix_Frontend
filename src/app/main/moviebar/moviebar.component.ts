@@ -29,7 +29,10 @@ export class MoviebarComponent {
   currentlyPlayingVideoID: any = null;
   resizeListener: any;
   searchTermSubscription: Subscription | undefined;
-  preview: boolean = true;
+  preview: boolean = false;
+  actualThumbnail: any;
+  actualTitle: string = '';
+  actualDescription: string = '';
 
 
   constructor(
@@ -192,6 +195,7 @@ export class MoviebarComponent {
   getVideoUrl(videoPath: string): string {
     return `http://127.0.0.1:8000${videoPath}`;
   }
+  
 
 
   /**
@@ -201,6 +205,25 @@ export class MoviebarComponent {
   toggleVideo(video: any) {
     video.isplaying = !video.isplaying
   }
+
+
+  
+  openPreview(videoThumbnail: any, video: any){
+    this.preview = true;
+    this.actualThumbnail = this.getVideoUrl(videoThumbnail)
+    this.actualTitle = video.title
+    this.actualDescription =video.description
+
+
+  }
+
+
+  loadThumbnail(){
+    return this.actualThumbnail
+  }
+
+  
+  
 
 
   /**
