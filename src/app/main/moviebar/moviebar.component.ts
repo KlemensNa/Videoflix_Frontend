@@ -21,10 +21,15 @@ export class MoviebarComponent {
   football: any[] = [];
   handball: any[] = [];
   basketball: any[] = [];
+  baseball: any[] = [];
+  skate: any[] = [];
+  boxing: any[] = [];
+  amFootball: any[] = [];
   sportsData: any[] = [];
   currentlyPlayingVideoID: any = null;
   resizeListener: any;
   searchTermSubscription: Subscription | undefined;
+  preview: boolean = true;
 
 
   constructor(
@@ -164,13 +169,16 @@ export class MoviebarComponent {
    */
   createDataArray() {
     this.sportsData = [
-      
       { name: 'GOLF', videos: this.golf },
-      { name: 'Fußball', videos: this.football },
-      { name: 'Ballsport', videos: this.ballsport },
-      { name: 'US-Sport', videos: this.ussport },
+      { name: 'Fußball', videos: this.football },      
       { name: 'Handball', videos: this.handball },
       { name: 'Basketball', videos: this.basketball },
+      { name: 'Baseball', videos: this.baseball },
+      { name: 'Skaten', videos: this.skate },
+      { name: 'American Football', videos: this.amFootball },
+      { name: 'Boxen', videos: this.boxing },
+      { name: 'Ballsport', videos: this.ballsport },
+      { name: 'US-Sport', videos: this.ussport },
     ];
   }
 
@@ -192,7 +200,6 @@ export class MoviebarComponent {
    */
   toggleVideo(video: any) {
     video.isplaying = !video.isplaying
-
   }
 
 
@@ -211,6 +218,27 @@ export class MoviebarComponent {
       default:
         console.warn(`Unknown category: ${video.category}`);
     }
+    this.shuffle(this.ballsport)
+    this.shuffle(this.ussport)
+  }
+
+
+  /**
+   * @param array array of the Maincategory
+   * @returns a shuffled Array
+   */
+  shuffle(array: any){
+    let currentIndex = array.length,  randomIndex;
+
+    while (currentIndex != 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
   }
 
 
@@ -231,6 +259,18 @@ export class MoviebarComponent {
         break;
       case 'basketball':
         this.basketball.push(video);
+        break;
+      case 'baseball':
+        this.baseball.push(video);
+        break;
+      case 'skate':
+        this.skate.push(video);
+        break;
+      case 'amFootball':
+        this.amFootball.push(video);
+        break;
+      case 'boxing':
+        this.boxing.push(video);
         break;
       default:
         console.warn(`Unknown category: ${video.category}`);

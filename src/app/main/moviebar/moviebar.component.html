@@ -1,5 +1,7 @@
 <div class="moviecontainer">
 
+    <div *ngIf="preview">HUHUHUHU</div>
+
     <div *ngFor="let sport of sportsData" class="sportscontainer">
         <div *ngIf="sport.filteredVideos.length != 0">
             <div class="categoryname">{{ sport.name }}</div>
