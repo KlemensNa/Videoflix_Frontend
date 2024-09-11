@@ -13,6 +13,7 @@ export class SearchService {
   constructor() { }
 
   updateSearchTerm(term: string) {
+    console.warn(term)
     this.searchTerm.next(term);
   }
 }

@@ -30,7 +30,7 @@ export class VideoService {
 
   /**
    * 
-   * @returns VideoDatas
+   * @returns VideoDatas as JSON
    */
   getVideoData(){
     const data: any = sessionStorage.getItem('videoDatas')

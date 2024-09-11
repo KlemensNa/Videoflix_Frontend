@@ -26,6 +26,11 @@ export class NavbarComponent {
     this.searchfield = !this.searchfield
   }
 
+  closeSearchfield(){
+    this.searchfield = !this.searchfield;    
+    this.searchService.updateSearchTerm('')
+  }
+
   toggleMenuo() { 
       this.menuOpen = !this.menuOpen
   }

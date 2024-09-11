@@ -60,9 +60,7 @@
                 }
             }
         }
-
     }
-
 
     .sportscontainer {
         width: 100%;
@@ -136,52 +134,13 @@
                     &:hover{                        
                             scale: 1.05                       
                     }
-                }
-    
-                .videowrapperoutside {
-    
-                    position: absolute;
-                    left: 15%;
-                    right: 15%;
-                    top: 20%;
-                    bottom: 20%;
-                    max-width: 70%;
-                    width: 70%;
-
-    
-                    .videowrapperinside {
-                        width: 100%;
-                        height: auto;
-                        position: relative;
-                        display: flex;
-    
-
-                        .closeButton {
-                            position: absolute;
-                            top: 10px;
-                            right: 10px;
-                            background-color: red;
-                            color: white;
-                            border: none;
-                            padding: 5px 10px;
-                            cursor: pointer;
-                            font-size: 16px;
-                            z-index: 10;
-
-    
-                            &:hover {
-                                background-color: darkred;
-                            }
-                        }
-    
-                        video {
-                            width: 100%;
-                            height: auto;
-                            z-index: 9
-                        }
-                    }
-                }
+                }                
             }
         }
     }
+}
+
+.no-videos {
+    margin-top: 0;
+    margin-bottom: 0;
 }

@@ -25,7 +25,7 @@ export class MoviebarComponent {
   baseball: any[] = [];
   skate: any[] = [];
   boxing: any[] = [];
-  amFootball: any[] = [];
+  amfootball: any[] = [];
   sportsData: any[] = [];
   currentlyPlayingVideoID: any = null;
   resizeListener: any;
@@ -176,16 +176,17 @@ export class MoviebarComponent {
   createDataArray() {
     this.sportsData = [
       { name: 'GOLF', videos: this.golf },
-      { name: 'Fußball', videos: this.football },      
-      // { name: 'Handball', videos: this.handball },
+      { name: 'Fußball', videos: this.football },
+      { name: 'Handball', videos: this.handball },
       { name: 'Basketball', videos: this.basketball },
       { name: 'Baseball', videos: this.baseball },
       { name: 'Skaten', videos: this.skate },
-      { name: 'American Football', videos: this.amFootball },
+      { name: 'American Football', videos: this.amfootball },
       { name: 'Boxen', videos: this.boxing },
       { name: 'Ballsport', videos: this.ballsport },
       { name: 'US-Sport', videos: this.ussport },
     ];
+    console.log(this.sportsData)
   }
 
 
@@ -197,7 +198,7 @@ export class MoviebarComponent {
   getVideoUrl(videoPath: string): string {
     return `http://127.0.0.1:8000${videoPath}`;
   }
-  
+
 
   /**
    * open or close video
@@ -207,22 +208,22 @@ export class MoviebarComponent {
     video.isplaying = !video.isplaying
   }
 
-  
-  openPreview(videoThumbnail: any, video: any){
+
+  openPreview(videoThumbnail: any, video: any) {
     this.preview = true;
     this.actualThumbnail = this.getVideoUrl(videoThumbnail)
     this.actualTitle = video.title
-    this.actualDescription =video.description
+    this.actualDescription = video.description
     this.videoURL = video.videos_file
-
+    scrollTo(0, 0)
 
   }
 
 
-  loadThumbnail(){
+  loadThumbnail() {
     return this.actualThumbnail
-  } 
-  
+  }
+
 
   /**
    * sort Videos in "overcategories" 
@@ -248,16 +249,16 @@ export class MoviebarComponent {
    * @param array array of the Maincategory
    * @returns a shuffled Array
    */
-  shuffle(array: any){
-    let currentIndex = array.length,  randomIndex;
+  shuffle(array: any) {
+    let currentIndex = array.length, randomIndex;
 
     while (currentIndex != 0) {
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
-  
+
       [array[currentIndex], array[randomIndex]] = [
         array[randomIndex], array[currentIndex]];
-    }  
+    }
     return array;
   }
 
@@ -286,11 +287,11 @@ export class MoviebarComponent {
       case 'skate':
         this.skate.push(video);
         break;
-      case 'amFootball':
-        this.amFootball.push(video);
-        break;
       case 'boxing':
         this.boxing.push(video);
+        break;
+      case 'amfootball':
+        this.amfootball.push(video);
         break;
       default:
         console.warn(`Unknown category: ${video.category}`);
@@ -300,7 +301,7 @@ export class MoviebarComponent {
 
   /**
    * filter videos when trigger search function and render new when changes detected
-   * filtzer by title
+   * filter by title
    * @param term input of the searchfield
    */
   filterVideos(term: string) {
@@ -319,7 +320,7 @@ export class MoviebarComponent {
   }
 
 
-  openVideo(){
+  openVideo() {
     const videoData = {
       // thumbnail: this.actualThumbnail,
       title: this.actualTitle,
