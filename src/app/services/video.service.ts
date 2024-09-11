@@ -12,15 +12,29 @@ export class VideoService {
 
   constructor(private http: HttpClient) { }
 
+
   getVideos(): Observable<any> {
     return this.http.get(this.apiURL);
   }  
 
+
+  /**
+   * setVideoDatas to SessionStorage, to start video when refreshing videopage
+   * @param data Array of VideoTitle and VideoURL
+   */
   setVideoData(data: any) {
     this.videoData = data;
+    sessionStorage.setItem('videoDatas', JSON.stringify(this.videoData))
   }
 
-  getVideoData() {
-    return this.videoData;
+
+  /**
+   * 
+   * @returns VideoDatas
+   */
+  getVideoData(){
+    const data: any = sessionStorage.getItem('videoDatas')
+    this.videoData = JSON.parse(data)
+    return this.videoData
   }
 }

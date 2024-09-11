@@ -14,34 +14,30 @@ export class VideoComponent {
 
   constructor(private videoService: VideoService, private router: Router) {}
 
+
+  /**
+   * query video datas from service --> get title and URL 
+   */
   ngOnInit(): void {
-    this.getSessionStorage()
-    
-    if(this.sessionStorage.length === 0){
-
-    }
-
     this.videoData = this.videoService.getVideoData()
-    this.setSessionStorage();
   }
 
+
+  /**
+   * 
+   * @param videoPath URL-Ending for this video
+   * @returns full videoURL to HTML
+   */
   getVideoUrl(videoPath: string): string {
     return `http://127.0.0.1:8000${videoPath}`;
   }
 
+
+  /**
+   * back to moviebar
+   */
   closeVideo(){
     this.router.navigateByUrl('main')
-  }
-
-  setSessionStorage(){
-
-  }
-
-  getSessionStorage(){
-    this.sessionStorage = sessionStorage.getItem('Data')
-
-    console.log(this.sessionStorage)
-    
   }
 
 }
