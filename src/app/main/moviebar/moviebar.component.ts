@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SearchService } from 'src/app/services/search.service';
 import { VideoService } from 'src/app/services/video.service';
@@ -33,12 +34,14 @@ export class MoviebarComponent {
   actualThumbnail: any;
   actualTitle: string = '';
   actualDescription: string = '';
+  videoURL: string = '';
 
 
   constructor(
     private videoService: VideoService,
     private searchService: SearchService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) { }
 
 
@@ -174,7 +177,7 @@ export class MoviebarComponent {
     this.sportsData = [
       { name: 'GOLF', videos: this.golf },
       { name: 'Fußball', videos: this.football },      
-      { name: 'Handball', videos: this.handball },
+      // { name: 'Handball', videos: this.handball },
       { name: 'Basketball', videos: this.basketball },
       { name: 'Baseball', videos: this.baseball },
       { name: 'Skaten', videos: this.skate },
@@ -184,7 +187,6 @@ export class MoviebarComponent {
       { name: 'US-Sport', videos: this.ussport },
     ];
   }
-
 
 
   /**
@@ -197,7 +199,6 @@ export class MoviebarComponent {
   }
   
 
-
   /**
    * open or close video
    * @param video 
@@ -206,13 +207,13 @@ export class MoviebarComponent {
     video.isplaying = !video.isplaying
   }
 
-
   
   openPreview(videoThumbnail: any, video: any){
     this.preview = true;
     this.actualThumbnail = this.getVideoUrl(videoThumbnail)
     this.actualTitle = video.title
     this.actualDescription =video.description
+    this.videoURL = video.videos_file
 
 
   }
@@ -220,11 +221,8 @@ export class MoviebarComponent {
 
   loadThumbnail(){
     return this.actualThumbnail
-  }
-
+  } 
   
-  
-
 
   /**
    * sort Videos in "overcategories" 
@@ -259,8 +257,7 @@ export class MoviebarComponent {
   
       [array[currentIndex], array[randomIndex]] = [
         array[randomIndex], array[currentIndex]];
-    }
-  
+    }  
     return array;
   }
 
@@ -322,11 +319,16 @@ export class MoviebarComponent {
   }
 
 
+  openVideo(){
+    const videoData = {
+      // thumbnail: this.actualThumbnail,
+      title: this.actualTitle,
+      // description: this.actualDescription,
+      videoURL: this.videoURL
+    };
+    this.videoService.setVideoData(videoData);
+    this.router.navigate(['/video'])
+  }
+
+
 }
-
-
-
-
-
-
-

@@ -27,9 +27,11 @@ export class SignInComponent {
 
   }
 
+
   ngOnInit(){
     return
   }
+
 
   async signIn(){
     try {
@@ -41,6 +43,7 @@ export class SignInComponent {
     }
   }
 
+
   async signInWithEmailAndPassword(){
     const url = environment.baseURL + "/register/";
     const body = {
@@ -50,6 +53,7 @@ export class SignInComponent {
     }
     return lastValueFrom(this.http.post(url, body))
   }
+  
 
   toLogin(){
     this.router.navigateByUrl('login')

@@ -21,6 +21,7 @@ import { SignInComponent } from './landing/sign-in/sign-in.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ImpressumComponent } from './landing/impressum/impressum.component';
 import { FooterComponent } from './footer/footer.component';
+import { VideoComponent } from './video/video.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FooterComponent } from './footer/footer.component';
     MainComponent,
     SignInComponent,
     ImpressumComponent,
-    FooterComponent
+    FooterComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,
