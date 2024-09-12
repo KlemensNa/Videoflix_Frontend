@@ -7,6 +7,7 @@ import { LoginComponent } from './landing/login/login.component';
 import { SignInComponent } from './landing/sign-in/sign-in.component';
 import { ImpressumComponent } from './landing/impressum/impressum.component';
 import { VideoComponent } from './video/video.component';
+import { ProfilComponent } from './landing/profil/profil.component';
 
 const routes: Routes = [
   { path: '', component:  LandingComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'main', component:  MainComponent},
   { path: 'video', component:  VideoComponent},
   { path: 'signIn', component:  SignInComponent},
+  { path: 'profil', component:  ProfilComponent},
   { path: 'impressum', component:  ImpressumComponent},
 ];
 

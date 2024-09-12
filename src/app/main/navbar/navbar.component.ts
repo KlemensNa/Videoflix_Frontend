@@ -40,8 +40,7 @@ export class NavbarComponent {
   }
 
   logout(){
-    localStorage.removeItem("token")
-    localStorage.removeItem("username")
+    localStorage.removeItem("userData")
     this.toLandingPage()
   }
   
@@ -49,6 +48,11 @@ export class NavbarComponent {
   toLandingPage(){
     this.router.navigateByUrl('')
   }
+
+  openProfil(){
+    this.router.navigateByUrl('profil')
+  }
+  
 
   onSearch(event: any) {
     const searchTerm = event.target.value.toLowerCase();

@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ImpressumComponent } from './landing/impressum/impressum.component';
 import { FooterComponent } from './footer/footer.component';
 import { VideoComponent } from './video/video.component';
+import { ProfilComponent } from './landing/profil/profil.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { VideoComponent } from './video/video.component';
     SignInComponent,
     ImpressumComponent,
     FooterComponent,
-    VideoComponent
+    VideoComponent,
+    ProfilComponent,
   ],
   imports: [
     BrowserModule,

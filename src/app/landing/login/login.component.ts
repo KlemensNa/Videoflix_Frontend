@@ -51,16 +51,6 @@ export class LoginComponent {
   }
 
 
-  async loginWithEmailAndPassword(){
-    const url = environment.baseURL + "/login/";
-    const body = {
-      "username": this.email,
-      "password": this.password
-    }
-    return lastValueFrom(this.http.post(url, body))
-  }
-
-
   async login() {
 
     this.disableInput = true;
@@ -69,8 +59,7 @@ export class LoginComponent {
       let resp: any = await this.loginWithEmailAndPassword();
 
       if (resp && resp.token) {
-        localStorage.setItem('token', resp.token);
-        localStorage.setItem('username', resp.username);
+        localStorage.setItem('userData', JSON.stringify(resp));
         this.router.navigateByUrl('main')
       } else {
         this.email = '';
@@ -80,12 +69,16 @@ export class LoginComponent {
     } catch (e) {
       console.error("Error", e)
     }
-
-
-
   }
 
 
-
+  async loginWithEmailAndPassword(){
+    const url = environment.baseURL + "/login/";
+    const body = {
+      "username": this.email,
+      "password": this.password
+    }
+    return lastValueFrom(this.http.post(url, body))
+  }  
 
 }

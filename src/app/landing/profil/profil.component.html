@@ -1,0 +1,49 @@
+<div class="changePasswordMain">
+    <div class="toolbar-left">
+        <div class="appName">SportFlix</div>
+        <mat-icon class="material-symbols-outlined" (click)="toMain()">arrow_back</mat-icon>
+    </div>
+<div class="mainContainer">
+    <div class="changePasswordForm">
+        <h1>Passwort ändern</h1>
+        <form [class.error-visible]="isErrorVisible" (ngSubmit)="changePassword()">
+            <mat-form-field class="formField">
+                <mat-label >altes Password</mat-label>
+                <input type="text" matInput [(ngModel)]="oldPassword" name="oldPassword" required>
+                <mat-error>
+                    <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
+                    Altes Password eingeben
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="formField">
+                <mat-label >neues Password</mat-label>
+                <input type="text" matInput [(ngModel)]="newPassword" name="newPassword" required>
+                <mat-error>
+                    <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
+                    Bitte gib einen Usernamen ein.
+                </mat-error>
+            </mat-form-field>
+            <!-- <mat-form-field class="formField">
+                <mat-label>neues Password wiederholen</mat-label>
+                <input matInput [(ngModel)]="newPasswordTwo" name="newPasswordTwo" required>
+                <mat-error > -->
+                    <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
+                    Ihr Password muss mindestens 8 Zeichen beinhalten.
+                <!-- </mat-error>
+            </mat-form-field> -->
+            <div class="loginBtns">
+                <button class="loginBtn" type="submit" mat-raised-button color="primary" >Weiter</button>
+            </div>
+        </form>
+        <div class="error" *ngIf="error">
+            <h3>Passwortänderung nicht erfolgreich</h3>
+            <p>{{errorMessage}}</p>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="changeSuccessful" *ngIf="succesful">
+    <span>Passwort wurde erfolgreich geändert</span>
+    <p>Sie werden weitergeleitet</p>
+</div>
