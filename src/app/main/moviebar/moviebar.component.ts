@@ -186,7 +186,6 @@ export class MoviebarComponent {
       { name: 'Ballsport', videos: this.ballsport },
       { name: 'US-Sport', videos: this.ussport },
     ];
-    console.log(this.sportsData)
   }
 
 
@@ -313,7 +312,6 @@ export class MoviebarComponent {
         sport.filteredVideos = sport.videos.filter((video: any) =>
           video.title.toLowerCase().includes(term.toLowerCase())
         );
-        console.warn(sport.filteredVideos)
       }
     });
     this.cdr.detectChanges();

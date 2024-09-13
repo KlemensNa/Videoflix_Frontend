@@ -15,6 +15,7 @@ export class ProfilComponent {
   isErrorVisible: boolean = false;
   signInPageOne: boolean = true;
   succesful: boolean = false;
+  nameChangeSuccesful: boolean = false;
   error: boolean = false;
   errorMessage: string = '';
   oldPassword: string =  "";
@@ -33,17 +34,17 @@ export class ProfilComponent {
 
   ngOnInit(){
     this.profilData = this.userService.getUserData()
-    console.log(this.profilData)
   }
 
 
   async changeName(){
     try {
       let resp = await this.sendPutUserRequestToServer();
-      this.userService.setUserData(this.profilData)
-      setTimeout(() => {
-        location.reload()
-      }, 2000);
+      this.userService.setUserData(this.profilData);
+      this.nameChangeSuccesful = true;
+      // setTimeout(() => {
+      //   location.reload()
+      // }, 2000);
     } catch (e:any) {
       console.error("Error", e)
     }
