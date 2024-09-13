@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { SearchService } from 'src/app/services/search.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,11 +17,18 @@ export class NavbarComponent {
   menuOpen: boolean = false;
   searchfield: boolean = false;
   myControl = new FormControl('');
+  userData: any;
 
   constructor(
     private router: Router,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private userService: UserService
   ){}
+
+  ngOnInit(){
+    this.userData = this.userService.getUserData()
+    console.log(this.userData)
+  }
 
   openSearchfield() {
     this.searchfield = !this.searchfield

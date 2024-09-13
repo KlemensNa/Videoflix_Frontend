@@ -4,6 +4,8 @@
         <mat-icon class="material-symbols-outlined" (click)="toMain()">arrow_back</mat-icon>
     </div>
 <div class="mainContainer">
+
+
     <div class="changePasswordForm">
         <h1>Passwort ändern</h1>
         <form [class.error-visible]="isErrorVisible" (ngSubmit)="changePassword()">
@@ -40,7 +42,22 @@
             <p>{{errorMessage}}</p>
         </div>
     </div>
-</div>
+
+    <div class="changePasswordForm"></div>
+        <h1>Username</h1>
+        <form [class.error-visible]="isErrorVisible" (ngSubmit)="changeName()">
+            <mat-form-field class="formField">
+                <input type="text" matInput [(ngModel)]="profilData.username" name="oldPassword" required maxlength="15">
+            </mat-form-field>
+            <div class="loginBtns">
+                <button class="loginBtn" type="submit" mat-raised-button color="primary" >Name ändern</button>
+            </div>
+        </form>
+        <div class="error" *ngIf="error">
+            <h3>Passwortänderung nicht erfolgreich</h3>
+            <p>{{errorMessage}}</p>
+        </div>
+    </div>
 </div>
 
 <div class="changeSuccessful" *ngIf="succesful">

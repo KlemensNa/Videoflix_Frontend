@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.development';
 import { lastValueFrom } from 'rxjs';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-profil',
@@ -25,20 +26,42 @@ export class ProfilComponent {
                 // private authService: AuthService,
                 private fb: FormBuilder, 
                 private router: Router,
-                private http: HttpClient){
+                private http: HttpClient,
+                private userService: UserService){
   }
 
 
   ngOnInit(){
-    let json:any = localStorage.getItem('userData')
-    this.profilData = JSON.parse(json)
+    this.profilData = this.userService.getUserData()
     console.log(this.profilData)
+  }
+
+
+  async changeName(){
+    try {
+      let resp = await this.sendPutUserRequestToServer();
+      this.userService.setUserData(this.profilData)
+      setTimeout(() => {
+        location.reload()
+      }, 2000);
+    } catch (e:any) {
+      console.error("Error", e)
+    }
+  }
+
+
+  async sendPutUserRequestToServer(){
+    const url = environment.baseURL + `/change_name/${this.profilData.user_id}/`;
+    const body = {
+      "new_name": this.profilData.username,
+    }
+    return lastValueFrom(this.http.put(url, body))
   }
 
 
   async changePassword(){
     try {
-      let resp = await this.sendPutRequestToServer();
+      let resp = await this.sendPutPasswordRequestToServer();
       this.succesful = true;
       setTimeout(() => {
         location.reload()
@@ -50,7 +73,7 @@ export class ProfilComponent {
   }
 
 
-  async sendPutRequestToServer(){
+  async sendPutPasswordRequestToServer(){
     const url = environment.baseURL + `/change_password/${this.profilData.user_id}/`;
     const body = {
       "old_password": this.oldPassword,
