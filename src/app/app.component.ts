@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'filmflix';
+  icons:any;
+
+  ngOnInit(){    
+    this.getIcons()
+  }
+
+  getIcons(){
+    
+  }
+
 }

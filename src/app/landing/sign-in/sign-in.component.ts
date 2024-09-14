@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.development';
 import { lastValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { IconService } from 'src/app/services/icon.service';
 
 
 @Component({
@@ -15,21 +16,40 @@ export class SignInComponent {
 
   isErrorVisible: boolean = false;
   signInPageOne: boolean = true;
+  menuOpen:boolean = false;
   email: string =  "";
   username: string =  "";
   password: string =  "";
+  icons: any[] = [];
+  selectedIcon: any | null = null; 
 
   constructor(  
-                // private authService: AuthService,
                 private fb: FormBuilder, 
                 private router: Router,
-                private http: HttpClient){
-
+                private http: HttpClient,
+                private iconService: IconService){
   }
 
 
-  ngOnInit(){
-    return
+  ngOnInit(): void{
+      this.iconService.getAllIcons().subscribe((data) => {
+      this.icons = data;
+      console.log(this.icons)
+      if (this.icons.length > 0) {
+        this.selectedIcon = this.icons[0];  // Erstes Icon als Default
+      }
+    });
+  }
+
+
+  selectIcon(icon: any) {
+    this.selectedIcon = icon;
+    this.menuOpen = false;
+  }
+
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
   }
 
 
@@ -49,7 +69,8 @@ export class SignInComponent {
     const body = {
       "email": this.email,
       "username": this.username,
-      "password": this.password
+      "password": this.password,
+      "icon": this.selectedIcon
     }
     return lastValueFrom(this.http.post(url, body))
   }
@@ -58,5 +79,7 @@ export class SignInComponent {
   toLogin(){
     this.router.navigateByUrl('login')
   }
+
+
   
 }

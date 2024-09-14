@@ -82,9 +82,8 @@
                             font-size: 24px;
                             padding: 24px 16px 8px
                         }
-                    }
-                    
-                }
+                    }                    
+                }                
             }
 
             .loginBtn{
@@ -101,12 +100,80 @@
                     background-color: #e50914d8;
                 }
             }
-
         }
-    
-
 }
 
+
+.icon-dropdown {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    .selected-icon {
+        width: 150px;
+        height: 150px;
+        border: 3px solid black;
+        margin: 0 16px 16px 0;
+        
+        img{
+            width: 150px;
+            height: 150px;
+        }
+    
+    }
+
+    button{
+        width: 150px;
+        height: 150px;
+        margin: 0 16px 16px 0;
+        border: 3px solid black;
+    }
+
+    .dropdown-menu {
+        display: none;
+        flex-wrap: wrap;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        bottom: 16px;
+        left: 160px;
+        background-color: white;
+        border: 1px solid #ccc;
+        z-index: 999;
+        width: auto;
+        max-width: 330px;
+    
+        .dropdown-item {
+            width: 80px;
+            height: 80px;
+            // padding: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            border: 1px solid grey;
+        
+            img{
+                width: 80px;
+                height: 80px;
+            }
+          }
+          
+          .dropdown-item:hover {
+            background-color: #e509141e;
+          }
+      }
+      
+      .dropdown-menu.show {
+        display: flex; /* Menü anzeigen, wenn es geöffnet ist */
+      }
+}
+  
+
+  
+  
+  
+  
+  
 
 ::ng-deep .mat-mdc-form-field .mdc-text-field {
     background-color: #fff; /* Ihre gewünschte Farbe */
