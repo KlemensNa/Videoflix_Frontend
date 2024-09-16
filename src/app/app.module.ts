@@ -18,11 +18,12 @@ import { LandingComponent } from './landing/landing.component';
 import { MainComponent } from './main/main.component';
 import {MatCardModule} from '@angular/material/card';
 import { SignInComponent } from './landing/sign-in/sign-in.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ImpressumComponent } from './landing/impressum/impressum.component';
 import { FooterComponent } from './footer/footer.component';
 import { VideoComponent } from './video/video.component';
 import { ProfilComponent } from './landing/profil/profil.component';
+import { AuthInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,7 @@ import { ProfilComponent } from './landing/profil/profil.component';
     HttpClientModule
   ],
   providers: [
-    
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

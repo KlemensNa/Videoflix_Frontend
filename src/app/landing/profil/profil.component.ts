@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.development';
 import { lastValueFrom } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
+import { Icon } from 'src/app/model/icon';
+import { IconService } from 'src/app/services/icon.service';
 
 @Component({
   selector: 'app-profil',
@@ -17,34 +19,94 @@ export class ProfilComponent {
   succesful: boolean = false;
   nameChangeSuccesful: boolean = false;
   error: boolean = false;
+  menuOpen: boolean = false;
+  loadingFinished: boolean = false;
   errorMessage: string = '';
   oldPassword: string =  "";
   newPassword: string =  "";
   newPasswordTwo: string =  "";
-  profilData: any;
+  profilData: any = {};
+  selectedIcon: any;
+  icons: any[] = [];
+
 
   constructor(  
                 // private authService: AuthService,
                 private fb: FormBuilder, 
                 private router: Router,
                 private http: HttpClient,
-                private userService: UserService){
+                private userService: UserService,
+                private iconService: IconService){
   }
 
 
   ngOnInit(){
-    this.profilData = this.userService.getUserData()
+    this.loadProfilData();    
+    
+    setTimeout(() => {
+        this.loadIcon();
+        this.loadIcons();
+      }, 500);  
   }
 
 
-  async changeName(){
+  ngOnDestroy(){
+
+  }
+
+
+  loadProfilData(){
+    this.userService.getCurrentUser().subscribe({
+      next: (data:any) => {
+        this.profilData = data;
+        this.loadingFinished = true;
+      },
+      error: (error:any) => {
+        console.error('Fehler beim Abrufen der Nutzerdaten', error);
+      },
+      complete: () => {
+        console.log('Nutzerdaten erfolgreich abgerufen');
+      }
+    });
+  }
+
+
+  loadIcon(){
+    if(this.profilData.icon && this.profilData.icon.id){
+      this.iconService.getSpecificIcon(this.profilData.icon.id).subscribe((iconData) => {        
+        this.selectedIcon = iconData;
+      });
+    }
+  }
+
+
+  loadIcons(){
+    this.iconService.getAllIcons().subscribe((data) => {
+      this.icons = data;
+    });
+  }
+
+
+  selectIcon(icon: any) {
+    this.selectedIcon = icon;
+    console.log(this.selectedIcon)
+    this.menuOpen = false;
+  }
+
+
+  toggleMenu(){
+    this.menuOpen = !this.menuOpen;
+  }
+
+
+  async changeUserData(){
     try {
       let resp = await this.sendPutUserRequestToServer();
       this.userService.setUserData(this.profilData);
       this.nameChangeSuccesful = true;
-      // setTimeout(() => {
-      //   location.reload()
-      // }, 2000);
+      setTimeout(() => {
+        location.reload()
+      }, 500);
     } catch (e:any) {
       console.error("Error", e)
     }
@@ -52,10 +114,12 @@ export class ProfilComponent {
 
 
   async sendPutUserRequestToServer(){
-    const url = environment.baseURL + `/change_name/${this.profilData.user_id}/`;
+    const url = environment.baseURL + `/change_name/${this.profilData.id}/`;
     const body = {
       "new_name": this.profilData.username,
+      "new_icon": this.selectedIcon
     }
+    console.log(body)
     return lastValueFrom(this.http.put(url, body))
   }
 

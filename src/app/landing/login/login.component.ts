@@ -37,7 +37,6 @@ export class LoginComponent {
   }
 
   onPasswordChange(value: string) {
-    console.warn(this.isPasswordRequired)
     this.isPasswordRequired = value.length < 8; // Setzt isPasswordRequired auf true, wenn das Passwort weniger als 8 Zeichen hat
   }
 
@@ -60,6 +59,7 @@ export class LoginComponent {
 
       if (resp && resp.token) {
         localStorage.setItem('userData', JSON.stringify(resp));
+        localStorage.setItem('token', resp.token);
         this.router.navigateByUrl('main')
       } else {
         this.email = '';

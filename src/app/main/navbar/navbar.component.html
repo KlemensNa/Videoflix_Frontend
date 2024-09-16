@@ -7,10 +7,11 @@
             <span class="appName">SportFlix</span>
         </div>
 
-        <div class="toolbar-right">
-            <div></div>
-            <img [src]="icon">
+        <div class="toolbar-right">                       
             <div class="userName">Hallo {{userData.username}}</div>
+            <div class="iconContainer">
+                <img [src]="icon">
+            </div> 
             <button mat-icon-button (click)="openSearchfield()">
                 <mat-icon>search</mat-icon>
             </button>

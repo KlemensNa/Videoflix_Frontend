@@ -35,6 +35,18 @@
         .toolbar-right{
             height: 100%;
             display: flex;
+            align-items: center;
+
+            .iconContainer{
+                height: 60%;
+                margin-right: 24px;
+                background-color: white;
+                border-radius: 100%;
+
+                img{
+                    height: 100%;
+                }
+            }
 
             .userName{
                 margin-right: 24px;

@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
+import { Icon } from 'src/app/model/icon';
 import { IconService } from 'src/app/services/icon.service';
 import { SearchService } from 'src/app/services/search.service';
 import { UserService } from 'src/app/services/user.service';
@@ -19,7 +20,7 @@ export class NavbarComponent {
   searchfield: boolean = false;
   myControl = new FormControl('');
   userData: any;
-  icon: any;
+  icon: string = '';
 
   constructor(
     private router: Router,
@@ -30,45 +31,36 @@ export class NavbarComponent {
 
   ngOnInit(){
     this.userData = this.userService.getUserData()
-    this.loadIcon(this.userData.icon.id)
-
-
-    this.icon = this.iconService.getSpecificIcon(this.userData.icon.id)
-    console.log(this.icon)
+    this.loadIcon();
+    
   }
 
-  loadIcon(id: number): void {
-    this.iconService.getSpecificIcon(id).subscribe({
-      next: (data) => {
-        this.icon = data;
-        let url = "http://127.0.0.1:8000" + this.icon.image
-        this.icon = url
-      },
-      error: (error) => {
-        console.error('Fehler beim Laden des Icons:', error);
-      },
-      complete: () => {
-        console.log('Icon-Ladevorgang abgeschlossen');
-      }
-    });
+  loadIcon(): void {
+    let i = this.userData.icon.image;
+    this.icon = "http://127.0.0.1:8000/" + i
   }
+
 
   openSearchfield() {
     this.searchfield = !this.searchfield
   }
+
 
   closeSearchfield(){
     this.searchfield = !this.searchfield;    
     this.searchService.updateSearchTerm('')
   }
 
+
   toggleMenuo() { 
       this.menuOpen = !this.menuOpen
   }
 
+
   toggleMenuc(){
     this.menuOpen = !this.menuOpen
   }
+
 
   logout(){
     localStorage.removeItem("userData")
@@ -80,6 +72,7 @@ export class NavbarComponent {
     this.router.navigateByUrl('')
   }
 
+
   openProfil(){
     this.router.navigateByUrl('profil')
   }
@@ -89,5 +82,4 @@ export class NavbarComponent {
     const searchTerm = event.target.value.toLowerCase();
     this.searchService.updateSearchTerm(searchTerm);
   }
-
 }

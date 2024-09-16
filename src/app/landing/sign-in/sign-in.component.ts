@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment.development';
 import { lastValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { IconService } from 'src/app/services/icon.service';
+import { Icon } from 'src/app/model/icon';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class SignInComponent {
   email: string =  "";
   username: string =  "";
   password: string =  "";
-  icons: any[] = [];
+  icons: Icon[] = [];
   selectedIcon: any | null = null; 
 
   constructor(  
@@ -32,7 +33,12 @@ export class SignInComponent {
 
 
   ngOnInit(): void{
-      this.iconService.getAllIcons().subscribe((data) => {
+      this.loadIcons()
+  }
+
+
+  loadIcons(){
+    this.iconService.getAllIcons().subscribe((data) => {
       this.icons = data;
       console.log(this.icons)
       if (this.icons.length > 0) {
