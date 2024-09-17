@@ -18,12 +18,18 @@ export class UserService {
     return profilData
   }
 
+
+  /**
+   * the http_intercepter sends the token in header and through auth in django you will get only your own data
+   * @returns Data of currentUser
+   */
   getCurrentUser(): any {
-    let rp = this.http.get<any>(this.apiUrl);
-    return rp;
+    let currentUser = this.http.get<any>(this.apiUrl);
+    return currentUser;
   }
 
+
   setUserData(userData: any){
-    let json:any = localStorage.setItem('userData', JSON.stringify(userData))
+    localStorage.setItem('userData', JSON.stringify(userData))
   }
 }

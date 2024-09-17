@@ -73,8 +73,10 @@
                     }
 
                     input {
+                        width: calc(100% - 32px);
                         font-size: 24px;
-                        padding: 24px 16px 8px
+                        padding: 24px 16px 8px;
+                        background-color: #171717;
                     }
 
                     .requiredError{
@@ -161,4 +163,8 @@
     left: 16px !important;
     font-size: 24px;
     letter-spacing: 1.5px;
+}
+
+::ng-deep .mat-mdc-input-elementinput{
+    background-color: #171717;
 }

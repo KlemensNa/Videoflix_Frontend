@@ -10,6 +10,10 @@
         height: 100%;
         width: 100%;
 
+        &:first-child {
+            padding: 0 30px
+        }
+
         button{
             background-color: black;
             height: 100%;
@@ -45,6 +49,7 @@
 
                 img{
                     height: 100%;
+                    scale: 0.8;
                 }
             }
 
@@ -91,16 +96,18 @@
 
 
 .bg-grey{
-    background-color: rgb(58, 57, 57) !important;
-}
-
-::ng-deep .noPadding{
-
-    padding: 0
-    
+    background-color: rgb(58, 57, 57) !important;    
 }
 
 .font-white{
     color: white;
+    padding: 8px 32px;
+
+    &:hover{
+        background-color: rgb(29, 28, 28) !important;
+        }
 }
 
+::ng-deep .mat-mdc-menu-content {
+    padding: 0 !important;
+}

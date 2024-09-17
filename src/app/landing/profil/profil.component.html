@@ -11,12 +11,36 @@
             
         <form (ngSubmit)="changeUserData()" >
             <div class="profilDataContainer">
+                <h1>Vorname</h1>
+                <div class="formField">
+                    <input 
+                        type="text" 
+                        matInput [(ngModel)]="profilData.first_name" 
+                        name="firstName" 
+                        required 
+                        maxlength="15"
+                        onkeypress="return event.charCode != 32">
+                </div>
+            </div>
+            <div class="profilDataContainer">
+                <h1>Nachname</h1>
+                <div class="formField">
+                    <input 
+                        type="text" 
+                        matInput [(ngModel)]="profilData.last_name" 
+                        name="lastName" 
+                        required 
+                        maxlength="15"
+                        onkeypress="return event.charCode != 32">
+                </div>
+            </div>
+            <div class="profilDataContainer">
                 <h1>Username</h1>
                 <div class="formField">
                     <input 
                         type="text" 
                         matInput [(ngModel)]="profilData.username" 
-                        name="oldPassword" 
+                        name="username" 
                         required 
                         maxlength="15"
                         onkeypress="return event.charCode != 32">
@@ -44,7 +68,7 @@
                                   </div>
             </div>                  
             <div class="sendBtn">
-                <button class="loginBtn" type="submit" mat-raised-button color="primary" >Name ändern</button>
+                <button class="loginBtn" type="submit" mat-raised-button color="primary" >Daten ändern</button>
             </div>
         </form>
     </div>

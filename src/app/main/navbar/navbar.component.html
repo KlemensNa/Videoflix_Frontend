@@ -1,14 +1,14 @@
 <div class="navbarContainer">
     <mat-toolbar *ngIf="searchfield == false">
         <div class="toolbar-left">
-            <button mat-icon-button>
+            <!-- <button mat-icon-button>
                 <mat-icon>menu</mat-icon>
-            </button>
+            </button> -->
             <span class="appName">SportFlix</span>
         </div>
 
         <div class="toolbar-right">                       
-            <div class="userName">Hallo {{userData.username}}</div>
+            <div class="userName">Hallo {{profilData.username}}</div>
             <div class="iconContainer">
                 <img [src]="icon">
             </div> 
@@ -18,7 +18,7 @@
             <button mat-icon-button  class="btnMenu" [matMenuTriggerFor]="menu" (menuOpened)="toggleMenuo()" (menuClosed)="toggleMenuc()" [ngClass]="{'bg-grey': menuOpen}">
                 <mat-icon>more_horiz</mat-icon>
             </button>
-            <mat-menu #menu="matMenu" class="noPadding">
+            <mat-menu #menu="matMenu" class="noPadding menu">
                 <button mat-menu-item class="bg-grey font-white" (click)="openProfil()">
                   <span>Profil</span>
                 </button>

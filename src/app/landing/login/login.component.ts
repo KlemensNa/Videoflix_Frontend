@@ -58,7 +58,6 @@ export class LoginComponent {
       let resp: any = await this.loginWithEmailAndPassword();
 
       if (resp && resp.token) {
-        localStorage.setItem('userData', JSON.stringify(resp));
         localStorage.setItem('token', resp.token);
         this.router.navigateByUrl('main')
       } else {

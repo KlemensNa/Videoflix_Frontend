@@ -19,7 +19,8 @@ export class NavbarComponent {
   menuOpen: boolean = false;
   searchfield: boolean = false;
   myControl = new FormControl('');
-  userData: any;
+  profilData: any = {};
+  loadingFinished: boolean = false;
   icon: string = '';
 
   constructor(
@@ -30,13 +31,28 @@ export class NavbarComponent {
   ){}
 
   ngOnInit(){
-    this.userData = this.userService.getUserData()
-    this.loadIcon();
-    
+    this.loadProfilData()
+  }
+
+
+  loadProfilData(){
+    this.userService.getCurrentUser().subscribe({
+      next: (data:any) => {
+        this.profilData = data;
+        this.loadingFinished = true;
+      },
+      error: (error:any) => {
+        console.error('Fehler beim Abrufen der Nutzerdaten', error);
+      },
+      complete: () => {
+        this.loadIcon();
+      }
+    });
   }
 
   loadIcon(): void {
-    let i = this.userData.icon.image;
+    console.log(this.profilData.icon.image)
+    let i = this.profilData.icon.image;
     this.icon = "http://127.0.0.1:8000/" + i
   }
 
@@ -63,7 +79,7 @@ export class NavbarComponent {
 
 
   logout(){
-    localStorage.removeItem("userData")
+    localStorage.removeItem("token")
     this.toLandingPage()
   }
   

@@ -42,11 +42,6 @@ export class ProfilComponent {
 
   ngOnInit(){
     this.loadProfilData();    
-    
-    setTimeout(() => {
-        this.loadIcon();
-        this.loadIcons();
-      }, 500);  
   }
 
 
@@ -65,7 +60,9 @@ export class ProfilComponent {
         console.error('Fehler beim Abrufen der Nutzerdaten', error);
       },
       complete: () => {
-        console.log('Nutzerdaten erfolgreich abgerufen');
+        console.log(this.profilData)
+        this.loadIcon();
+        this.loadIcons();
       }
     });
   }
@@ -89,7 +86,6 @@ export class ProfilComponent {
 
   selectIcon(icon: any) {
     this.selectedIcon = icon;
-    console.log(this.selectedIcon)
     this.menuOpen = false;
   }
 
@@ -117,6 +113,8 @@ export class ProfilComponent {
     const url = environment.baseURL + `/change_name/${this.profilData.id}/`;
     const body = {
       "new_name": this.profilData.username,
+      "new_firstname": this.profilData.first_name,
+      "new_lastname": this.profilData.last_name,
       "new_icon": this.selectedIcon
     }
     console.log(body)

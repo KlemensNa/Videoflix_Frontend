@@ -6,6 +6,11 @@ html, body {
  }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #171717 inset;
+  box-shadow: 0 0 0 1000px #171717 inset;
+  -webkit-text-fill-color: white; /* Optional, falls Textfarbe geändert wird */
+}
 
 /* width */
 ::-webkit-scrollbar {
