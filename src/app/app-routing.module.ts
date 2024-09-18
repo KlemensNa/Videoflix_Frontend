@@ -8,6 +8,7 @@ import { SignInComponent } from './landing/sign-in/sign-in.component';
 import { ImpressumComponent } from './landing/impressum/impressum.component';
 import { VideoComponent } from './video/video.component';
 import { ProfilComponent } from './landing/profil/profil.component';
+import { DatenschutzComponent } from './landing/datenschutz/datenschutz.component';
 
 const routes: Routes = [
   { path: '', component:  LandingComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'signIn', component:  SignInComponent},
   { path: 'profil', component:  ProfilComponent},
   { path: 'impressum', component:  ImpressumComponent},
+  { path: 'datenschutz', component:  DatenschutzComponent}
 ];
 
 @NgModule({

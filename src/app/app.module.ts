@@ -24,6 +24,7 @@ import { FooterComponent } from './footer/footer.component';
 import { VideoComponent } from './video/video.component';
 import { ProfilComponent } from './landing/profil/profil.component';
 import { AuthInterceptor } from './auth.interceptor';
+import { DatenschutzComponent } from './landing/datenschutz/datenschutz.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AuthInterceptor } from './auth.interceptor';
     FooterComponent,
     VideoComponent,
     ProfilComponent,
+    DatenschutzComponent,
   ],
   imports: [
     BrowserModule,

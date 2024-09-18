@@ -2,15 +2,16 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-impressum',
-  templateUrl: './impressum.component.html',
-  styleUrls: ['./impressum.component.scss']
+  selector: 'app-datenschutz',
+  templateUrl: './datenschutz.component.html',
+  styleUrls: ['./datenschutz.component.scss']
 })
-export class ImpressumComponent {
+export class DatenschutzComponent {
 
   constructor(private router: Router){}
 
   toMain(){
     this.router.navigateByUrl('main')
   }
+  
 }
