@@ -19,7 +19,7 @@
                         (ngModelChange)="onEmailChange($event)">
                     <div class="requiredError" *ngIf="isUsernameRequired && (!email || !isEmailValid)">
                         <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
-                        Bitte geben Sie eine gültige E-Mail-Adresse ein.
+                        Please insert your email here.
                     </div>
                 </mat-form-field>
                 <mat-form-field class="formField">
@@ -33,7 +33,7 @@
                         (ngModelChange)="onPasswordChange($event)">
                     <div class="requiredError" *ngIf="isPasswordRequired">
                         <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
-                        Password benötigt mindestens 8 Zeichen.
+                        Please enter password here
                     </div>
                 </mat-form-field>
                 <div class="loginBtns">

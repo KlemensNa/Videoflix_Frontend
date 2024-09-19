@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MoviebarComponent } from './main/moviebar/moviebar.component';
 import { LandingComponent } from './landing/landing.component';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './landing/login/login.component';
@@ -9,6 +8,8 @@ import { ImpressumComponent } from './landing/impressum/impressum.component';
 import { VideoComponent } from './video/video.component';
 import { ProfilComponent } from './landing/profil/profil.component';
 import { DatenschutzComponent } from './landing/datenschutz/datenschutz.component';
+import { ConfirmComponent } from './confirm/confirm.component';
+import { ConfirminfoComponent } from './confirm/confirminfo/confirminfo.component';
 
 const routes: Routes = [
   { path: '', component:  LandingComponent},
@@ -18,7 +19,9 @@ const routes: Routes = [
   { path: 'signIn', component:  SignInComponent},
   { path: 'profil', component:  ProfilComponent},
   { path: 'impressum', component:  ImpressumComponent},
-  { path: 'datenschutz', component:  DatenschutzComponent}
+  { path: 'datenschutz', component:  DatenschutzComponent},
+  { path: 'confirm', component:  ConfirmComponent},
+  { path: 'confirminfo', component:  ConfirminfoComponent}
 ];
 
 @NgModule({

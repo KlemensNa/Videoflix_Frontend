@@ -25,6 +25,8 @@ import { VideoComponent } from './video/video.component';
 import { ProfilComponent } from './landing/profil/profil.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { DatenschutzComponent } from './landing/datenschutz/datenschutz.component';
+import { ConfirmComponent } from './confirm/confirm.component';
+import { ConfirminfoComponent } from './confirm/confirminfo/confirminfo.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { DatenschutzComponent } from './landing/datenschutz/datenschutz.componen
     VideoComponent,
     ProfilComponent,
     DatenschutzComponent,
+    ConfirmComponent,
+    ConfirminfoComponent,
   ],
   imports: [
     BrowserModule,

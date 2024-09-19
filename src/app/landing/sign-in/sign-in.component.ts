@@ -61,9 +61,7 @@ export class SignInComponent {
 
   async signIn(){
     try {
-      let resp = await this.signInWithEmailAndPassword();
-      console.log("Successful")
-      this.toLogin()
+      await this.signInWithEmailAndPassword();
     } catch (e) {
       console.error("Error", e)
     }
@@ -78,7 +76,20 @@ export class SignInComponent {
       "password": this.password,
       "icon": this.selectedIcon
     }
-    return lastValueFrom(this.http.post(url, body))
+    
+    try {
+      // POST-Request und Warten auf die Antwort
+      const response: any = await lastValueFrom(this.http.post(url, body));
+  
+      // Wenn erfolgreich, leite zur Bestätigungsseite weiter
+      console.log(response.message);  // Prüfe die Nachricht vom Backend (optional)
+      this.router.navigateByUrl('confirminfo');  // Redirect zu /confirminfo
+  
+    } catch (error) {
+      // Fehlerbehandlung
+      console.error('Registrierung fehlgeschlagen:', error);
+    }
+
   }
   
 

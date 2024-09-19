@@ -1,0 +1,24 @@
+.confirmContainer{
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1{
+        font-size: 56px;
+        line-height: 59px;        
+    }
+
+    h3{
+        font-size: 32px;
+        line-height: 35px;
+
+        span{
+            cursor: pointer;
+            color: #e50914d8;
+        }
+    }
+}
+
