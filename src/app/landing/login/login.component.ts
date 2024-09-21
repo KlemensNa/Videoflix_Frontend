@@ -49,6 +49,10 @@ export class LoginComponent {
     this.router.navigateByUrl('')
   }
 
+  toResetPassword(){
+    this.router.navigateByUrl('passwordreset')
+  }
+
 
   async login() {
 

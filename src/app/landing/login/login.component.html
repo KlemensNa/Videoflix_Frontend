@@ -38,7 +38,7 @@
                 </mat-form-field>
                 <div class="loginBtns">
                     <button class="loginBtn" mat-raised-button color="primary" type="submit">Einloggen</button>
-                    <div class="passwordForgotten">Password vergessen?</div>
+                    <div class="passwordForgotten" (click)="toResetPassword()">Password vergessen?</div>
                     <div class="new">
                         Neu bei Filmflix?
                         <span class="registerLink" (click)="toLandingPage()">Jetzt registrieren</span>

@@ -22,11 +22,13 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ImpressumComponent } from './landing/impressum/impressum.component';
 import { FooterComponent } from './footer/footer.component';
 import { VideoComponent } from './video/video.component';
-import { ProfilComponent } from './landing/profil/profil.component';
+import { ProfilComponent } from './main/profil/profil.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { DatenschutzComponent } from './landing/datenschutz/datenschutz.component';
-import { ConfirmComponent } from './confirm/confirm.component';
-import { ConfirminfoComponent } from './confirm/confirminfo/confirminfo.component';
+import { ConfirmComponent } from './landing/sign-in/confirm/confirm.component';
+import { ConfirminfoComponent } from './landing/sign-in/confirm/confirminfo/confirminfo.component';
+import { ResetpasswordComponent } from './landing/resetpassword/resetpassword.component';
+import { PasswordchangeformComponent } from './landing/resetpassword/passwordchangeform/passwordchangeform.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { ConfirminfoComponent } from './confirm/confirminfo/confirminfo.componen
     DatenschutzComponent,
     ConfirmComponent,
     ConfirminfoComponent,
+    ResetpasswordComponent,
+    PasswordchangeformComponent,
   ],
   imports: [
     BrowserModule,
