@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
+import { catchError, finalize, tap } from 'rxjs';
 
 @Component({
   selector: 'app-passwordchangeform',
@@ -12,10 +13,18 @@ export class PasswordchangeformComponent {
   password: string = '';
   passwordconfirm: string = '';
   emailSended: boolean = false;
+  uid: string;
+  token: string;
+  BACKENDURL: string = "http://127.0.0.1:8000";
 
   constructor(
     private router: Router,
-    private http: HttpClient){}
+    private http: HttpClient,
+    private route: ActivatedRoute){
+
+      this.uid = this.route.snapshot.paramMap.get('uid') || '';
+      this.token = this.route.snapshot.paramMap.get('token') || '';
+    }
 
   toLogin(){
     this.router.navigateByUrl('login')
@@ -26,6 +35,21 @@ export class PasswordchangeformComponent {
   }
 
   setNewPassword(){
-    
+  
+  this.http.post(`${this.BACKENDURL}/reset/${this.uid}/${this.token}/`, { 
+    new_password1: this.password, 
+    new_password2: this.passwordconfirm 
+  }).pipe(
+    tap(response => {
+      console.log("Passwort erfolgreich geändert. Hier Weiterleiten")
+    }),
+    catchError(error => {
+      console.error('Error changing password:', error);
+      throw error; // Rethrow the error if necessary
+    }),
+    finalize(() => {
+      // Optional: Execute cleanup or finalize code here
+    })
+  ).subscribe();
   }
 }
