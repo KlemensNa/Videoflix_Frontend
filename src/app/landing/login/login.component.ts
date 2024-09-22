@@ -16,6 +16,7 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
   disableInput: boolean = false;
+  wrongData: boolean = false;
   isUsernameRequired: boolean = false;
   isPasswordRequired: boolean = false;
   isErrorVisible: boolean = false;
@@ -57,8 +58,8 @@ export class LoginComponent {
   async login() {
 
     this.disableInput = true;
-
     try {
+      this.wrongData = false;
       let resp: any = await this.loginWithEmailAndPassword();
 
       if (resp && resp.token) {
@@ -70,6 +71,8 @@ export class LoginComponent {
       }
       this.disableInput = false;
     } catch (e) {
+      this.wrongData = true;
+      this.disableInput = false;
       console.error("Error", e)
     }
   }

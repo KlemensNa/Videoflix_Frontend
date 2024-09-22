@@ -67,14 +67,14 @@
                     width: 100%;
     
                     mat-form-field{
-                        
-                        
     
                         mat-label{                        
                             color: #333;                        }
     
                         mat-error{
-                            padding: 24px;
+                            display: block;
+                            height: auto;
+                            padding: 8px;
                             font-size: 18px;
                         }
     
@@ -82,7 +82,13 @@
                             font-size: 24px;
                             padding: 24px 16px 8px
                         }
-                    }                    
+                    }
+                    
+                    .passwordsNotMatch{
+                        color: #E50914;
+                        font-size: 20px;
+                        margin-bottom: 8px;
+                    }
                 }                
             }
 

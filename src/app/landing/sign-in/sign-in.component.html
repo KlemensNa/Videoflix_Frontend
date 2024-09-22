@@ -1,51 +1,69 @@
 <div class="signInMain">
-        <div class="toolbar-left">
-            <div class="appName">VideoFlix</div>
-            <div class="loginBtn" (click)="toLogin()">Einloggen</div>
-        </div>
+    <div class="toolbar-left">
+        <div class="appName">VideoFlix</div>
+        <div class="loginBtn" (click)="toLogin()">Einloggen</div>
+    </div>
     <div class="mainContainer">
         <div class="loginForm">
             <h1>Erstellen Sie einen Account, um Ihre VideoFlix-Mitgliedschaft zu beginnen</h1>
-            <form [class.error-visible]="isErrorVisible" (ngSubmit)="signIn()">
+            <form [class.error-visible]="isErrorVisible" (ngSubmit)="signIn()" #form="ngForm">
+
                 <mat-form-field class="formField">
-                    <mat-label >E-Mail-Adresse</mat-label>
-                    <input type="email" matInput [(ngModel)]="email" name="email" required>
-                    <mat-error>
-                        <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
-                        Die Email-Adresse ist erforderlich.
+                    <mat-label>Your email</mat-label>
+                    <input type="email" matInput [(ngModel)]="email" name="email" required email #emailModel="ngModel">
+                    <mat-error *ngIf="emailModel.errors?.['required']">
+                        Email is required
+                    </mat-error>
+                    <mat-error *ngIf="emailModel.errors?.['email']">
+                        Please enter a valid email address
                     </mat-error>
                 </mat-form-field>
+
                 <mat-form-field class="formField">
-                    <mat-label >Username</mat-label>
-                    <input type="text" matInput [(ngModel)]="username" name="username" required>
+                    <mat-label>Username</mat-label>
+                    <input type="text" matInput [(ngModel)]="username" name="username" required maxlength="20">
                     <mat-error>
-                        <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
-                        Bitte gib einen Usernamen ein.
+                        Please insert a username
                     </mat-error>
                 </mat-form-field>
+
                 <mat-form-field class="formField">
                     <mat-label>Password</mat-label>
-                    <input matInput [(ngModel)]="password" name="password" required>
-                    <mat-error >
-                        <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
-                        Ihr Password muss mindestens 8 Zeichen beinhalten.
+                    <input type="password" matInput [(ngModel)]="password" name="password" required minlength="8"
+                        #passwordModel="ngModel">
+                    <mat-error *ngIf="passwordModel.errors?.['required']">
+                        Password is required
+                    </mat-error>
+                    <mat-error *ngIf="passwordModel.errors?.['minlength']">
+                        Password must be at least 8 characters long
                     </mat-error>
                 </mat-form-field>
 
-                
+                <mat-form-field class="formField">
+                    <mat-label>Confirm Password</mat-label>
+                    <input type="password" matInput [(ngModel)]="passwordConfirm" name="passwordConfirm" required
+                        minlength="8" #passwordConfirmModel="ngModel">
+                    <mat-error *ngIf="passwordConfirmModel.errors?.['required']">
+                        Confirm Password is required
+                    </mat-error>
+                    <mat-error *ngIf="passwordConfirmModel.errors?.['minlength']">
+                        Password must be at least 8 characters long
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="passwordsNotMatch" *ngIf="passwordNotMatch">
+                    Passwords do not match
+                </div>
 
                 <div class="icon-dropdown">
-  <!-- Zeige das ausgewählte oder das erste Icon an -->
                     <div class="selected-icon" *ngIf="selectedIcon">
                         <img [src]="selectedIcon.image" alt="{{ selectedIcon.name }}">
                     </div>
 
-                <!-- Button zum Öffnen des Menüs -->
                     <button class="btn btn-secondary" type="button" (click)="toggleMenu()">
                         Icon auswählen
                     </button>
 
-                <!-- Dropdown-Liste mit allen Icons, sichtbar wenn menuOpen true ist -->
                     <div class="dropdown-menu" [ngClass]="{'show': menuOpen}">
                         <div *ngFor="let icon of icons" (click)="selectIcon(icon)" class="dropdown-item">
                             <img [src]="icon.image" alt="{{ icon.name }}">
@@ -54,7 +72,7 @@
                 </div>
 
                 <div class="loginBtns">
-                    <button class="loginBtn" type="submit" mat-raised-button color="primary" >Weiter</button>
+                    <button class="loginBtn" type="submit" [disabled]="!form.valid" mat-raised-button color="primary">Weiter</button>
                 </div>
             </form>
         </div>

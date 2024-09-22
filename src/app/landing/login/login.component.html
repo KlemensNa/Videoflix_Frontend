@@ -37,6 +37,9 @@
                     </div>
                 </mat-form-field>
                 <div class="loginBtns">
+                    <div class="wrongDataError" *ngIf="wrongData">
+                        The email address or password is incorrect
+                    </div>
                     <button class="loginBtn" mat-raised-button color="primary" type="submit">Einloggen</button>
                     <div class="passwordForgotten" (click)="toResetPassword()">Password vergessen?</div>
                     <div class="new">

@@ -18,9 +18,11 @@ export class SignInComponent {
   isErrorVisible: boolean = false;
   signInPageOne: boolean = true;
   menuOpen:boolean = false;
+  passwordNotMatch: boolean = false;
   email: string =  "";
   username: string =  "";
   password: string =  "";
+  passwordConfirm: string =  "";
   icons: Icon[] = [];
   selectedIcon: any | null = null;
 
@@ -59,11 +61,16 @@ export class SignInComponent {
 
 
   async signIn(){
-    try {
-      await this.signInWithEmailAndPassword();
-    } catch (e) {
-      console.error("Error", e)
-    }
+    if (this.password === this.passwordConfirm) {
+      this.passwordNotMatch = false;
+      try {
+        await this.signInWithEmailAndPassword();
+      } catch (e) {
+        console.error("Error", e)
+      }
+    } else {
+      this.passwordNotMatch = true;
+    }    
   }
 
 
