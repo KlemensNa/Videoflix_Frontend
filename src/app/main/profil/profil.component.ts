@@ -24,7 +24,8 @@ export class ProfilComponent {
   errorMessage: string = '';
   oldPassword: string =  "";
   newPassword: string =  "";
-  newPasswordTwo: string =  "";
+  passwordNotMatch: boolean = false;
+  newPasswordConfirm: string =  "";
   profilData: any = {};
   selectedIcon: any;
   icons: any[] = [];
@@ -122,23 +123,34 @@ export class ProfilComponent {
 
 
   async changePassword(){
-    this.sendDataLoading = true;
+    
+    if (this.newPassword === this.newPasswordConfirm) {
+      this.passwordNotMatch = false;      
+      this.sendPasswordToBackend()
+    } else {
+      this.passwordNotMatch = true;
+    }    
+  }
+
+
+  async sendPasswordToBackend(){
     try {
-      let resp = await this.sendPutPasswordRequestToServer();
-      this.sendDataLoading = false;
-      this.succesful = true;
-      setTimeout(() => {
-        location.reload()
-      }, 2000);
+      this.sendDataLoading = true;
+      let resp = await this.passwordPutRequest();
+        this.sendDataLoading = false;
+        this.succesful = true;
+        setTimeout(() => {
+          location.reload()
+        }, 2000);
     } catch (e:any) {
       this.sendDataLoading = false;
       console.error("Error", e)
       this.handleError(e)
-    }
+    }   
   }
 
 
-  async sendPutPasswordRequestToServer(){
+  async passwordPutRequest(){
     const url = environment.baseURL + `/change_password/${this.profilData.id}/`;
     const body = {
       "old_password": this.oldPassword,
