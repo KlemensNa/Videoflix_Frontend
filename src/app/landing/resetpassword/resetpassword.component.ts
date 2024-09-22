@@ -12,6 +12,7 @@ export class ResetpasswordComponent {
 
   mail: string = '';
   emailSended: boolean = false;
+  sendDataLoading: boolean = false;
   BACKEND_URL: string = "http://127.0.0.1:8000"
 
   constructor(
@@ -26,6 +27,8 @@ export class ResetpasswordComponent {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
+
+    this.sendDataLoading = true
       
   this.http.post(`${this.BACKEND_URL}/password_reset/`, 
     { email: this.mail }, 
@@ -33,9 +36,11 @@ export class ResetpasswordComponent {
   ).pipe(
     tap(response => {
       this.emailSended = true; // Handle successful response
+      this.sendDataLoading = false
     }),
     catchError(error => {
       console.error('Error sending reset email:', error);
+      this.sendDataLoading = false
       return of(null); // Handle error without breaking the stream
     }),
     finalize(() => {

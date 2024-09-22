@@ -11,11 +11,11 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUserData(){
-    let json:any = localStorage.getItem('userData')
-    let profilData = JSON.parse(json)    
+  getUserToken(){
+    let json:any = localStorage.getItem('token')
+    let token = json    
 
-    return profilData
+    return token
   }
 
 
@@ -29,7 +29,4 @@ export class UserService {
   }
 
 
-  setUserData(userData: any){
-    localStorage.setItem('userData', JSON.stringify(userData))
-  }
 }

@@ -31,3 +31,7 @@ input:-webkit-autofill {
   ::-webkit-scrollbar-thumb:hover {
     background: #DF212A;
   }
+
+  .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+    stroke: #DF212A !important;
+}

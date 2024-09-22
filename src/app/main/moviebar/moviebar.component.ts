@@ -326,7 +326,7 @@ export class MoviebarComponent {
       videoURL: this.videoURL
     };
     this.videoService.setVideoData(videoData);
-    this.router.navigate(['/video'])
+    this.router.navigate([`/video/${this.actualTitle}`])
   }
 
 

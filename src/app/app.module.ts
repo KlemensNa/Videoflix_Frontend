@@ -12,6 +12,7 @@ import {MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './landing/login/login.component';
 import { LandingComponent } from './landing/landing.component';
@@ -63,6 +64,7 @@ import { PasswordchangeformComponent } from './landing/resetpassword/passwordcha
     MatMenuModule,
     MatButtonModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
     HttpClientModule
   ],
   providers: [

@@ -22,16 +22,19 @@ export class NavbarComponent {
   profilData: any = {};
   loadingFinished: boolean = false;
   icon: string = '';
+  uid: string = '';
+  token: string = '';
 
   constructor(
     private router: Router,
     private searchService: SearchService,
     private userService: UserService,
-    private iconService: IconService
   ){}
 
   ngOnInit(){
-    this.loadProfilData()
+    this.loadProfilData();
+    this.token = this.userService.getUserToken()
+    
   }
 
 
@@ -39,6 +42,7 @@ export class NavbarComponent {
     this.userService.getCurrentUser().subscribe({
       next: (data:any) => {
         this.profilData = data;
+        this.uid = this.profilData.id
         this.loadingFinished = true;
       },
       error: (error:any) => {
@@ -51,9 +55,8 @@ export class NavbarComponent {
   }
 
   loadIcon(): void {
-    console.log(this.profilData.icon.image)
-    let i = this.profilData.icon.image;
-    this.icon = "http://127.0.0.1:8000/" + i
+    let imageURL = this.profilData.icon.image;
+    this.icon = "http://127.0.0.1:8000/" + imageURL
   }
 
 
@@ -90,7 +93,8 @@ export class NavbarComponent {
 
 
   openProfil(){
-    this.router.navigateByUrl('profil')
+    console.error(this.uid)
+    this.router.navigateByUrl(`profil/${this.uid}/${this.token}`)
   }
   
 

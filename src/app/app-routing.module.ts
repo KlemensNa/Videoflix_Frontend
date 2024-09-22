@@ -15,17 +15,17 @@ import { PasswordchangeformComponent } from './landing/resetpassword/passwordcha
 
 const routes: Routes = [
   { path: '', component:  LandingComponent},
+  { path: 'signIn', component:  SignInComponent},
+  { path: 'confirm/:uid', component:  ConfirmComponent},
+  { path: 'confirminfo', component:  ConfirminfoComponent},
   { path: 'login', component:  LoginComponent},
   { path: 'main', component:  MainComponent},
-  { path: 'video', component:  VideoComponent},
-  { path: 'signIn', component:  SignInComponent},
-  { path: 'profil', component:  ProfilComponent},
+  { path: 'video/:videoTitle', component:  VideoComponent},
+  { path: 'profil/:uid/:token', component:  ProfilComponent},
+  { path: 'passwordreset', component:  ResetpasswordComponent,},
+  { path: 'setnewpassword/:uid/:token', component:  PasswordchangeformComponent,},
   { path: 'impressum', component:  ImpressumComponent},
   { path: 'datenschutz', component:  DatenschutzComponent},
-  { path: 'confirm', component:  ConfirmComponent},
-  { path: 'confirminfo', component:  ConfirminfoComponent},
-  { path: 'passwordreset', component:  ResetpasswordComponent,},
-  { path: 'setnewpassword/:uid/:token', component:  PasswordchangeformComponent,}
   
 ];
 

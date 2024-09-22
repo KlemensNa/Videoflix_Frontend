@@ -3,127 +3,112 @@
         <div class="appName">SportFlix</div>
         <mat-icon class="material-symbols-outlined" (click)="toMain()">arrow_back</mat-icon>
     </div>
-<div class="mainContainer">
+    <div class="mainContainer">
 
-    <div class="profilContainer"><p>Profil</p></div>
-
-    <div class="changeForm">        
-            
-        <form (ngSubmit)="changeUserData()" >
-            <div class="profilDataContainer">
-                <h1>Vorname</h1>
-                <div class="formField">
-                    <input 
-                        type="text" 
-                        matInput [(ngModel)]="profilData.first_name" 
-                        name="firstName" 
-                        required 
-                        maxlength="15"
-                        onkeypress="return event.charCode != 32">
-                </div>
-            </div>
-            <div class="profilDataContainer">
-                <h1>Nachname</h1>
-                <div class="formField">
-                    <input 
-                        type="text" 
-                        matInput [(ngModel)]="profilData.last_name" 
-                        name="lastName" 
-                        required 
-                        maxlength="15"
-                        onkeypress="return event.charCode != 32">
-                </div>
-            </div>
-            <div class="profilDataContainer">
-                <h1>Username</h1>
-                <div class="formField">
-                    <input 
-                        type="text" 
-                        matInput [(ngModel)]="profilData.username" 
-                        name="username" 
-                        required 
-                        maxlength="15"
-                        onkeypress="return event.charCode != 32">
-                </div>
-            </div>
-            <div class="profilDataContainer">
-                <h1>Avatar</h1>
-                <div class="icon-dropdown">
-                    <!-- Zeige das ausgewählte oder das erste Icon an -->
-                                      <div class="selected-icon" *ngIf="selectedIcon">
-                                          <img [src]="selectedIcon.image" alt="{{ selectedIcon.name }}">
-                                      </div>
-                  
-                                  <!-- Button zum Öffnen des Menüs -->
-                                      <button class="btn btn-secondary" type="button" (click)="toggleMenu()">
-                                          Icon auswählen
-                                      </button>
-                  
-                                  <!-- Dropdown-Liste mit allen Icons, sichtbar wenn menuOpen true ist -->
-                                      <div class="dropdown-menu" [ngClass]="{'show': menuOpen}">
-                                          <div *ngFor="let icon of icons" (click)="selectIcon(icon)" class="dropdown-item">
-                                              <img [src]="icon.image" alt="{{ icon.name }}">
-                                          </div>
-                                      </div>
-                                  </div>
-            </div>                  
-            <div class="sendBtn">
-                <button class="loginBtn" type="submit" mat-raised-button color="primary" >Daten ändern</button>
-            </div>
-        </form>
-    </div>
-        
-        <div class="changeSuccesful" *ngIf="nameChangeSuccesful">
-            <h3>Name erfolgreich geändert</h3>
+        <div class="profilContainer">
+            <p>Profil</p>
         </div>
-    
 
-    <div class="changeForm">
-        <h1>Passwort ändern</h1>
-        <form [class.error-visible]="isErrorVisible" (ngSubmit)="changePassword()" class="passwordChangeContainer">
-            <mat-form-field class="formField">
-                <mat-label >altes Password</mat-label>
-                <input 
-                    type="text" 
-                    matInput [(ngModel)]="oldPassword" 
-                    name="oldPassword" 
-                    required>
-                <mat-error>
-                    Altes Password eingeben
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="formField">
-                <mat-label >neues Password</mat-label>
-                <input 
-                    type="text" 
-                    matInput [(ngModel)]="newPassword" 
-                    name="newPassword" 
-                    required>
-                <mat-error>
-                    <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
-                    Bitte gib einen dein neues Password ein.
-                </mat-error>
-            </mat-form-field>
-            <!-- <mat-form-field class="formField">
+        <div class="changeForm">
+
+            <form (ngSubmit)="changeUserData()">
+                <div class="profilDataContainer">
+                    <h1>Vorname</h1>
+                    <div class="formField">
+                        <input type="text" matInput [(ngModel)]="profilData.first_name" name="firstName" required
+                            maxlength="15" onkeypress="return event.charCode != 32">
+                    </div>
+                </div>
+                <div class="profilDataContainer">
+                    <h1>Nachname</h1>
+                    <div class="formField">
+                        <input type="text" matInput [(ngModel)]="profilData.last_name" name="lastName" required
+                            maxlength="15" onkeypress="return event.charCode != 32">
+                    </div>
+                </div>
+                <div class="profilDataContainer">
+                    <h1>Username</h1>
+                    <div class="formField">
+                        <input type="text" matInput [(ngModel)]="profilData.username" name="username" required
+                            maxlength="15" onkeypress="return event.charCode != 32">
+                    </div>
+                </div>
+                <div class="profilDataContainer">
+                    <h1>Avatar</h1>
+                    <div class="icon-dropdown">
+                        <!-- Zeige das ausgewählte oder das erste Icon an -->
+                        <div class="selected-icon" *ngIf="selectedIcon">
+                            <img [src]="selectedIcon.image" alt="{{ selectedIcon.name }}">
+                        </div>
+
+                        <!-- Button zum Öffnen des Menüs -->
+                        <button class="btn btn-secondary" type="button" (click)="toggleMenu()">
+                            Icon auswählen
+                        </button>
+
+                        <!-- Dropdown-Liste mit allen Icons, sichtbar wenn menuOpen true ist -->
+                        <div class="dropdown-menu" [ngClass]="{'show': menuOpen}">
+                            <div *ngFor="let icon of icons" (click)="selectIcon(icon)" class="dropdown-item">
+                                <img [src]="icon.image" alt="{{ icon.name }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sendBtn">
+                    <button class="loginBtn" type="submit" mat-raised-button color="primary">Daten ändern</button>
+                </div>
+            </form>
+            <div class="changeProfilData" *ngIf="nameChangeSuccesful">
+                <h3>Daten erfolgreich geändert</h3>
+            </div>
+        </div>
+
+        
+
+
+        <div class="changeForm">
+            <h1>Passwort ändern</h1>
+            <form [class.error-visible]="isErrorVisible" (ngSubmit)="changePassword()" class="passwordChangeContainer">
+                <mat-form-field class="formField">
+                    <mat-label>altes Password</mat-label>
+                    <input type="text" matInput [(ngModel)]="oldPassword" name="oldPassword" required>
+                    <mat-error>
+                        Altes Password eingeben
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="formField">
+                    <mat-label>neues Password</mat-label>
+                    <input type="text" matInput [(ngModel)]="newPassword" name="newPassword" required>
+                    <mat-error>
+                        <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
+                        Neues Password eingeben
+                    </mat-error>
+                </mat-form-field>
+                <!-- <mat-form-field class="formField">
                 <mat-label>neues Password wiederholen</mat-label>
                 <input matInput [(ngModel)]="newPasswordTwo" name="newPasswordTwo" required>
                 <mat-error > -->
-                    <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
-                    Ihr Password muss mindestens 8 Zeichen beinhalten.
+                <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
+                Ihr Password muss mindestens 8 Zeichen beinhalten.
                 <!-- </mat-error>
             </mat-form-field> -->
-            <div class="sendBtn">
-                <button class="loginBtn" type="submit" mat-raised-button color="primary" >Passwort ändern</button>
+                <div class="sendBtn">
+                    <button class="loginBtn" type="submit" mat-raised-button color="primary">Passwort ändern</button>
+                </div>
+            </form>
+            <div class="error" *ngIf="error">
+                <h3>Passwortänderung nicht erfolgreich</h3>
+                <p>{{errorMessage}}</p>
             </div>
-        </form>
-        <div class="error" *ngIf="error">
-            <h3>Passwortänderung nicht erfolgreich</h3>
-            <p>{{errorMessage}}</p>
         </div>
-    </div>    
-</div>
+    </div>
 
-<div class="changeSuccessful" *ngIf="succesful">
-    <span>Passwort wurde erfolgreich geändert</span>
-    <p>Sie werden weitergeleitet</p>
-</div>
+    <div class="changeSuccessful" *ngIf="succesful">
+        <span>Passwort wurde erfolgreich geändert</span>
+        <p>Sie werden weitergeleitet</p>
+    </div>
+
+    <div class="changeSuccessful" *ngIf="sendDataLoading">
+        <mat-spinner [diameter]="240"></mat-spinner>
+        Try to change password
+    </div>

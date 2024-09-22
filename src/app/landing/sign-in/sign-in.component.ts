@@ -22,7 +22,7 @@ export class SignInComponent {
   username: string =  "";
   password: string =  "";
   icons: Icon[] = [];
-  selectedIcon: any | null = null; 
+  selectedIcon: any | null = null;
 
   constructor(  
                 private fb: FormBuilder, 
@@ -40,7 +40,6 @@ export class SignInComponent {
   loadIcons(){
     this.iconService.getAllIcons().subscribe((data) => {
       this.icons = data;
-      console.log(this.icons)
       if (this.icons.length > 0) {
         this.selectedIcon = this.icons[0];  // Erstes Icon als Default
       }
@@ -83,7 +82,7 @@ export class SignInComponent {
   
       // Wenn erfolgreich, leite zur Bestätigungsseite weiter
       console.log(response.message);  // Prüfe die Nachricht vom Backend (optional)
-      this.router.navigateByUrl('confirminfo');  // Redirect zu /confirminfo
+      this.router.navigateByUrl('confirminfo/');  // Redirect zu /confirminfo
   
     } catch (error) {
       // Fehlerbehandlung

@@ -13,6 +13,7 @@ export class PasswordchangeformComponent {
   password: string = '';
   passwordconfirm: string = '';
   emailSended: boolean = false;
+  succesfulSet: boolean = false;
   uid: string;
   token: string;
   BACKENDURL: string = "http://127.0.0.1:8000";
@@ -41,14 +42,17 @@ export class PasswordchangeformComponent {
     new_password2: this.passwordconfirm 
   }).pipe(
     tap(response => {
-      console.log("Passwort erfolgreich geändert. Hier Weiterleiten")
+      console.log("Passwort erfolgreich geändert.")
     }),
     catchError(error => {
       console.error('Error changing password:', error);
       throw error; // Rethrow the error if necessary
     }),
     finalize(() => {
-      // Optional: Execute cleanup or finalize code here
+      this.succesfulSet = true
+      setTimeout(() => {
+        this.toLogin()
+      }, 3000)
     })
   ).subscribe();
   }

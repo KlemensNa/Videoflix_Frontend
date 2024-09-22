@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.development';
 import { lastValueFrom } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
-import { Icon } from 'src/app/model/icon';
 import { IconService } from 'src/app/services/icon.service';
 
 @Component({
@@ -20,6 +19,7 @@ export class ProfilComponent {
   nameChangeSuccesful: boolean = false;
   error: boolean = false;
   menuOpen: boolean = false;
+  sendDataLoading: boolean = false;
   loadingFinished: boolean = false;
   errorMessage: string = '';
   oldPassword: string =  "";
@@ -60,7 +60,6 @@ export class ProfilComponent {
         console.error('Fehler beim Abrufen der Nutzerdaten', error);
       },
       complete: () => {
-        console.log(this.profilData)
         this.loadIcon();
         this.loadIcons();
       }
@@ -74,6 +73,11 @@ export class ProfilComponent {
         this.selectedIcon = iconData;
       });
     }
+  }
+
+  
+  toggleLoading(){
+    this.sendDataLoading = !this.sendDataLoading
   }
 
 
@@ -98,11 +102,7 @@ export class ProfilComponent {
   async changeUserData(){
     try {
       let resp = await this.sendPutUserRequestToServer();
-      this.userService.setUserData(this.profilData);
       this.nameChangeSuccesful = true;
-      setTimeout(() => {
-        location.reload()
-      }, 500);
     } catch (e:any) {
       console.error("Error", e)
     }
@@ -117,19 +117,21 @@ export class ProfilComponent {
       "new_lastname": this.profilData.last_name,
       "new_icon": this.selectedIcon
     }
-    console.log(body)
     return lastValueFrom(this.http.put(url, body))
   }
 
 
   async changePassword(){
+    this.sendDataLoading = true;
     try {
       let resp = await this.sendPutPasswordRequestToServer();
+      this.sendDataLoading = false;
       this.succesful = true;
       setTimeout(() => {
         location.reload()
       }, 2000);
     } catch (e:any) {
+      this.sendDataLoading = false;
       console.error("Error", e)
       this.handleError(e)
     }
@@ -137,7 +139,7 @@ export class ProfilComponent {
 
 
   async sendPutPasswordRequestToServer(){
-    const url = environment.baseURL + `/change_password/${this.profilData.user_id}/`;
+    const url = environment.baseURL + `/change_password/${this.profilData.id}/`;
     const body = {
       "old_password": this.oldPassword,
       "new_password": this.newPassword,
@@ -145,11 +147,12 @@ export class ProfilComponent {
     return lastValueFrom(this.http.put(url, body))
   }
 
-
+  /**
+   * evtl weg
+   * @param e 
+   */
   handleError(e: any){
     let error = e.error['error']
-
-    console.log(error)
 
     if(error === "Old password does not match"){
       this.errorMessage = "Altes Password falsch. Versuch es noch einmal."
