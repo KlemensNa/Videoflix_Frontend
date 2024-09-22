@@ -103,6 +103,8 @@ export class SignInComponent {
     this.router.navigateByUrl('login')
   }
 
-
+  toLandingPage() {
+    this.router.navigateByUrl('')
+  }
   
 }

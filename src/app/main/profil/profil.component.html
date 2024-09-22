@@ -36,17 +36,12 @@
                 <div class="profilDataContainer">
                     <h1>Avatar</h1>
                     <div class="icon-dropdown">
-                        <!-- Zeige das ausgewählte oder das erste Icon an -->
                         <div class="selected-icon" *ngIf="selectedIcon">
                             <img [src]="selectedIcon.image" alt="{{ selectedIcon.name }}">
                         </div>
-
-                        <!-- Button zum Öffnen des Menüs -->
                         <button class="btn btn-secondary" type="button" (click)="toggleMenu()">
                             Choose Icon
                         </button>
-
-                        <!-- Dropdown-Liste mit allen Icons, sichtbar wenn menuOpen true ist -->
                         <div class="dropdown-menu" [ngClass]="{'show': menuOpen}">
                             <div *ngFor="let icon of icons" (click)="selectIcon(icon)" class="dropdown-item">
                                 <img [src]="icon.image" alt="{{ icon.name }}">
@@ -133,12 +128,8 @@
 
                 <div class="sendBtn">
                     <button class="loginBtn" type="submit" mat-raised-button color="primary" [disabled]="!form.valid">Passwort ändern</button>
-                </div>
-
-                
-            </form>
-
-            
+                </div>                
+            </form>            
         </div>
     </div>
 
