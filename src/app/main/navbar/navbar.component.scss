@@ -41,26 +41,35 @@
             display: flex;
             align-items: center;
 
-            .iconContainer{
+            .userDataContainer{
+
+                display: flex;
+                align-items: center;
                 height: 60%;
                 margin-right: 24px;
-                background-color: white;
-                border-radius: 100%;
 
-                img{
-                    height: 100%;
-                    scale: 0.8;
+                .iconContainer{
+                    height: 80%;
+                    background-color: white;
+                    border-radius: 100%;
+    
+                    img{
+                        height: 100%;
+                        scale: 0.8;
+                    }
+                }
+    
+                .userName{
+                    margin-right: 24px;
+                    color: white;
+                    font-size: 37px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
             }
 
-            .userName{
-                margin-right: 24px;
-                color: white;
-                font-size: 37px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
+            
 
             .btnMenu{
                 border-radius: unset !important;

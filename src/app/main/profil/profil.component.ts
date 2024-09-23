@@ -3,9 +3,10 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.development';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, Subscription } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 import { IconService } from 'src/app/services/icon.service';
+import { Token } from '@angular/compiler';
 
 @Component({
   selector: 'app-profil',
@@ -22,6 +23,8 @@ export class ProfilComponent {
   sendDataLoading: boolean = false;
   loadingFinished: boolean = false;
   errorMessage: string = '';
+  uid: string = '';
+  token: string = '';
   oldPassword: string =  "";
   newPassword: string =  "";
   passwordNotMatch: boolean = false;
@@ -29,6 +32,7 @@ export class ProfilComponent {
   profilData: any = {};
   selectedIcon: any;
   icons: any[] = [];
+  private subscriptions: Subscription = new Subscription();
 
 
   constructor(  
@@ -47,24 +51,29 @@ export class ProfilComponent {
 
 
   ngOnDestroy(){
-
+    this.subscriptions.unsubscribe();
   }
 
 
   loadProfilData(){
-    this.userService.getCurrentUser().subscribe({
-      next: (data:any) => {
-        this.profilData = data;
-        this.loadingFinished = true;
+
+    const userDataSub = this.userService.getCurrentUser().subscribe({
+      next: (data: any) => {
+        if (data) {
+          this.profilData = data;
+          this.loadingFinished = true;
+          this.uid = this.profilData.id;
+          this.token = this.userService.getUserToken()
+          this.loadIcon();
+          this.loadIcons();
+        }
       },
-      error: (error:any) => {
-        console.error('Fehler beim Abrufen der Nutzerdaten', error);
-      },
-      complete: () => {
-        this.loadIcon();
-        this.loadIcons();
+      error: (error: any) => {
+        console.error('Fehler beim Abrufen der Nutzerdaten. Try again please', error);
       }
     });
+
+    this.subscriptions.add(userDataSub)
   }
 
 
@@ -179,7 +188,7 @@ export class ProfilComponent {
 
 
   toMain(){
-    this.router.navigateByUrl("main")
+    this.router.navigateByUrl(`main/${this.token}/${this.uid}`)
   }
   
   

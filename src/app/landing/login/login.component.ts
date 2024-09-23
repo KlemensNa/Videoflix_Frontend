@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
+import { UserService } from 'src/app/services/user.service';
 import { environment } from 'src/environments/environment.development';
 
 @Component({
@@ -24,7 +25,8 @@ export class LoginComponent {
 
   constructor(
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private userService: UserService,
   ) { }
 
 
@@ -63,8 +65,10 @@ export class LoginComponent {
       let resp: any = await this.loginWithEmailAndPassword();
 
       if (resp && resp.token) {
+        console.log(resp)
         localStorage.setItem('token', resp.token);
-        this.router.navigateByUrl('main')
+        this.userService.setLoginStatus(true)
+        this.router.navigateByUrl(`main/${resp.token}/${resp.user_id}`)
       } else {
         this.email = '';
         this.password = ''

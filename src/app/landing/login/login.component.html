@@ -6,10 +6,10 @@
     </mat-toolbar>
     <div class="loginContainer">
         <div class="loginForm">
-            <h1>Einloggen</h1>
+            <h1>Login</h1>
             <form (ngSubmit)="login()">
                 <mat-form-field class="formField">
-                    <mat-label>E-Mail-Adresse</mat-label>
+                    <mat-label>Email</mat-label>
                     <input type="email" 
                         matInput 
                         [(ngModel)]="email" 
@@ -40,14 +40,15 @@
                     <div class="wrongDataError" *ngIf="wrongData">
                         The email address or password is incorrect
                     </div>
-                    <button class="loginBtn" mat-raised-button color="primary" type="submit">Einloggen</button>
-                    <div class="passwordForgotten" (click)="toResetPassword()">Password vergessen?</div>
+                    <button class="loginBtn" mat-raised-button color="primary" type="submit">Login</button>
+                    <div class="passwordForgotten" (click)="toResetPassword()">Forgot Password?</div>
                     <div class="new">
-                        Neu bei Filmflix?
-                        <span class="registerLink" (click)="toLandingPage()">Jetzt registrieren</span>
+                        New on Sportsflix?
+                        <span class="registerLink" (click)="toLandingPage()">Sign up</span>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<app-footer></app-footer>

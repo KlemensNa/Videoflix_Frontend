@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,12 @@ import { Observable } from 'rxjs';
 export class UserService {
 
   private apiUrl: string = 'http://127.0.0.1:8000/api/users/me';
+
+  private isLoggedIn = new BehaviorSubject<boolean>(false);
+  isLoggedIn$ = this.isLoggedIn.asObservable();
+
+  private userSubject = new BehaviorSubject<any>(null);
+  user$: Observable<any> = this.userSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -19,14 +25,25 @@ export class UserService {
   }
 
 
-  /**
-   * the http_intercepter sends the token in header and through auth in django you will get only your own data
-   * @returns Data of currentUser
-   */
-  getCurrentUser(): any {
-    let currentUser = this.http.get<any>(this.apiUrl);
-    return currentUser;
+  getCurrentUser(): Observable<any> {    
+      this.http.get<any>(this.apiUrl).pipe(
+        tap(user => this.userSubject.next(user)) // Speichere die Daten im BehaviorSubject
+      ).subscribe();
+    
+    return this.user$;
+  }
+
+  // Falls notwendig, eine Funktion zum expliziten Neuladen des Users
+  refreshUser() {
+    this.http.get<any>(this.apiUrl).pipe(
+      tap(user => this.userSubject.next(user))
+    ).subscribe();
+
   }
 
 
+  setLoginStatus(status: boolean) {
+    this.isLoggedIn.next(status);
+    console.log(this.isLoggedIn)
+  }
 }

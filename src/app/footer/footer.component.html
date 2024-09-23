@@ -1,16 +1,15 @@
 <div class="footerContainer">
     <div class="divider"></div>
     <div class="questionContainer">
-        Fragen? Sende uns eine Mail:    <a href="">klemens.naue@googlemail.com</a>
+        Any Questions? Contact us:    <a href="mailto:klemens.naue@googlemail.com">klemens.naue@googlemail.com</a>
     </div>
     <div class="categoryContainer">
         <ul>
-            <li><a href="">Häufig gestellte Fragen (FAQ)</a></li>
-            <li><a (click)="toData()">Datenschutz</a></li>
-            <li><a (click)="toImpressum()">Impressum</a></li>
-            <li> <a href="">Kontakt</a></li>
-            <li> <a href="">Konto</a></li>
-            <li> <a href="">Cookies</a></li>
+            <!-- <li><a href="">FAQ</a></li> -->
+            <li><a (click)="toData()">Legal notice</a></li>
+            <li><a (click)="toImpressum()">Imprint</a></li>
+            <!-- <li> <a href="">Contact</a></li> -->
+            <li *ngIf="isLoggedIn"> <a (click)="openProfile()">Profile</a></li>
         </ul>
     </div>
 </div>

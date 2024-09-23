@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -6,15 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   title = 'filmflix';
-  icons:any;
+  profilData: any = {};
+  
 
-  ngOnInit(){    
-    this.getIcons()
-  }
+  constructor(
+    private router: Router,
+    private userService: UserService,
+  ){}
 
-  getIcons(){
-    
-  }
+  ngOnInit(){}
+
+  
 
 }

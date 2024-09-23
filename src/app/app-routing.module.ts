@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'confirm/:uid', component:  ConfirmComponent},
   { path: 'confirminfo', component:  ConfirminfoComponent},
   { path: 'login', component:  LoginComponent},
-  { path: 'main', component:  MainComponent},
+  { path: 'main/:token/:uid', component:  MainComponent},
   { path: 'video/:videoTitle', component:  VideoComponent},
   { path: 'profil/:uid/:token', component:  ProfilComponent},
   { path: 'passwordreset', component:  ResetpasswordComponent,},

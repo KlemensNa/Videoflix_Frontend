@@ -1,11 +1,11 @@
 <div class="signInMain">
     <div class="toolbar-left">
         <div class="appName" (click)="toLandingPage()">SportFlix</div>
-        <div class="loginBtn" (click)="toLogin()">Einloggen</div>
+        <div class="loginBtn" (click)="toLogin()">Login</div>
     </div>
     <div class="mainContainer">
         <div class="loginForm">
-            <h1>Erstellen Sie einen Account, um Ihre VideoFlix-Mitgliedschaft zu beginnen</h1>
+            <h1>Create an Account to start your Sportflix membership</h1>
             <form [class.error-visible]="isErrorVisible" (ngSubmit)="signIn()" #form="ngForm">
 
                 <mat-form-field class="formField">
@@ -72,7 +72,7 @@
                 </div>
 
                 <div class="loginBtns">
-                    <button class="loginBtn" type="submit" [disabled]="!form.valid" mat-raised-button color="primary">Weiter</button>
+                    <button class="loginBtn" type="submit" [disabled]="!form.valid" mat-raised-button color="primary">Sign up</button>
                 </div>
             </form>
         </div>

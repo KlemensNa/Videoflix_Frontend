@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Icon } from 'src/app/model/icon';
 import { IconService } from 'src/app/services/icon.service';
 import { SearchService } from 'src/app/services/search.service';
@@ -24,35 +25,48 @@ export class NavbarComponent {
   icon: string = '';
   uid: string = '';
   token: string = '';
+  private subscriptions: Subscription = new Subscription();
 
   constructor(
     private router: Router,
     private searchService: SearchService,
-    private userService: UserService,
-  ){}
+    public userService: UserService,
+  ) { }
 
-  ngOnInit(){
+  ngOnInit(): void {
     this.loadProfilData();
     this.token = this.userService.getUserToken()
-    
   }
 
 
-  loadProfilData(){
-    this.userService.getCurrentUser().subscribe({
-      next: (data:any) => {
-        this.profilData = data;
-        this.uid = this.profilData.id
-        this.loadingFinished = true;
+  /**
+   * get Observable datas of currentUser from userService.
+   * execute function if data are completly loaded
+   */
+  loadProfilData() {
+    const userDataSub= this.userService.getCurrentUser().subscribe({
+      next: (data: any) => {
+        if (data) {
+          console.log(data)
+          this.profilData = data;
+          this.loadingFinished = true;
+          this.uid = this.profilData.id;
+          this.loadIcon();
+        }
       },
-      error: (error:any) => {
-        console.error('Fehler beim Abrufen der Nutzerdaten', error);
-      },
-      complete: () => {
-        this.loadIcon();
+      error: (error: any) => {
+        console.error('Fehler beim Abrufen der Nutzerdaten. Try again please', error);
       }
     });
+
+    this.subscriptions.add(userDataSub);
   }
+
+
+  ngOnDestroy(){
+    this.subscriptions.unsubscribe();
+  }
+
 
   loadIcon(): void {
     let imageURL = this.profilData.icon.image;
@@ -65,38 +79,38 @@ export class NavbarComponent {
   }
 
 
-  closeSearchfield(){
-    this.searchfield = !this.searchfield;    
+  closeSearchfield() {
+    this.searchfield = !this.searchfield;
     this.searchService.updateSearchTerm('')
   }
 
 
-  toggleMenuo() { 
-      this.menuOpen = !this.menuOpen
-  }
-
-
-  toggleMenuc(){
+  toggleMenuo() {
     this.menuOpen = !this.menuOpen
   }
 
 
-  logout(){
+  toggleMenuc() {
+    this.menuOpen = !this.menuOpen
+  }
+
+
+  logout() {
     localStorage.removeItem("token")
+    this.userService.setLoginStatus(false)
     this.toLandingPage()
   }
-  
 
-  toLandingPage(){
+
+  toLandingPage() {
     this.router.navigateByUrl('')
   }
 
 
-  openProfil(){
-    console.error(this.uid)
+  openProfil() {
     this.router.navigateByUrl(`profil/${this.uid}/${this.token}`)
   }
-  
+
 
   onSearch(event: any) {
     const searchTerm = event.target.value.toLowerCase();

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-landing',
@@ -10,8 +11,15 @@ import { Router } from '@angular/router';
 export class LandingComponent {
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
-  constructor(private router: Router){
+  constructor(private router: Router, private userService: UserService){
     
+  }
+
+  ngOnInit(){
+    let token = this.userService.getUserToken()
+    if(token != null){
+      this.userService.setLoginStatus(true)
+    }
   }
 
   toLoginPage(){
