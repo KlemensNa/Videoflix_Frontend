@@ -11,22 +11,44 @@ import { UserService } from '../services/user.service';
 export class LandingComponent {
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
-  constructor(private router: Router, private userService: UserService){
-    
+  constructor(private router: Router, private userService: UserService) {
+
   }
 
-  ngOnInit(){
+  ngOnInit() {
     let token = this.userService.getUserToken()
-    if(token != null){
+    if (token != null) {
       this.userService.setLoginStatus(true)
     }
+    window.addEventListener('resize', this.adjustLayout);
+    this.adjustLayout()
   }
 
-  toLoginPage(){
+
+
+  toLoginPage() {
     this.router.navigateByUrl('login')
   }
 
-  toRegister(){
+  toRegister() {
     this.router.navigateByUrl('signIn')
   }
+
+  hasScrollbar() {
+    return window.innerWidth > document.documentElement.clientWidth;
+  }
+
+
+  /**
+   * adjust screen width, depend on scrollbar
+   * nice to have because tablets dont have a scrollbar,but little laptops have
+   */
+  adjustLayout() {
+    const landingMain = document.querySelector('.landingMain')! as HTMLElement;
+    if (window.innerWidth > document.documentElement.clientWidth) {
+        landingMain.style.width = "calc(100vw - 20px)";
+    } else {
+        landingMain.style.width = "100vw";
+    }
+}
 }

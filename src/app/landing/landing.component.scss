@@ -1,4 +1,4 @@
-.landingMain{
+.landingMain {
     height: 100vh;
     width: calc(100vw - 20px);
     background-image: url("/assets/img/landingMain.png");
@@ -11,9 +11,9 @@
     justify-content: space-between;
 
 
-    
 
-    mat-toolbar{
+
+    mat-toolbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -23,19 +23,19 @@
         height: 104px;
 
 
-        .toolbar-left{
-            display: flex;            
+        .toolbar-left {
+            display: flex;
 
-            .appName{
-                font-size: 72px;                
+            .appName {
+                font-size: 72px;
                 color: #E50914
             }
         }
 
-        .toolbar-right{
-            display: flex;    
-            
-            button{
+        .toolbar-right {
+            display: flex;
+
+            button {
                 font-size: 20px;
                 color: white;
                 padding: 24px;
@@ -45,7 +45,7 @@
         }
     }
 
-    .infoAndStart{
+    .infoAndStart {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -54,42 +54,346 @@
         color: white;
         margin-bottom: 9%;
 
-        h1{
+        h1 {
             font-size: 64px;
             line-height: 68px;
             font-weight: 700;
             margin: unset;
         }
 
-        h2{
+        h2 {
             font-size: 40px;
             font-weight: 500;
             margin: unset;
         }
 
-        h3{
+        h3 {
             font-size: 36px;
             font-weight: 400;
             margin: unset;
         }
 
-        .sendEmailForm{
+        .sendEmailForm {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 16px;
 
-            button{
+            button {
                 font-size: 32px;
                 color: white;
                 border-radius: 8px;
                 background-color: #E50914;
                 padding: 48px
-
-                
             }
         }
-        
+
     }
 }
 
+@media only screen and (min-width: 320px) and (max-width: 576px) {
+    .landingMain {
+        height: 100vh;
+        width: 100vw;
+        justify-content: flex-start;
+        gap: 100px;
+        background-size: cover;
+
+        mat-toolbar {
+            padding: 0 30px;
+            height: 80px;
+
+            .toolbar-left .appName {
+                font-size: 36px;
+                font-weight: 700;
+            }
+
+            .toolbar-right button {
+                font-size: 14px;
+                padding: 20px;
+            }
+        }
+
+        .infoAndStart {
+            padding: 0 30px;
+            gap: 24px;
+
+            h1 {
+                font-size: 36px;
+            }
+
+            h2 {
+                text-align: center;
+                font-size: 20px;
+            }
+
+            h3 {
+                font-size: 18px;
+                text-align: center;
+            }
+
+            .sendEmailForm {
+
+                button {
+                    padding: 32px;
+                }
+            }
+        }
+    }
+}
+
+//
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+    .landingMain {
+        width: 100vw;
+        justify-content: flex-start;
+        gap: 300px;
+
+        mat-toolbar {
+            padding: 20px 30px;
+            height: 120px;
+
+            .toolbar-left .appName {
+                font-size: 66px;
+                font-weight: 700;
+            }
+
+            .toolbar-right button {
+                font-size: 24px;
+                padding: 28px;
+            }
+        }
+
+        .infoAndStart {
+            padding: 0 30px;
+            gap: 32px;
+
+            h1 {
+                font-size: 64px;
+            }
+
+            h2 {
+                text-align: center;
+                font-size: 40px;
+                line-height: 43px;
+            }
+
+            h3 {
+                font-size: 28px;
+                line-height: 34px;
+                text-align: center;
+            }
+
+            .sendEmailForm {
+
+                button {
+                    padding: 32px;
+                }
+            }
+        }
+    }
+}
+
+// Tablets and Smartphones in vertical screen
+@media only screen and (min-width: 769px) and (max-width: 992px) and (min-height: 1100px){
+
+    .landingMain {
+        width: 100vw;
+        justify-content: flex-start;
+        gap: 300px;
+
+        mat-toolbar {
+            padding: 40px 60px;
+            height: 160px;
+
+            .toolbar-left .appName {
+                font-size: 90px;
+                line-height: 100px;
+                font-weight: 700;
+            }
+
+            .toolbar-right button {
+                font-size: 32px;
+                padding: 40px;
+            }
+        }
+
+        .infoAndStart {
+            padding: 0 30px;
+            gap: 48px;
+
+            h1 {
+                font-size: 88px;
+            }
+
+            h2 {
+                text-align: center;
+                font-size: 60px;
+                line-height: 64px;
+            }
+
+            h3 {
+                font-size: 36px;
+                line-height: 39px;
+                text-align: center;
+            }
+
+            .sendEmailForm {
+
+                button {
+                    padding: 48px;
+                }
+            }
+        }
+    }
+  }
+
+
+// Laptops/ small Monitors
+@media only screen and (min-width: 769px) and (max-width: 992px) and (max-height: 1099px){
+
+    .landingMain {
+        width: calc(100vw - 20px);
+        justify-content: flex-start;
+        gap: 100px;
+
+        mat-toolbar {
+            padding: 40px 60px;
+            height: 160px;
+
+            .toolbar-left .appName {
+                font-size: 72px;
+                line-height: 100px;
+                font-weight: 700;
+            }
+
+            .toolbar-right button {
+                font-size: 24px;
+                padding: 32px;
+            }
+        }
+
+        .infoAndStart {
+            padding: 0 30px;
+            gap: 48px;
+
+            h1 {
+                font-size: 64px;
+            }
+
+            h2 {
+                text-align: center;
+                font-size: 48px;
+                line-height: 51px;
+            }
+
+            h3 {
+                font-size: 30px;
+                line-height: 31px;
+                text-align: center;
+            }
+
+            .sendEmailForm {
+
+                button {
+                    padding: 36px;
+                }
+            }
+        }
+    }
+  }
+
+
+
+/* Für Bildschirme zwischen 993px und 1199px */
+@media only screen and (min-width: 993px) and (max-width: 1199px) and (max-height: 900px){
+    .landingMain {
+        height: 100vh;
+        width: 100vw;
+        
+
+        mat-toolbar {
+            padding: 0 80px;
+            height: 104px;
+
+            .toolbar-left .appName {
+                font-size: 64px;
+            }
+
+            .toolbar-right button {
+                font-size: 20px;
+                padding: 24px;
+            }
+        }
+
+        .infoAndStart {
+            gap: 56px;
+
+            h1 {
+                font-size: 54px;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            h3 {
+                font-size: 30px;
+            }
+
+            .sendEmailForm {
+                button {
+                    font-size: 32px;
+                    padding: 36px;
+                }
+            }
+        }
+    }
+}
+
+
+
+//for Tablets in horizontal screen
+@media only screen and (min-width: 993px) and (max-width: 1199px) and (min-height: 901px){
+    .landingMain {
+        height: 100vh;
+        width: calc(100vw - 20px);
+
+        mat-toolbar {
+            padding: 0 80px;
+            height: 104px;
+
+            .toolbar-left .appName {
+                font-size: 64px;
+            }
+
+            .toolbar-right button {
+                font-size: 20px;
+                padding: 24px;
+            }
+        }
+
+        .infoAndStart {
+            gap: 56px;
+
+            h1 {
+                font-size: 54px;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            h3 {
+                font-size: 30px;
+            }
+
+            .sendEmailForm {
+                button {
+                    font-size: 32px;
+                    padding: 36px;
+                }
+            }
+        }
+    }
+}

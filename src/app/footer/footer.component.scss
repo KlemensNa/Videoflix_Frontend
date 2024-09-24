@@ -50,8 +50,201 @@
                     }
                 }
             }
-        }
+        }        
+    }
+}
 
+
+
+//WEG EVTL
+// @media only screen and (min-height: 901px) and (max-width: 1200px){
+
+//     .footerContainer{
+//         width: 100vw;
+        
+        
+        
+//     }
+
+// }
+
+
+@media only screen and (max-height: 900px) and (max-width: 1200px){
+
+    .footerContainer{
+        width: 100vw;
+        
+        // padding: 0 50px;
+        
         
     }
+
+}
+
+
+@media only screen and (max-width: 992px) and (min-width: 769px) and (min-height: 1100px){
+
+    .footerContainer{
+        width: 100vw;
+    
+        .questionContainer{
+            padding: 40px 60px;
+            font-size: 36px;
+            line-height: 39px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+    
+            a{  
+                color:rgba(255, 255, 255, 0.616);
+                cursor: pointer;
+    
+                &:hover{
+                    color: rgba(255, 255, 255, 0.774);
+                }
+            }
+        }
+    
+        .categoryContainer{
+    
+            ul{
+                padding: 40px 60px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+    
+                li{
+                    a{
+                        font-size: 32px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+//small monitor or laptops
+@media only screen and (max-width: 992px) and (min-width: 769px) and (max-height: 1099px){
+
+    .footerContainer{
+        width: calc(100vw - 20px);
+    
+        .questionContainer{
+            padding: 40px 60px;
+            font-size: 28px;
+            line-height: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+    
+            a{  
+                color:rgba(255, 255, 255, 0.616);
+                cursor: pointer;
+    
+                &:hover{
+                    color: rgba(255, 255, 255, 0.774);
+                }
+            }
+        }
+    
+        .categoryContainer{
+    
+            ul{
+                padding: 40px 60px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+    
+                li{
+                    a{
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+@media only screen and (max-width: 768px) and (max-height: 1020px){
+
+    .footerContainer{
+        width: calc(100vw - 20px);
+    
+        .questionContainer{
+            padding: 20px 30px;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+    
+            a{  
+                color:rgba(255, 255, 255, 0.616);
+                cursor: pointer;
+    
+                &:hover{
+                    color: rgba(255, 255, 255, 0.774);
+                }
+            }
+        }
+    
+        .categoryContainer{
+    
+            ul{
+                padding: 20px 30px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+    
+                li{
+                    a{
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+@media only screen and (max-width: 768px) and (min-height: 1021px){
+
+    .footerContainer{
+        width: 100vw;
+    
+        .questionContainer{
+            padding: 20px 30px;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+    
+            a{  
+                color:rgba(255, 255, 255, 0.616);
+                cursor: pointer;
+    
+                &:hover{
+                    color: rgba(255, 255, 255, 0.774);
+                }
+            }
+        }
+    
+        .categoryContainer{
+    
+            ul{
+                padding: 20px 30px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+    
+                li{
+                    a{
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+
 }
