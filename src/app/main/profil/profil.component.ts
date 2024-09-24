@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment.development';
 import { lastValueFrom, Subscription } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 import { IconService } from 'src/app/services/icon.service';
-import { Token } from '@angular/compiler';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-profil',
@@ -36,17 +36,22 @@ export class ProfilComponent {
 
 
   constructor(  
-                // private authService: AuthService,
-                private fb: FormBuilder, 
                 private router: Router,
                 private http: HttpClient,
                 private userService: UserService,
-                private iconService: IconService){
+                private iconService: IconService,
+                private location: Location){
   }
 
 
   ngOnInit(){
+    const token = localStorage.getItem('token');
+  if (token) {
     this.loadProfilData();    
+  } else {
+    // Umleitung zur Login-Seite, falls kein Token vorhanden ist
+    this.router.navigateByUrl('');
+  }
   }
 
 
@@ -63,7 +68,6 @@ export class ProfilComponent {
           this.profilData = data;
           this.loadingFinished = true;
           this.uid = this.profilData.id;
-          this.token = this.userService.getUserToken()
           this.loadIcon();
           this.loadIcons();
         }
@@ -188,7 +192,7 @@ export class ProfilComponent {
 
 
   toMain(){
-    this.router.navigateByUrl(`main/${this.token}/${this.uid}`)
+    this.location.back();
   }
   
   

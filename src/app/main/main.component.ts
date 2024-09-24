@@ -13,15 +13,14 @@ export class MainComponent {
     public userService: UserService, private router: Router){
   }
 
-  // ngOnInit(){
-  //   let loggedIn;
-  //   this.userService.isLoggedIn$.subscribe((status: boolean) => {
-  //     loggedIn = status;
-  //   });
-  //   if(!loggedIn){
-  //     this.router.navigateByUrl('')
-  //   }
-  // }
+  ngOnInit(){
+    // const token = localStorage.getItem('token');
+    // if (token) {
+    //   return    
+    // } else {
+    //   // Umleitung zur Login-Seite, falls kein Token vorhanden ist
+    //   this.router.navigateByUrl('');
+    // }
   
-
+  }
 }

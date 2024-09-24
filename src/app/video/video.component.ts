@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { VideoService } from '../services/video.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-video',
@@ -12,7 +13,10 @@ export class VideoComponent {
   videoData: any;
   sessionStorage: any;
 
-  constructor(private videoService: VideoService, private router: Router) {}
+  constructor(
+    private videoService: VideoService, 
+    private router: Router, 
+    private location: Location) {}
 
 
   /**
@@ -36,8 +40,8 @@ export class VideoComponent {
   /**
    * back to moviebar
    */
-  closeVideo(){
-    this.router.navigateByUrl('main')
+  closeVideo(){    
+    this.location.back();
   }
 
 }

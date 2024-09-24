@@ -38,7 +38,6 @@ export class UserService {
     this.http.get<any>(this.apiUrl).pipe(
       tap(user => this.userSubject.next(user))
     ).subscribe();
-
   }
 
 

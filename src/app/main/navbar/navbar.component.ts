@@ -34,8 +34,12 @@ export class NavbarComponent {
   ) { }
 
   ngOnInit(): void {
-    this.loadProfilData();
     this.token = this.userService.getUserToken()
+    if(this.token){
+      this.loadProfilData();
+    } else {
+      this.router.navigateByUrl('')
+    }    
   }
 
 
@@ -47,7 +51,6 @@ export class NavbarComponent {
     const userDataSub= this.userService.getCurrentUser().subscribe({
       next: (data: any) => {
         if (data) {
-          console.log(data)
           this.profilData = data;
           this.loadingFinished = true;
           this.uid = this.profilData.id;
@@ -58,7 +61,6 @@ export class NavbarComponent {
         console.error('Fehler beim Abrufen der Nutzerdaten. Try again please', error);
       }
     });
-
     this.subscriptions.add(userDataSub);
   }
 

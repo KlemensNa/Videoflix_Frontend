@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
-import { NavbarComponent } from '../main/navbar/navbar.component';
 import { Subscription } from 'rxjs';
 
 @Component({
