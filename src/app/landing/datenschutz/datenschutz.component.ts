@@ -38,5 +38,9 @@ export class DatenschutzComponent {
       this.router.navigateByUrl('login')
     }
   }
+
+  toTop(){
+    window.scrollTo(0, 0);
+  }
   
 }

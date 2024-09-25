@@ -43,3 +43,61 @@
         line-height: 26px;
     }
 }
+
+@media only screen and (max-width: 520px) {
+
+    .upperPart {        
+        padding: 20px 30px;
+        width: calc(100% - 60px);
+    
+            .appName {
+                font-size: 48px;
+                font-weight: 600;
+                line-height: 51px;
+            }
+        }
+    
+    .downerPart{
+        padding: 20px 40px;
+        
+        h1{
+            font-size: 38px;
+            font-weight: 600;
+            line-height: 40px;
+        }
+    
+        h2{
+            margin-top: 32px;
+            font-size: 28px;
+            font-weight: 500;
+            line-height: 31px;
+        }
+    
+        p{
+            font-size: 22px;
+            line-height: 24px;
+        }
+    } 
+}
+
+@media only screen and (max-width: 410px) {
+    
+    .downerPart{
+        
+        h1{
+            font-size: 32px;
+            line-height: 34px;
+        }
+    
+        h2{
+            font-size: 26px;
+            line-height: 38px;
+        }
+    
+        p{
+            font-size: 20px;
+            line-height: 22px;
+        }
+    } 
+}
+

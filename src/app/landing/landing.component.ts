@@ -19,11 +19,19 @@ export class LandingComponent {
     let token = this.userService.getUserToken()
     if (token != null) {
       this.userService.setLoginStatus(true)
-    }
-    window.addEventListener('resize', this.adjustLayout);
-    this.adjustLayout()
+    }    
   }
 
+
+  ngAfterViewInit() {
+    window.addEventListener('resize', this.adjustLayout.bind(this));
+    this.adjustLayout(); // Call it here after the view is initialized
+  }
+
+
+  ngOnDestroy(){
+    window.removeEventListener('resize', this.adjustLayout.bind(this));
+  }
 
 
   toLoginPage() {

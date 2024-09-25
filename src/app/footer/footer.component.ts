@@ -20,7 +20,7 @@ export class FooterComponent {
     private userService: UserService,
   ){}
 
-  ngOnInit(){
+  ngOnInit(){    
     const loginStatusSub = this.userService.isLoggedIn$.subscribe((status: boolean) => {
       this.isLoggedIn = status;
     });
@@ -29,10 +29,17 @@ export class FooterComponent {
       this.loadUserData()
     }
 
-    this.subscriptions.add(loginStatusSub);
+    this.subscriptions.add(loginStatusSub);    
+  }
+
+
+  ngAfterViewInit() {
+    window.addEventListener('resize', this.adjustLayout.bind(this));
+    this.adjustLayout(); // Call it here after the view is initialized
   }
 
   ngOnDestroy(){
+    window.removeEventListener('resize', this.adjustLayout.bind(this));
     this.subscriptions.unsubscribe();
   }
 
@@ -65,5 +72,14 @@ export class FooterComponent {
 
   openProfile(){
     this.router.navigateByUrl(`profil/${this.uid}/${this.token}`)
+  }
+
+  adjustLayout() {
+    const footerContainer = document.querySelector('.footerContainer')! as HTMLElement;
+    if (window.innerWidth > document.documentElement.clientWidth) {
+      footerContainer.style.width = "calc(100vw - 20px)";
+    } else {
+      footerContainer.style.width = "100vw";
+    }
   }
 }
