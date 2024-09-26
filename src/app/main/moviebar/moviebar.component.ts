@@ -74,6 +74,8 @@ export class MoviebarComponent {
     this.sportsData.forEach(sport => {
       setTimeout(() => this.checkScrollButtons((sport.name + 'Scroll')), 500);
     });
+    window.addEventListener('resize', this.adjustLayout.bind(this));
+    this.adjustLayout(); // Call it here after the view is initialized
   }
 
 
@@ -327,6 +329,16 @@ export class MoviebarComponent {
     };
     this.videoService.setVideoData(videoData);
     this.router.navigate([`/video/${this.actualTitle}`])
+  }
+
+
+  adjustLayout() {
+    const moviecontainer = document.querySelector('.moviecontainer')! as HTMLElement;
+    if (window.innerWidth > document.documentElement.clientWidth) {
+      moviecontainer.style.width = "calc(100vw - 100px)";
+    } else {
+      moviecontainer.style.width = "calc(100vw - 80px)";
+    }
   }
 
 

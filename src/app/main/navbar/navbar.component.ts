@@ -43,6 +43,12 @@ export class NavbarComponent {
   }
 
 
+  ngAfterViewInit() {
+    window.addEventListener('resize', this.adjustLayout.bind(this));
+    this.adjustLayout(); 
+  }
+
+
   /**
    * get Observable datas of currentUser from userService.
    * execute function if data are completly loaded
@@ -117,5 +123,15 @@ export class NavbarComponent {
   onSearch(event: any) {
     const searchTerm = event.target.value.toLowerCase();
     this.searchService.updateSearchTerm(searchTerm);
+  }
+
+
+  adjustLayout() {
+    const navbarContainer = document.querySelector('.navbarContainer')! as HTMLElement;
+    if (window.innerWidth > document.documentElement.clientWidth) {
+      navbarContainer.style.width = "calc(100vw - 20px)";
+    } else {
+      navbarContainer.style.width = "100vw";
+    }
   }
 }

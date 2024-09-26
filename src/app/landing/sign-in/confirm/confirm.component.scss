@@ -1,6 +1,8 @@
 .confirmContainer{
 
     height: 100%;
+    width: calc(100vw - 80px);
+    padding: 0 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,12 +10,14 @@
 
     h1{
         font-size: 56px;
-        line-height: 59px;        
+        line-height: 59px;       
+        text-align: center; 
     }
 
     h3{
         font-size: 32px;
         line-height: 35px;
+        text-align: center;
 
         span{
             cursor: pointer;
@@ -21,4 +25,60 @@
         }
     }
 }
+
+@media only screen and (max-width: 992px){
+
+    h1{
+        font-size: 48px !important;
+        line-height: 53px !important;   
+    }
+}
+
+
+@media only screen and (max-width: 768px){
+
+    .confirmContainer{
+        width: calc(100vw - 60px);
+        padding: 0 30px;
+    }
+
+    h1{
+        font-size: 40px !important;
+        line-height: 53px !important;   
+    }
+
+    h3{
+        font-size: 28px !important;
+        line-height: 36px !important;   
+    }
+}
+
+
+@media only screen and (max-width: 576px){
+
+    h1{
+        font-size: 36px !important;
+        line-height: 43px !important;   
+    }
+
+    h3{
+        font-size: 26px !important;
+        line-height: 30px !important;   
+    }
+}
+
+
+@media only screen and (max-width: 420px){
+    h1{
+        font-size: 30px !important;
+        line-height: 33px !important;   
+    }
+
+    h3{
+        font-size: 20px !important;
+        line-height: 22px !important;   
+    }
+}
+
+
 
