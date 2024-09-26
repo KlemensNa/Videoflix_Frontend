@@ -1,15 +1,15 @@
 <div class="navbarContainer">
     <mat-toolbar *ngIf="searchfield == false">
         <div class="toolbar-left">
-            <!-- <button mat-icon-button>
-                <mat-icon>menu</mat-icon>
-            </button> -->
             <span class="appName">SportFlix</span>
         </div>
 
         <div class="toolbar-right">
             <div class="userDataContainer" *ngIf="userService.user$ | async as user">
-                <div class="userName">Hello {{user.username}}</div>
+                <div class="userName">
+                    <div>Hello</div> 
+                    <div>&nbsp;{{user.username}}</div>
+                </div>
                 <div class="iconContainer">
                     <img [src]="icon">
                 </div>

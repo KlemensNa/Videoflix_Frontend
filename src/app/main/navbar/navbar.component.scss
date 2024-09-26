@@ -120,3 +120,147 @@
 ::ng-deep .mat-mdc-menu-content {
     padding: 0 !important;
 }
+
+
+
+@media only screen and (max-width: 992px) {
+
+    .navbarContainer{
+
+        mat-toolbar{
+    
+            .toolbar-left{
+    
+                .appName{
+                    font-size: 58px !important;
+                    color: red
+                }
+            }
+    
+            .toolbar-right{
+                
+                .userDataContainer{
+    
+                    .iconContainer{
+                        height: 70% !important;
+                        background-color: white;
+                        border-radius: 100%;
+        
+                        img{
+                            height: 100%;
+                            scale: 0.8;
+                        }
+                    }
+        
+                    .userName{
+                        font-size: 32px !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    .navbarContainer{
+
+        mat-toolbar{
+    
+            .toolbar-left{
+    
+                .appName{
+                    font-size: 48px !important;
+                    color: red
+                }
+            }
+    
+            .toolbar-right{
+                
+                .userDataContainer{
+    
+                    .iconContainer{
+                        height: 58% !important;
+                        background-color: white;
+                        border-radius: 100%;
+                    }
+        
+                    .userName{
+                        display: none !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 500px) {
+
+    .navbarContainer{
+
+        mat-toolbar{
+    
+            .toolbar-left{
+                
+                .appName{
+                    font-size: 34px !important;
+                    color: red
+                }
+                
+            }
+    
+            .toolbar-right{
+                
+                .userDataContainer{
+
+                    
+                    height: 60%;
+                    margin-right: 8px;
+    
+                    .iconContainer{
+                        height: 50% !important;
+                        background-color: white;
+                        border-radius: 100%;
+                    }
+        
+                    .userName{
+                        display: none !important;
+                    }
+                }
+        
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 360px) {
+
+    .navbarContainer{
+
+        mat-toolbar{
+    
+            .toolbar-left{
+                
+                .appName{
+                    font-size: 30px !important;
+                    color: red
+                }
+                
+            }
+    
+            .toolbar-right{
+                
+                .userDataContainer{
+    
+                    .iconContainer{
+                        height: 40% !important;
+                }
+        
+            }
+        }
+    }
+}
+}
