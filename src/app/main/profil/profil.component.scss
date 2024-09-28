@@ -86,7 +86,8 @@
 
                     input {
                         font-size: 20px;
-                        padding: 8px
+                        padding: 8px;
+                        border: unset;
                     }
                 }
             }
@@ -244,12 +245,12 @@
                 width: 80px;
                 height: 80px;
 
-                &:hover{
+                &:hover {
                     background-color: #e5091431;
                 }
             }
 
-            &:hover{
+            &:hover {
                 background-color: white;
             }
         }
@@ -365,27 +366,27 @@ mat-form-field+mat-form-field {
 @media only screen and (max-width: 768px) {
 
     .icon-dropdown {
-    
+
         .selected-icon {
             width: 100px;
             height: 100px;
             border: 3px solid black;
             margin: 0 12px 16px 0;
-    
+
             img {
                 width: 100px;
                 height: 100px;
             }
         }
-    
+
         button {
-            width: 104px;       // damit gleiche größe wie selected icon, warum auch immer
+            width: 104px; // damit gleiche größe wie selected icon, warum auch immer
             height: 104px;
             margin: 0 12px 16px 0;
         }
-    
+
         .dropdown-menu {
-            left: 60px;   
+            left: 60px;
         }
     }
 
@@ -407,20 +408,20 @@ mat-form-field+mat-form-field {
 
     .changeForm {
 
-        h1{
+        h1 {
             min-width: 160px !important;
         }
 
         .profilDataContainer {
-            gap: 12px  !important;
+            gap: 12px !important;
 
-            .formField{
+            .formField {
                 max-width: 200px;
 
-                input{
-                    
+                input {
+
                     font-size: 20px;
-                    padding: 8px;                    
+                    padding: 8px;
                     width: calc(100% - 16px);
                 }
             }
@@ -449,7 +450,16 @@ mat-form-field+mat-form-field {
                 }
             }
         }
-    }    
+    }
+
+    .changeSuccessful {
+
+        span {
+            font-size: 32px;
+            line-height: 34px;
+            text-align: center;
+        }
+    }
 }
 
 
@@ -466,8 +476,8 @@ mat-form-field+mat-form-field {
     }
 
 
-    .profilContainer{
-       p{
+    .profilContainer {
+        p {
             font-size: 38px !important;
         }
     }
@@ -475,29 +485,29 @@ mat-form-field+mat-form-field {
 
     .changeForm {
 
-        h1{
+        h1 {
             font-size: 20px !important;
             min-width: 140px !important;
         }
 
         .profilDataContainer {
-            gap: 0px  !important;
+            gap: 0px !important;
 
-            .formField{
+            .formField {
                 max-width: 160px;
             }
 
         }
-    }    
+    }
 
 
-    .profilIconContainer{
+    .profilIconContainer {
 
         width: 100% !important;
         display: flex;
         flex-direction: column !important;
 
-        h1{
+        h1 {
             width: 100%;
             text-align: left;
         }
@@ -506,30 +516,30 @@ mat-form-field+mat-form-field {
 
             width: 100%;
 
-    
+
             .selected-icon {
                 width: 100px;
                 height: 100px;
                 border: 3px solid black;
                 margin: 0 12px 16px 0;
-        
+
                 img {
                     width: 100px;
                     height: 100px;
                 }
             }
-        
+
             button {
-                width: 104px;       // damit gleiche größe wie selected icon, warum auch immer
+                width: 104px; // damit gleiche größe wie selected icon, warum auch immer
                 height: 104px;
                 margin: 0 12px 16px 0;
             }
-        
+
             .dropdown-menu {
-                left: 60px;   
+                left: 60px;
             }
         }
-    }    
+    }
 }
 
 
@@ -538,19 +548,20 @@ mat-form-field+mat-form-field {
 
     .changeForm {
 
-        h1{
+        h1 {
             font-size: 18px !important;
         }
 
         .profilDataContainer {
 
-            .formField{
+            .formField {
                 max-width: 160px;
-                input{
+
+                input {
                     font-size: 18px;
                 }
             }
 
         }
-    }    
+    }
 }

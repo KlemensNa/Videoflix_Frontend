@@ -55,6 +55,12 @@ export class ProfilComponent {
   }
 
 
+  ngAfterViewInit() {
+    window.addEventListener('resize', this.adjustLayout.bind(this));
+    this.adjustLayout(); 
+  }
+
+
   ngOnDestroy(){
     this.subscriptions.unsubscribe();
   }
@@ -193,6 +199,16 @@ export class ProfilComponent {
 
   toMain(){
     this.location.back();
+  }
+
+
+  adjustLayout() {
+    const changePasswordMain = document.querySelector('.changePasswordMain')! as HTMLElement;
+    if (window.innerWidth > document.documentElement.clientWidth) {
+      changePasswordMain.style.width = "calc(100vw - 20px)";
+    } else {
+      changePasswordMain.style.width = "100vw";
+    }
   }
   
   

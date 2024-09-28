@@ -325,8 +325,8 @@
             margin: 0;
             position: absolute;
             bottom: 16px;
-            left: 125px;
-            background-color: white;
+            left: 80px;
+            background-color: unset;
             border: 1px solid #ccc;
             z-index: 999;
             width: auto;
@@ -335,7 +335,6 @@
             .dropdown-item {
                 width: 80px;
                 height: 80px;
-                // padding: 10px;
                 cursor: pointer;
                 display: flex;
                 align-items: center;
@@ -344,11 +343,16 @@
                 img {
                     width: 80px;
                     height: 80px;
+                    background-color: #fff;
+
+                    &:hover{
+                        background-color: #e509142d;
+                    }
                 }
             }
     
             .dropdown-item:hover {
-                background-color: #e509141e;
+                background-color: white;
             }
         }
     
