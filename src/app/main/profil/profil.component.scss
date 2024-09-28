@@ -46,7 +46,7 @@
 
             p {
                 margin-top: 16px;
-                margin-left: 68px;
+                margin-left: 40px;
                 font-size: 48px;
                 line-height: 52px;
                 font-weight: 700;
@@ -54,8 +54,8 @@
         }
 
         .changeForm {
-            width: calc(100% - 136px);
-            padding: 48px 68px;
+            width: calc(100% - 80px);
+            padding: 32px 40px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -81,6 +81,8 @@
                 margin-bottom: 16px;
 
                 .formField {
+
+                    outline: 1px solid black;
 
                     input {
                         font-size: 20px;
@@ -121,11 +123,11 @@
                     }
                 }
 
-                .sendBtn{
+                .sendBtn {
                     margin-top: 16px;
                 }
 
-                .passwordsNotMatch{
+                .passwordsNotMatch {
                     margin-top: 24px;
                     font-size: 20px;
                     color: #E50914;
@@ -224,8 +226,7 @@
         position: absolute;
         bottom: 16px;
         left: 160px;
-        background-color: white;
-        border: 1px solid #ccc;
+        background-color: unset;
         z-index: 999;
         width: auto;
         max-width: 330px;
@@ -233,20 +234,24 @@
         .dropdown-item {
             width: 80px;
             height: 80px;
-            // padding: 10px;
             cursor: pointer;
             display: flex;
             align-items: center;
             border: 1px solid grey;
 
             img {
+                background-color: white;
                 width: 80px;
                 height: 80px;
-            }
-        }
 
-        .dropdown-item:hover {
-            background-color: #e509141e;
+                &:hover{
+                    background-color: #e5091431;
+                }
+            }
+
+            &:hover{
+                background-color: white;
+            }
         }
     }
 
@@ -292,4 +297,260 @@ mat-form-field+mat-form-field {
 
 .error-visible mat-form-field+mat-form-field {
     margin-top: 32px;
+}
+
+
+
+
+@media only screen and (max-width: 992px) {
+
+    .changePasswordMain {
+        width: 100vw;
+
+
+        .toolbar-left {
+            padding: 20px 30px;
+            width: calc(100% - 60px);
+        }
+
+        .mainContainer {
+
+            .profilContainer {
+
+                p {
+                    margin-left: 40px;
+                }
+            }
+
+            .changeForm {
+                width: calc(100% - 60px);
+                padding: 20px 30px;
+            }
+        }
+
+    }
+}
+
+
+@media only screen and (max-width: 992px) {
+
+    .changePasswordMain {
+        width: 100vw;
+
+
+        .toolbar-left {
+            padding: 20px 30px;
+            width: calc(100% - 60px);
+        }
+
+        .mainContainer {
+
+            .profilContainer {
+
+                p {
+                    margin-left: 40px;
+                }
+            }
+
+            .changeForm {
+                width: calc(100% - 60px);
+                padding: 20px 30px;
+            }
+        }
+
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    .icon-dropdown {
+    
+        .selected-icon {
+            width: 100px;
+            height: 100px;
+            border: 3px solid black;
+            margin: 0 12px 16px 0;
+    
+            img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    
+        button {
+            width: 104px;       // damit gleiche größe wie selected icon, warum auch immer
+            height: 104px;
+            margin: 0 12px 16px 0;
+        }
+    
+        .dropdown-menu {
+            left: 60px;   
+        }
+    }
+
+}
+
+
+@media only screen and (max-width: 576px) {
+
+
+    .appName {
+        font-size: 56px !important;
+        line-height: 58px !important;
+    }
+
+    mat-icon {
+        scale: 1.8 !important;
+    }
+
+
+    .changeForm {
+
+        h1{
+            min-width: 160px !important;
+        }
+
+        .profilDataContainer {
+            gap: 12px  !important;
+
+            .formField{
+                max-width: 200px;
+
+                input{
+                    
+                    font-size: 20px;
+                    padding: 8px;                    
+                    width: calc(100% - 16px);
+                }
+            }
+
+        }
+
+        .passwordChangeContainer {
+            margin-top: 16px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            mat-form-field {
+
+                width: 250Px !important;
+
+                mat-label {
+                    font-size: 16px;
+                }
+
+                input {
+                    font-size: 18px;
+                }
+            }
+        }
+    }    
+}
+
+
+@media only screen and (max-width: 460px) {
+
+
+    .appName {
+        font-size: 42px !important;
+        line-height: 44px !important;
+    }
+
+    mat-icon {
+        scale: 1.8 !important;
+    }
+
+
+    .profilContainer{
+       p{
+            font-size: 38px !important;
+        }
+    }
+
+
+    .changeForm {
+
+        h1{
+            font-size: 20px !important;
+            min-width: 140px !important;
+        }
+
+        .profilDataContainer {
+            gap: 0px  !important;
+
+            .formField{
+                max-width: 160px;
+            }
+
+        }
+    }    
+
+
+    .profilIconContainer{
+
+        width: 100% !important;
+        display: flex;
+        flex-direction: column !important;
+
+        h1{
+            width: 100%;
+            text-align: left;
+        }
+
+        .icon-dropdown {
+
+            width: 100%;
+
+    
+            .selected-icon {
+                width: 100px;
+                height: 100px;
+                border: 3px solid black;
+                margin: 0 12px 16px 0;
+        
+                img {
+                    width: 100px;
+                    height: 100px;
+                }
+            }
+        
+            button {
+                width: 104px;       // damit gleiche größe wie selected icon, warum auch immer
+                height: 104px;
+                margin: 0 12px 16px 0;
+            }
+        
+            .dropdown-menu {
+                left: 60px;   
+            }
+        }
+    }    
+}
+
+
+@media only screen and (max-width: 375px) {
+
+
+    .changeForm {
+
+        h1{
+            font-size: 18px !important;
+        }
+
+        .profilDataContainer {
+
+            .formField{
+                max-width: 160px;
+                input{
+                    font-size: 18px;
+                }
+            }
+
+        }
+    }    
 }

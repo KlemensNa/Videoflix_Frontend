@@ -44,7 +44,7 @@
             #previewDescription {
                 font-size: 36px;
                 line-height: 39px;
-                flex:1;
+                flex: 1;
             }
 
             .loginBtn {
@@ -111,7 +111,7 @@
 
             .videoContainer {
 
-                // max-width: 200px !important;
+                max-width: 200px !important;
                 min-width: 250px !important;
                 max-height: 163px !important;
                 margin-right: 20px;
@@ -176,7 +176,7 @@
 
         .previewWindow {
             height: 280px;
-            
+
 
             .previewThumbnail {
 
@@ -201,144 +201,144 @@
                 }
             }
         }
-}
+    }
 
 
-@media only screen and (max-width: 992px){
+    @media only screen and (max-width: 992px) {
 
-    .moviecontainer {  
+        .moviecontainer {
 
-        .previewWindow{
-            height: 220px;
+            .previewWindow {
+                height: 220px;
 
-            .previewThumbnail{
-                height: 100%;
-                width: 40% !important;
-
-                img{
+                .previewThumbnail {
                     height: 100%;
-                    width: 100%;
-                }
-            }
+                    width: 40% !important;
 
-            .previewInformations{
-
-                gap: 16px;
-
-                #previewTitle{
-                    font-size: 44px;
-                    line-height: 52px;
+                    img {
+                        height: 100%;
+                        width: 100%;
+                    }
                 }
 
-                #previewDescription{
-                    font-size: 26px;
-                    line-height: 29px;
-                }
-            }
-        }
-    }
-}
+                .previewInformations {
 
-@media only screen and (max-width: 768px){
+                    gap: 16px;
 
-    .moviecontainer {  
+                    #previewTitle {
+                        font-size: 44px;
+                        line-height: 52px;
+                    }
 
-        .previewWindow{
-            height: 190px;
-
-            .previewThumbnail{
-                width: 50% !important;
-            }
-
-            .previewInformations{
-
-                gap: 8px;
-
-                #previewTitle{
-                    font-size: 32px;
-                    line-height: 34px;
-                }
-
-                #previewDescription{
-                    font-size: 22px;
-                    line-height: 24px;
-                }
-            }
-        }
-
-        .sportscontainer {
-            .allVideosOfCategory {
-                .videoContainer {
-                    width: 160px !important;
-                    min-width: 160px !important; 
-                    max-width: none !important;
-                    max-height: 92px !important;
-                    margin-right: 20px;             
-                }
-            }
-        }
-    }
-}
-
-@media only screen and (max-width: 576px){
-
-    .moviecontainer {  
-
-        .previewWindow{
-            height: 160px !important;
-
-            .previewThumbnail{
-                width: 50% !important;
-            }
-
-            .previewInformations{
-
-                gap: 8px;
-
-                #previewTitle{
-                    font-size: 24px;
-                    line-height: 25px;
-                }
-
-                #previewDescription{
-                    font-size: 20px;
-                    line-height: 22px;
-                }
-            }
-        }
-    }
-}
-
-
-@media only screen and (max-width: 420px){
-
-    .moviecontainer {  
-
-        .previewWindow{
-            height: auto !important;
-            flex-direction: column;
-
-            .previewThumbnail{
-                width: 100% !important;
-                max-height: 300px;
-            }
-
-            .previewInformations{
-                
-                gap: 8px;
-
-                #previewTitle{
-                    font-size: 24px;
-                    line-height: 25px;
-                }
-
-                #previewDescription{
-                    font-size: 20px;
-                    line-height: 22px;
+                    #previewDescription {
+                        font-size: 26px;
+                        line-height: 29px;
+                    }
                 }
             }
         }
     }
 
-}
+    @media only screen and (max-width: 768px) {
+
+        .moviecontainer {
+
+            .previewWindow {
+                height: 190px;
+
+                .previewThumbnail {
+                    width: 50% !important;
+                }
+
+                .previewInformations {
+
+                    gap: 8px;
+
+                    #previewTitle {
+                        font-size: 32px;
+                        line-height: 34px;
+                    }
+
+                    #previewDescription {
+                        font-size: 22px;
+                        line-height: 24px;
+                    }
+                }
+            }
+
+            .sportscontainer {
+                .allVideosOfCategory {
+                    .videoContainer {
+                        width: 160px !important;
+                        min-width: 160px !important;
+                        max-width: none !important;
+                        max-height: 92px !important;
+                        margin-right: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 576px) {
+
+        .moviecontainer {
+
+            .previewWindow {
+                height: 160px !important;
+
+                .previewThumbnail {
+                    width: 50% !important;
+                }
+
+                .previewInformations {
+
+                    gap: 8px;
+
+                    #previewTitle {
+                        font-size: 24px;
+                        line-height: 25px;
+                    }
+
+                    #previewDescription {
+                        font-size: 20px;
+                        line-height: 22px;
+                    }
+                }
+            }
+        }
+    }
+
+
+    @media only screen and (max-width: 420px) {
+
+        .moviecontainer {
+
+            .previewWindow {
+                height: auto !important;
+                flex-direction: column;
+
+                .previewThumbnail {
+                    width: 100% !important;
+                    max-height: 300px;
+                }
+
+                .previewInformations {
+
+                    gap: 8px;
+
+                    #previewTitle {
+                        font-size: 24px;
+                        line-height: 25px;
+                    }
+
+                    #previewDescription {
+                        font-size: 20px;
+                        line-height: 22px;
+                    }
+                }
+            }
+        }
+
+    }
 }
