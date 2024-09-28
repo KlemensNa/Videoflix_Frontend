@@ -30,6 +30,7 @@ import { ConfirmComponent } from './landing/sign-in/confirm/confirm.component';
 import { ConfirminfoComponent } from './landing/sign-in/confirm/confirminfo/confirminfo.component';
 import { ResetpasswordComponent } from './landing/resetpassword/resetpassword.component';
 import { PasswordchangeformComponent } from './landing/resetpassword/passwordchangeform/passwordchangeform.component';
+import { UploadComponent } from './video/upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { PasswordchangeformComponent } from './landing/resetpassword/passwordcha
     ConfirminfoComponent,
     ResetpasswordComponent,
     PasswordchangeformComponent,
+    UploadComponent,
   ],
   imports: [
     BrowserModule,

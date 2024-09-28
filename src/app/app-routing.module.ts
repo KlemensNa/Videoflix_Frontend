@@ -12,6 +12,7 @@ import { ConfirmComponent } from './landing/sign-in/confirm/confirm.component';
 import { ConfirminfoComponent } from './landing/sign-in/confirm/confirminfo/confirminfo.component';
 import { ResetpasswordComponent } from './landing/resetpassword/resetpassword.component';
 import { PasswordchangeformComponent } from './landing/resetpassword/passwordchangeform/passwordchangeform.component';
+import { UploadComponent } from './video/upload/upload.component';
 
 const routes: Routes = [
   { path: '', component:  LandingComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'setnewpassword/:uid/:token', component:  PasswordchangeformComponent,},
   { path: 'impressum', component:  ImpressumComponent},
   { path: 'datenschutz', component:  DatenschutzComponent},
+  { path: 'upload', component:  UploadComponent},
   
 ];
 

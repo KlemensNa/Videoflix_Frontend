@@ -20,16 +20,13 @@ export class FooterComponent {
     private userService: UserService,
   ){}
 
-  ngOnInit(){    
-    const loginStatusSub = this.userService.isLoggedIn$.subscribe((status: boolean) => {
-      this.isLoggedIn = status;
-    });
+  ngOnInit(){        
+    this.token = this.userService.getUserToken()
 
-    if(this.isLoggedIn){
+    if(this.token){
+      this.isLoggedIn = true;
       this.loadUserData()
-    }
-
-    this.subscriptions.add(loginStatusSub);    
+    } 
   }
 
 
@@ -49,7 +46,6 @@ export class FooterComponent {
       next: (data: any) => {
         if (data) {          
           this.uid = data.id;
-          this.token = this.userService.getUserToken()
         }
       },
       error: (error: any) => {
@@ -68,6 +64,10 @@ export class FooterComponent {
 
   toData(){
     this.router.navigateByUrl('datenschutz')
+  }
+
+  toUploadVideo(){
+    this.router.navigateByUrl('upload')
   }
 
   openProfile(){

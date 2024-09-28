@@ -1,0 +1,30 @@
+<div class="uploadContainer">
+
+    <form (ngSubmit)="createNewVideo()">
+
+        <input type="text" [(ngModel)]="title" name="title" required="">
+        <input type="text" [(ngModel)]="description" name="description" required="">
+
+        <div class="drag-drop-zone"
+         (dragover)="onDragOver($event)"
+         (dragleave)="onDragLeave($event)"
+         (drop)="onVideoDrop($event)">
+            <p>Drag & Drop your video here or click to select</p>
+            <input type="file" name="video" (change)="onVideoChange($event)" accept="video/*" required>
+        </div>
+
+        <div class="drag-drop-zone"
+        (dragover)="onDragOver($event)"
+        (dragleave)="onDragLeave($event)"
+        (drop)="onThumbnailDrop($event)">
+            <p>Drag & Drop your thumbnail here or click to select</p>
+            <input type="file" name="thumbnail" (change)="onThumbnailChange($event)" accept="image/*" required>
+        </div>
+        
+        <button type="submit">New Video</button>
+    </form>
+
+    
+
+</div>
+j
