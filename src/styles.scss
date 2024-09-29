@@ -4,7 +4,10 @@ html, body {
     height: 100%;
     scroll-behavior: smooth;
  }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif !important; 
+}
 
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px #171717 inset;

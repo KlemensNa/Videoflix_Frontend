@@ -13,6 +13,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {TextFieldModule} from '@angular/cdk/text-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './landing/login/login.component';
 import { LandingComponent } from './landing/landing.component';
@@ -64,6 +65,7 @@ import { UploadComponent } from './video/upload/upload.component';
     MatAutocompleteModule,
     MatFormFieldModule,
     MatMenuModule,
+    TextFieldModule,
     MatButtonModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,

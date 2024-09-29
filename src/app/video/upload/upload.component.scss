@@ -2,53 +2,110 @@
   display: flex;
   flex-direction: column;
 
-  .upperPart{
+  .upperPart {
 
-      display: flex;
-        justify-content: space-between !important;
-        align-items: center;
-        padding: 32px 40px;
-        width: calc(100% - 80px);
-        height: auto;
-        background-color: #fff !important;
-        border-bottom: 1px solid #e6e6e6;
+    display: flex;
+    justify-content: space-between !important;
+    align-items: center;
+    padding: 32px 40px;
+    width: calc(100% - 80px);
+    height: auto;
+    background-color: #fff !important;
+    border-bottom: 1px solid #e6e6e6;
 
-        .appName {
-            font-size: 72px;
-            font-weight: 600;
-            line-height: 72px;
-            color: #E50914;
-        }
+    .appName {
+      font-size: 72px;
+      font-weight: 600;
+      line-height: 72px;
+      color: #E50914;
+    }
 
-        mat-icon {
-            color: #E50914;
-            scale: 2;
-            cursor: pointer;
-        }
+    mat-icon {
+      color: #E50914;
+      scale: 2;
+      cursor: pointer;
+    }
   }
 
   .downerPart {
 
-    flex: 1;
+    width: 100%;
+    height: auto;
 
-    .header{
-      height: auto;
+    .header {
       width: 100%;
-      border-bottom: 1px solid #3333332d ;
-      font-size: 64px;
+      border-bottom: 3px solid black;
+
+      p {
+        margin-top: 16px;
+        margin-left: 40px;
+        font-size: 48px;
+        line-height: 52px;
+        font-weight: 700;
+      }
     }
 
     form {
+      width: calc(100% - 80px);
+      padding: 32px 40px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      align-items: center;
-      width: 100%;
-      padding: 40px 0;
+      align-items: flex-start;
+      gap: 16px;
+
+      .profilDataContainer {
+        width: auto;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 48px;
+        margin-bottom: 8px;
+
+        h1 {
+          font-size: 24px;
+          font-weight: 500;
+          letter-spacing: 2px;
+          line-height: 32px;
+          text-align: center;
+          margin-bottom: 0;
+          min-width: 200px;
+          text-align: left;
+        }
+
+        textarea {
+          width: 244px;
+          min-height: 78px;
+          padding: 8px 4px;
+          resize: none;
+          border-color: black;
+          font-size: 20px;
+          font-weight: 400;
+        }
+
+        .formField {
+          outline: 1px solid black;
+          height: 30px;
+
+
+
+          input {
+            font-size: 20px;
+            padding: 4px;
+            border: unset;
+            outline: unset;
+          }
+        }
+      }
+
+      .selectionField {
+        width: 200px;
+        height: 40px
+      }
 
       .drag-drop-zone {
-        width: 450px;
-        height: 200px;
+        width: 200px;
+        height: 120px;
         padding: 8px;
         display: flex;
         flex-direction: column;
@@ -56,8 +113,6 @@
         align-items: center;
         border: dashed 1px grey;
         position: relative;
-        margin: 0 auto;
-
 
         input {
           opacity: 0;
@@ -70,14 +125,14 @@
         }
 
         mat-icon {
-          transform: scale(2.5);
-          margin-bottom: 24px;
+          transform: scale(1.4);
+          margin-bottom: 16px;
         }
 
         label {
           color: white;
-          width: 183px;
-          height: 44px;
+          width: 120px;
+          height: 32px;
           border-radius: 24px;
           background-color: #db202f;
           padding: 8px 16px;
@@ -96,6 +151,194 @@
   }
 
 
+  .sendBtn {
+
+    max-width: 250px;
+
+    .loginBtn {
+      width: 100%;
+      height: auto;
+      background-color: #E50914;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      padding: 16px;
+
+      &:hover {
+        background-color: #e50914d8;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+
+  .uploadContainer {
+
+    .upperPart {
+      padding: 20px 30px;
+      width: calc(100% - 60px);
+    }
+
+    .downerPart {
+
+      .header{
+        p{
+          margin-left: 30px !important;
+        }
+      }
+
+      form{
+        width: calc(100% - 60px);
+        padding: 20px 30px;
+      }      
+    }
+  }
+}
 
 
+@media only screen and (max-width: 576px) {
+
+
+  .appName {
+    font-size: 56px !important;
+    line-height: 58px !important;
+  }
+
+  mat-icon {
+    scale: 1.8 !important;
+  }
+
+  .downerPart {
+
+    .header {
+
+      p {
+        font-size: 40px !important;
+        line-height: 42px !important;
+      }
+    }
+
+    form {
+
+      h1 {
+        min-width: 160px !important;
+      }
+
+      .profilDataContainer {
+        gap: 12px !important;
+
+        textarea {
+          width: 192px !important;
+        }
+
+        .formField {
+          width: 200px !important;
+
+          input {
+            font-size: 20px;
+            padding: 8px;
+            width: calc(100% - 16px);
+          }
+        }
+
+      }
+
+      .selectionField {
+        width: 192px;
+      }
+
+      .drag-drop-zone {
+        width: 192px !important;
+        height: 100px !important;
+        padding: 4px !important;
+
+        p{
+          margin: 4px 0;
+        }
+
+        mat-icon {
+          transform: scale(0.8) !important;
+          margin-bottom: 4px !important;
+        }
+
+        label {
+          width: 124px !important;
+          height: 24px !important;
+          border-radius: 24px;
+          padding: 4px 8px !important;
+        }
+      }
+    }
+  }
+}
+
+
+@media only screen and (max-width: 460px) {
+
+
+  .appName {
+    font-size: 42px !important;
+    line-height: 44px !important;
+  }
+
+  .downerPart {
+
+    .header {
+
+      p {
+        font-size: 38px !important;
+        line-height: 42px !important;
+      }
+    }
+
+    form {
+
+      h1 {
+        font-size: 20px !important;
+        min-width: 140px !important;
+      }
+
+      .profilDataContainer {
+        gap: 0px !important;
+
+        textarea {
+          width: 160px !important;
+        }
+
+        .formField {
+          width: 168px !important;
+        }
+
+      }
+
+      .selectionField {
+        width: 168px !important;
+      }
+
+      .drag-drop-zone {
+        width: 160px !important;
+        height: 100px !important;
+        padding: 4px !important;
+        font-size: 12px !important;
+
+        p{
+          margin: 4px 0;
+        }
+
+        mat-icon {
+          transform: scale(0.8) !important;
+          margin-bottom: 4px !important;
+        }
+
+        label {
+          width: 124px !important;
+          height: 24px !important;
+          border-radius: 24px;
+          padding: 4px 8px !important;
+        }
+      }
+    }
+  }
 }

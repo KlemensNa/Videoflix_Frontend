@@ -114,6 +114,10 @@ export class NavbarComponent {
     this.router.navigateByUrl('')
   }
 
+  toUploadVideo(){
+    this.router.navigateByUrl('upload')
+  }
+
 
   openProfil() {
     this.router.navigateByUrl(`profil/${this.uid}/${this.token}`)

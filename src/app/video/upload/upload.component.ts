@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-upload',
@@ -11,7 +12,8 @@ import { environment } from 'src/environments/environment.development';
 export class UploadComponent {
 
   constructor(
-    private http: HttpClient){
+    private http: HttpClient,
+    private location: Location){
   }
 
   videofile?: File;
@@ -120,6 +122,14 @@ export class UploadComponent {
     
     this.onThumbnailChange(fakeEvent);  // Auf die angepasste onThumbnailChange Funktion anwenden
   }
-}  
+}
+
+back(){
+  this.location.back();
+}
+
+reload(){
+  window.location.reload()
+}
 
 }
