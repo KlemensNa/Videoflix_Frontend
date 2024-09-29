@@ -1,4 +1,4 @@
-<div class="uploadContainer">
+<div class="uploadContainer" *ngIf="!uploadSuccessful">
     <div class="upperPart">
         <div class="appName" (click)="reload()">SportFlix</div>
         <mat-icon class="material-symbols-outlined" (click)="back()">arrow_back</mat-icon>
@@ -33,8 +33,8 @@
                     (drop)="onVideoDrop($event)" 
                     required>
                     <input type="file" name="video" (change)="onVideoChange($event)" accept="video/*" required>
-                    <mat-icon>upload_file</mat-icon>
-                    <p>Drag & Drop the video here </p>
+                    <mat-icon *ngIf="!videoName">upload_file</mat-icon>
+                    <p *ngIf="!videoName">Drag & Drop the video here </p>
                     <p *ngIf="videoName">{{ videoName }}</p>
                     <label for="fileDropRef">or browse for file</label>
                 </div>
@@ -48,8 +48,8 @@
                     (drop)="onThumbnailDrop($event)" 
                     required>
                     <input type="file" name="thumbnail" (change)="onThumbnailChange($event)" accept="image/*" required>
-                    <mat-icon>upload_file</mat-icon>
-                    <p>Drag & Drop the image here </p>
+                    <mat-icon *ngIf="!thumbnailName">upload_file</mat-icon>
+                    <p *ngIf="!thumbnailName">Drag & Drop the image here </p>
                     <p *ngIf="thumbnailName">{{ thumbnailName }}</p>
                     <label for="fileDropRef">or browse for file</label>
                 </div>
@@ -74,8 +74,8 @@
             </div>
         </form>
     </div>
+</div>
 
-
-
-
+<div class="uploadSuccessful" *ngIf="uploadSuccessful">
+    <h1>Your Video will be uploaded. You will be forwarded in 3 seconds</h1>
 </div>

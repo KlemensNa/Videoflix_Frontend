@@ -333,36 +333,6 @@ mat-form-field+mat-form-field {
 }
 
 
-@media only screen and (max-width: 992px) {
-
-    .changePasswordMain {
-        width: 100vw;
-
-
-        .toolbar-left {
-            padding: 20px 30px;
-            width: calc(100% - 60px);
-        }
-
-        .mainContainer {
-
-            .profilContainer {
-
-                p {
-                    margin-left: 40px;
-                }
-            }
-
-            .changeForm {
-                width: calc(100% - 60px);
-                padding: 20px 30px;
-            }
-        }
-
-    }
-}
-
-
 @media only screen and (max-width: 768px) {
 
     .icon-dropdown {
@@ -469,10 +439,6 @@ mat-form-field+mat-form-field {
     .appName {
         font-size: 42px !important;
         line-height: 44px !important;
-    }
-
-    mat-icon {
-        scale: 1.8 !important;
     }
 
 

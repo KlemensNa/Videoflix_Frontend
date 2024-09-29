@@ -6,11 +6,9 @@
     </div>
     <div class="categoryContainer">
         <ul>
-            <!-- <li><a href="">FAQ</a></li> -->
             <li><a (click)="toData()">Legal notice</a></li>
             <li><a (click)="toImpressum()">Imprint</a></li>
             <li *ngIf="isLoggedIn"> <a (click)="openProfile()">Profile</a></li>            
-            <!-- <li> <a (click)="toUploadVideo()">Upload Video</a></li> -->
         </ul>
     </div>
 </div>

@@ -16,6 +16,7 @@ export class UploadComponent {
     private location: Location){
   }
 
+  uploadSuccessful: boolean = false;
   videofile?: File;
   thumbnailfile?: File;
   description: string = '';
@@ -37,6 +38,11 @@ export class UploadComponent {
     });
   }
 
+  ngAfterViewInit() {
+    window.addEventListener('resize', this.adjustLayout.bind(this));
+    this.adjustLayout(); 
+  }
+
 
   getVideoChoices() {
     const url = environment.baseURL + '/video/choices/';
@@ -45,7 +51,6 @@ export class UploadComponent {
 
 
   onVideoChange(event: any){
-    console.error(event)
     this.videofile = event.target.files[0]    
     this.videoName = this.videofile!.name
   }
@@ -57,7 +62,7 @@ export class UploadComponent {
   }
 
 
- createNewVideo() {
+ async createNewVideo() {
     const url = environment.baseURL + `/video/`;
     
     const formData = new FormData();
@@ -68,7 +73,16 @@ export class UploadComponent {
     formData.append('sport', this.selectedSport);
     formData.append('category', this.selectedCategory);
 
-    return lastValueFrom(this.http.post(url, formData));
+    try {
+      const response: any = await lastValueFrom(this.http.post(url, formData));
+      this.uploadSuccessful = true;
+      setTimeout(() => {
+        this.location.back();
+      }, 3000)
+  
+    } catch (error) {
+      console.error('Registrierung fehlgeschlagen:', error);
+    }
 }
 
 
@@ -130,6 +144,20 @@ back(){
 
 reload(){
   window.location.reload()
+}
+
+
+adjustLayout() {
+  const uploadContainer = document.querySelector('.uploadContainer')! as HTMLElement;
+  if (uploadContainer && window.innerWidth > document.documentElement.clientWidth) {
+    uploadContainer.style.width = "calc(100vw - 20px)";
+  } else {
+    if(uploadContainer){
+      uploadContainer.style.width = "100vw";
+    } else{
+      return
+    }    
+  }
 }
 
 }

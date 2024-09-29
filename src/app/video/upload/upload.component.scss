@@ -172,6 +172,25 @@
   }
 }
 
+
+.uploadSuccessful{
+  width: calc(100vw - 60px);
+  height: 100vh;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  background-color: white;
+
+  h1{
+    font-size: 36px;
+    line-height: 40px;
+    word-wrap: wrap;
+    text-align: center;
+  }
+}
+
 @media only screen and (max-width: 992px) {
 
   .uploadContainer {
@@ -342,3 +361,4 @@
     }
   }
 }
+

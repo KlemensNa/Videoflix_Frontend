@@ -86,10 +86,8 @@ export class SignInComponent {
     try {
       // POST-Request und Warten auf die Antwort
       const response: any = await lastValueFrom(this.http.post(url, body));
-  
-      // Wenn erfolgreich, leite zur Bestätigungsseite weiter
-      console.log(response.message);  // Prüfe die Nachricht vom Backend (optional)
-      this.router.navigateByUrl('confirminfo/');  // Redirect zu /confirminfo
+      
+      this.router.navigateByUrl('confirminfo');  // Redirect zu /confirminfo
   
     } catch (error) {
       // Fehlerbehandlung
