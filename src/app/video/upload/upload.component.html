@@ -1,30 +1,53 @@
+
 <div class="uploadContainer">
+    <div class="upperPart">
+        <div class="appName">SportFlix</div>
+        <mat-icon class="material-symbols-outlined">arrow_back</mat-icon>
+    </div>
 
-    <form (ngSubmit)="createNewVideo()">
-
-        <input type="text" [(ngModel)]="title" name="title" required="">
-        <input type="text" [(ngModel)]="description" name="description" required="">
-
-        <div class="drag-drop-zone"
-         (dragover)="onDragOver($event)"
-         (dragleave)="onDragLeave($event)"
-         (drop)="onVideoDrop($event)">
-            <p>Drag & Drop your video here or click to select</p>
-            <input type="file" name="video" (change)="onVideoChange($event)" accept="video/*" required>
-        </div>
-
-        <div class="drag-drop-zone"
-        (dragover)="onDragOver($event)"
-        (dragleave)="onDragLeave($event)"
-        (drop)="onThumbnailDrop($event)">
-            <p>Drag & Drop your thumbnail here or click to select</p>
-            <input type="file" name="thumbnail" (change)="onThumbnailChange($event)" accept="image/*" required>
-        </div>
-        
-        <button type="submit">New Video</button>
-    </form>
-
+    <div class="downerPart">
+        <div class="header">Upload a new Video</div>
+        <form (ngSubmit)="createNewVideo()" #form="ngForm">
+            <input type="text" [(ngModel)]="title" name="title" required="">
+            <input type="text" [(ngModel)]="description" name="description" required="">
+    
+            <div class="drag-drop-zone" 
+                (dragover)="onDragOver($event)" 
+                (dragleave)="onDragLeave($event)"
+                (drop)="onVideoDrop($event)"
+                required>
+                <input type="file" name="video" (change)="onVideoChange($event)" accept="video/*" required>
+                <mat-icon>upload_file</mat-icon>
+                <p>Drag & Drop your video here </p>
+                <p *ngIf="videoName">{{ videoName }}</p>
+                <label for="fileDropRef">or browse for file</label>
+            </div>
+    
+            <div class="drag-drop-zone" 
+                (dragover)="onDragOver($event)" 
+                (dragleave)="onDragLeave($event)"
+                (drop)="onThumbnailDrop($event)"
+                required>
+                <input type="file" name="thumbnail" (change)="onThumbnailChange($event)" accept="image/*" required>
+                <mat-icon>upload_file</mat-icon>
+                <p>Drag & Drop your thumbnail here </p>
+                <p *ngIf="thumbnailName">{{ thumbnailName }}</p>
+                <label for="fileDropRef">or browse for file</label>
+            </div>
+    
+            <select [(ngModel)]="selectedSport" name="selectsport" required>
+                <option *ngFor="let sport of sportChoices" [value]="sport[0]" >{{ sport[1] }}</option>
+              </select>
+    
+              <select [(ngModel)]="selectedCategory" name="selectCategory" required>
+                <option *ngFor="let category of categoryChoices" [value]="category[0]">{{ category[1] }}</option>
+              </select>
+    
+            <button type="submit" [disabled]="!form.valid">New Video</button>
+        </form>
+    </div>
     
 
+
+
 </div>
-j
