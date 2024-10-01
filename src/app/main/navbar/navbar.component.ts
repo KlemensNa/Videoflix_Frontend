@@ -13,19 +13,20 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {
+
+export class NavbarComponent { 
 
   @ViewChild('menuTrigger') menuTrigger!: MatMenuTrigger;
 
   menuOpen: boolean = false;
   searchfield: boolean = false;
   myControl = new FormControl('');
-  profilData: any = {};
-  loadingFinished: boolean = false;
-  icon: string = '';
-  uid: string = '';
-  token: string = '';
-  private subscriptions: Subscription = new Subscription();
+  profilData: any = {}; 
+  loadingFinished: boolean = false; 
+  icon: string = ''; 
+  uid: string = ''; 
+  token: string = ''; 
+  private subscriptions: Subscription = new Subscription(); 
 
   constructor(
     private router: Router,
@@ -33,109 +34,141 @@ export class NavbarComponent {
     public userService: UserService,
   ) { }
 
+
+  /**
+   * on component initialization, retrieve the user's token.
+   * if token is present, load profile data; otherwise, redirect to the landing page.
+   */
   ngOnInit(): void {
-    this.token = this.userService.getUserToken()
-    if(this.token){
-      this.loadProfilData();
+    this.token = this.userService.getUserToken();
+    if (this.token) {
+      this.loadProfilData(); 
     } else {
-      this.router.navigateByUrl('')
+      this.router.navigateByUrl('');
     }    
   }
 
 
+  /**
+   * after the view is initialized, attach a resize event listener and adjust layout based on screen size.
+   */
   ngAfterViewInit() {
-    window.addEventListener('resize', this.adjustLayout.bind(this));
-    this.adjustLayout(); 
+    window.addEventListener('resize', this.adjustLayout.bind(this)); 
+    this.adjustLayout();
   }
 
 
   /**
-   * get Observable datas of currentUser from userService.
-   * execute function if data are completly loaded
+   * loads the profile data of the current user via the userService.
+   * updates the profile data once it's loaded and then calls loadIcon().
    */
   loadProfilData() {
-    const userDataSub= this.userService.getCurrentUser().subscribe({
+    const userDataSub = this.userService.getCurrentUser().subscribe({
       next: (data: any) => {
         if (data) {
-          this.profilData = data;
-          this.loadingFinished = true;
-          this.uid = this.profilData.id;
-          this.loadIcon();
+          this.profilData = data; 
+          this.loadingFinished = true; 
+          this.uid = this.profilData.id; 
+          this.loadIcon(); 
         }
       },
       error: (error: any) => {
-        console.error('Fehler beim Abrufen der Nutzerdaten. Try again please', error);
+        console.error('Error retrieving user data. Try again please', error);
       }
     });
-    this.subscriptions.add(userDataSub);
+    this.subscriptions.add(userDataSub); 
   }
 
 
-  ngOnDestroy(){
+  /**
+   * clean up all subscriptions when the component is destroyed
+   * to prevent memory leaks.
+   */
+  ngOnDestroy() {
     this.subscriptions.unsubscribe();
   }
 
-
+  /**
+   * builds the full URL for the user's icon and stores it in the `icon` variable.
+   */
   loadIcon(): void {
     let imageURL = this.profilData.icon.image;
-    this.icon = "http://127.0.0.1:8000/" + imageURL
+    this.icon = "http://127.0.0.1:8000/" + imageURL; 
   }
 
-
+  /**
+   * toggles the visibility of the search field in the navbar.
+   */
   openSearchfield() {
-    this.searchfield = !this.searchfield
-  }
-
-
-  closeSearchfield() {
     this.searchfield = !this.searchfield;
-    this.searchService.updateSearchTerm('')
   }
 
-
-  toggleMenuo() {
-    this.menuOpen = !this.menuOpen
+  /**
+   * closes the search field and clears the current search term.
+   */
+  closeSearchfield() {
+    this.searchfield = false;
+    this.searchService.updateSearchTerm(''); 
   }
 
-
-  toggleMenuc() {
-    this.menuOpen = !this.menuOpen
+  /**
+   * toggles the visibility of the menu.
+   */
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
   }
 
-
+  /**
+   * logs out the user by removing the token, updating the login status, 
+   * and redirecting to the landing page.
+   */
   logout() {
-    localStorage.removeItem("token")
-    this.userService.setLoginStatus(false)
-    this.toLandingPage()
+    localStorage.removeItem("token"); 
+    this.userService.setLoginStatus(false); 
+    this.toLandingPage(); 
   }
 
-
+  /**
+   * navigates to the landing page.
+   */
   toLandingPage() {
-    this.router.navigateByUrl('')
+    this.router.navigateByUrl('');
   }
 
-  toUploadVideo(){
-    this.router.navigateByUrl('upload')
+  /**
+   * navigates to the video upload page.
+   */
+  toUploadVideo() {
+    this.router.navigateByUrl('upload');
   }
 
-
+  /**
+   * navigates to the user's profile page, using the user's ID and token in the URL.
+   */
   openProfil() {
-    this.router.navigateByUrl(`profil/${this.uid}/${this.token}`)
+    this.router.navigateByUrl(`profil/${this.uid}/${this.token}`);
   }
 
-
+  /**
+   * handles search input, converting the term to lowercase and passing it to the search service.
+   * @param event - Input event triggered by the search field
+   */
   onSearch(event: any) {
     const searchTerm = event.target.value.toLowerCase();
     this.searchService.updateSearchTerm(searchTerm);
   }
 
-
+  /**
+   * adjusts the layout of the navbar based on the presence of a scrollbar.
+   * if a scrollbar is present, reduce the navbar width slightly to prevent overflow.
+   */
   adjustLayout() {
     const navbarContainer = document.querySelector('.navbarContainer')! as HTMLElement;
     if (window.innerWidth > document.documentElement.clientWidth) {
-      navbarContainer.style.width = "calc(100vw - 20px)";
+      navbarContainer.style.width = "calc(100vw - 20px)"; 
     } else {
-      navbarContainer.style.width = "100vw";
+      navbarContainer.style.width = "100vw"; 
     }
   }
 }
+

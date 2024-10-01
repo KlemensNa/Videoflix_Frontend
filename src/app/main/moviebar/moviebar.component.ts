@@ -193,8 +193,8 @@ export class MoviebarComponent {
 
   /**
    * is called in html when clicked on a video (src)
-   * @param videoPath 
-   * @returns path of the video to stream it
+   * @param videoPath path of video 
+   * @returns full URL of the video
    */
   getVideoUrl(videoPath: string): string {
     return `http://127.0.0.1:8000${videoPath}`;
@@ -210,6 +210,12 @@ export class MoviebarComponent {
   }
 
 
+  /**
+   * open preview and sets some variables with videoData
+   * scroll to the top
+   * @param videoThumbnail path of the thumbnail
+   * @param video JSON with videoData like title and description
+   */
   openPreview(videoThumbnail: any, video: any) {
     this.preview = true;
     this.actualThumbnail = this.getVideoUrl(videoThumbnail)
@@ -217,10 +223,12 @@ export class MoviebarComponent {
     this.actualDescription = video.description
     this.videoURL = video.videos_file
     scrollTo(0, 0)
-
   }
 
 
+  /**
+   * @returns src-path of the thumbnail
+   */
   loadThumbnail() {
     return this.actualThumbnail
   }
@@ -319,12 +327,12 @@ export class MoviebarComponent {
     this.cdr.detectChanges();
   }
 
-
+  /**
+   * sets JSON variable of videoData and calls the videoURL
+   */
   openVideo() {
     const videoData = {
-      // thumbnail: this.actualThumbnail,
       title: this.actualTitle,
-      // description: this.actualDescription,
       videoURL: this.videoURL
     };
     this.videoService.setVideoData(videoData);
@@ -332,6 +340,9 @@ export class MoviebarComponent {
   }
 
 
+  /**
+   * sets width of mainContainer, depends if its shown on desktop or mobilescreen
+   */
   adjustLayout() {
     const moviecontainer = document.querySelector('.moviecontainer')! as HTMLElement;
     if (window.innerWidth > document.documentElement.clientWidth) {

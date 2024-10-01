@@ -27,65 +27,113 @@ export class LoginComponent {
     private userService: UserService,
   ) { }
 
+  /**
+   * Lifecycle hook that runs when the component is initialized.
+   * Currently does not perform any actions.
+   */
+  ngOnInit() { }
 
-  ngOnInit() {
-    
-  }
-
+  /**
+   * Handles changes to the email input.
+   * Validates the email and sets `isUsernameRequired` if the email is invalid.
+   * @param value The email input value.
+   */
   onEmailChange(value: string) {
     this.isEmailValid = this.validateEmail(value);
-    this.isUsernameRequired = !this.isEmailValid; // Setzt isUsernameRequired auf true, wenn die E-Mail ungültig ist
+    this.isUsernameRequired = !this.isEmailValid; // Sets to true if the email is invalid
   }
 
+  /**
+   * Handles changes to the password input.
+   * Sets `isPasswordRequired` to true if the password is less than 8 characters long.
+   * @param value The password input value.
+   */
   onPasswordChange(value: string) {
-    this.isPasswordRequired = value.length < 8; // Setzt isPasswordRequired auf true, wenn das Passwort weniger als 8 Zeichen hat
+    this.isPasswordRequired = value.length < 8; // True if the password is too short
   }
 
+  /**
+   * Validates the email format using a regular expression.
+   * @param email The email to be validated.
+   * @returns `true` if the email is valid, `false` otherwise.
+   */
   validateEmail(email: string): boolean {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailPattern.test(email);
   }
 
+  /**
+   * Navigates to the landing page.
+   */
   toLandingPage() {
-    this.router.navigateByUrl('')
+    this.router.navigateByUrl('');
   }
 
-  toResetPassword(){
-    this.router.navigateByUrl('passwordreset')
+  /**
+   * Navigates to the password reset page.
+   */
+  toResetPassword() {
+    this.router.navigateByUrl('passwordreset');
   }
 
-
+  /**
+   * Attempts to log in the user with the provided email and password.
+   * handles different szenarios
+   */
   async login() {
-
     this.disableInput = true;
     try {
       this.wrongData = false;
       let resp: any = await this.loginWithEmailAndPassword();
-
-      if (resp && resp.token) {
-        localStorage.setItem('token', resp.token);
-        this.userService.setLoginStatus(true)
-        this.router.navigateByUrl(`main/${resp.token}/${resp.user_id}`)
-      } else {
-        this.email = '';
-        this.password = ''
-      }
-      this.disableInput = false;
+      this.handleLoginResponse(resp);
     } catch (e) {
-      this.wrongData = true;
+      this.handleLoginError(e);
+    } finally {
       this.disableInput = false;
-      console.error("Error", e)
     }
   }
+  
+  /**
+   * If successful, saves the token and user ID in localStorage and navigates to the main page.
+   * @param resp Response Data from backend
+   */
+  handleLoginResponse(resp: any) {
+    if (resp && resp.token) {
+      localStorage.setItem('token', resp.token);
+      this.userService.setLoginStatus(true);
+      this.router.navigateByUrl(`main/${resp.token}/${resp.user_id}`);
+    }
+  }
+  
+  /**
+   * Displays an error if login fails.
+   * @param e error message
+   */
+  handleLoginError(e: any) {
+    this.wrongData = true;
+    this.resetLoginForm();
+    console.error("Error", e);
+  }
+  
+  /**
+   * resets email & password input field
+   */
+  resetLoginForm() {
+    this.email = '';
+    this.password = '';
+  }
 
-
-  async loginWithEmailAndPassword(){
+  /**
+   * Sends a POST request to log in the user with the provided email and password.
+   * @returns A promise that resolves with the response from the server.
+   */
+  async loginWithEmailAndPassword() {
     const url = environment.baseURL + "/login/";
     const body = {
       "username": this.email,
       "password": this.password
-    }
-    return lastValueFrom(this.http.post(url, body))
-  }  
-
+    };
+    return lastValueFrom(this.http.post(url, body));
+  }
 }
+

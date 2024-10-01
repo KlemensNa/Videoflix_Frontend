@@ -18,8 +18,8 @@
             <button mat-icon-button (click)="openSearchfield()">
                 <mat-icon>search</mat-icon>
             </button>
-            <button mat-icon-button class="btnMenu" [matMenuTriggerFor]="menu" (menuOpened)="toggleMenuo()"
-                (menuClosed)="toggleMenuc()" [ngClass]="{'bg-grey': menuOpen}">
+            <button mat-icon-button class="btnMenu" [matMenuTriggerFor]="menu" (menuOpened)="toggleMenu()"
+                (menuClosed)="toggleMenu()" [ngClass]="{'bg-grey': menuOpen}">
                 <mat-icon>more_horiz</mat-icon>
             </button>
             <mat-menu #menu="matMenu" class="noPadding menu">

@@ -10,6 +10,9 @@ export class ConfirminfoComponent {
 
   constructor(private router: Router){}
 
+  /**
+   * redirect to login
+   */
   toLogin(){
     this.router.navigateByUrl('login')
   }
