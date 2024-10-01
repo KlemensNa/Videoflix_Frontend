@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Location } from '@angular/common';
 
@@ -29,18 +29,26 @@ export class UploadComponent {
   selectedCategory: string = '';
   sportChoices: any[] = [];
   categoryChoices: any[] = [];
+  private subscriptions: Subscription = new Subscription();
 
 
   ngOnInit(){
-    this.getVideoChoices().subscribe((data: any) => {
+    const choices = this.getVideoChoices().subscribe((data: any) => {
       this.sportChoices = data.sport_choices;
       this.categoryChoices = data.category_choices;
     });
+    this.subscriptions.add(choices)
   }
 
   ngAfterViewInit() {
     window.addEventListener('resize', this.adjustLayout.bind(this));
     this.adjustLayout(); 
+  }
+
+
+  ngOnDestroy(){
+    window.removeEventListener('resize', this.adjustLayout.bind(this));
+    this.subscriptions.unsubscribe();
   }
 
 

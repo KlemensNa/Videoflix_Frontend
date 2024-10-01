@@ -63,7 +63,6 @@ export class LoginComponent {
       let resp: any = await this.loginWithEmailAndPassword();
 
       if (resp && resp.token) {
-        console.log(resp)
         localStorage.setItem('token', resp.token);
         this.userService.setLoginStatus(true)
         this.router.navigateByUrl(`main/${resp.token}/${resp.user_id}`)

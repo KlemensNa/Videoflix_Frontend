@@ -43,6 +43,5 @@ export class UserService {
 
   setLoginStatus(status: boolean) {
     this.isLoggedIn.next(status);
-    console.log(this.isLoggedIn)
   }
 }

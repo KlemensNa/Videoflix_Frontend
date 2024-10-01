@@ -13,20 +13,27 @@
             <div class="profilDataContainer">
                 <h1>Title</h1>
                 <div class="formField">
-                    <input type="text" matInput [(ngModel)]="title" name="title" required maxlength="15">
+                    <input type="text" 
+                    matInput 
+                    [(ngModel)]="title" 
+                    name="title" 
+                    required 
+                    maxlength="25">
                 </div>
             </div>
 
             <div class="profilDataContainer">
                 <h1>Description</h1>
-                    <textarea type="text" [(ngModel)]="description" name="description" required
+                    <textarea type="text" 
+                        [(ngModel)]="description" 
+                        name="description" 
+                        required
                         maxlength="255"></textarea>
                 
             </div>
 
             <div class="profilDataContainer">
                 <h1>Videofile</h1>
-
                 <div class="drag-drop-zone" 
                     (dragover)="onDragOver($event)" 
                     (dragleave)="onDragLeave($event)"
