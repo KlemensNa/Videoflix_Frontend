@@ -1,5 +1,4 @@
-/src/assets
-!/src/assets/img
+/src/assets/*
 !/src/assets/img/ai-generated-8937475_1280.png
 
 # Compiled output
