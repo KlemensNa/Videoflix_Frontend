@@ -29,6 +29,7 @@ export class UploadComponent {
   selectedCategory: string = '';
   sportChoices: any[] = [];
   categoryChoices: any[] = [];
+  boundAdjustLayout: any;
   private subscriptions: Subscription = new Subscription();
 
 
@@ -41,13 +42,14 @@ export class UploadComponent {
   }
 
   ngAfterViewInit() {
-    window.addEventListener('resize', this.adjustLayout.bind(this));
+    this.boundAdjustLayout = this.adjustLayout.bind(this);
+    window.addEventListener('resize', this.boundAdjustLayout);
     this.adjustLayout(); 
   }
 
 
   ngOnDestroy(){
-    window.removeEventListener('resize', this.adjustLayout.bind(this));
+    window.removeEventListener('resize', this.boundAdjustLayout);
     this.subscriptions.unsubscribe();
   }
 
@@ -160,11 +162,7 @@ adjustLayout() {
   if (uploadContainer && window.innerWidth > document.documentElement.clientWidth) {
     uploadContainer.style.width = "calc(100vw - 20px)";
   } else {
-    if(uploadContainer){
-      uploadContainer.style.width = "100vw";
-    } else{
-      return
-    }    
+      uploadContainer.style.width = "100vw"; 
   }
 }
 

@@ -24,7 +24,7 @@ export class ProfilComponent {
   sendDataLoading: boolean = false; 
   loadingFinished: boolean = false; 
   errorMessage: string = '';
-
+  boundAdjustLayout: any;
   uid: string = '';
   token: string = '';
   oldPassword: string = "";
@@ -63,14 +63,15 @@ export class ProfilComponent {
    * and adjust the layout.
    */
   ngAfterViewInit() {
-    window.addEventListener('resize', this.adjustLayout.bind(this));
-    this.adjustLayout(); // Initial layout adjustment
+    this.boundAdjustLayout = this.adjustLayout.bind(this);
+    window.addEventListener('resize', this.boundAdjustLayout);
   }
 
   /**
    * unsubscribe from all subscriptions to avoid memory leaks.
    */
   ngOnDestroy() {
+    window.removeEventListener('resize', this.boundAdjustLayout);
     this.subscriptions.unsubscribe();
   }
 
@@ -241,7 +242,7 @@ export class ProfilComponent {
     if (window.innerWidth > document.documentElement.clientWidth) {
       changePasswordMain.style.width = "calc(100vw - 20px)";
     } else {
-      changePasswordMain.style.width = "100vw";
+        changePasswordMain.style.width = "100vw";       
     }
   }
 }

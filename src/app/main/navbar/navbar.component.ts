@@ -25,7 +25,8 @@ export class NavbarComponent {
   loadingFinished: boolean = false; 
   icon: string = ''; 
   uid: string = ''; 
-  token: string = ''; 
+  token: string = '';
+  boundAdjustLayout: any;
   private subscriptions: Subscription = new Subscription(); 
 
   constructor(
@@ -53,7 +54,8 @@ export class NavbarComponent {
    * after the view is initialized, attach a resize event listener and adjust layout based on screen size.
    */
   ngAfterViewInit() {
-    window.addEventListener('resize', this.adjustLayout.bind(this)); 
+    this.boundAdjustLayout = this.adjustLayout.bind(this);
+    window.addEventListener('resize', this.boundAdjustLayout); 
     this.adjustLayout();
   }
 
@@ -85,6 +87,7 @@ export class NavbarComponent {
    * to prevent memory leaks.
    */
   ngOnDestroy() {
+    window.removeEventListener('resize', this.boundAdjustLayout);;
     this.subscriptions.unsubscribe();
   }
 
@@ -167,7 +170,7 @@ export class NavbarComponent {
     if (window.innerWidth > document.documentElement.clientWidth) {
       navbarContainer.style.width = "calc(100vw - 20px)"; 
     } else {
-      navbarContainer.style.width = "100vw"; 
+        navbarContainer.style.width = "100vw";    
     }
   }
 }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-impressum',
@@ -9,33 +8,15 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ImpressumComponent {
 
-  profilData: any = {};
-  uid: string = '';
-  token: string = '';
+  constructor(
+    private location: Location
+  ){}
 
-  constructor(private router: Router, private userService: UserService,){}
+toMain(){
+this.location.back()
+}
 
-  ngOnInit(){
-    this.userService.getCurrentUser().subscribe({
-      next: (data:any) => {
-        this.profilData = data;
-        this.uid = this.profilData.id
-        this.token = this.profilData.token;
-      },
-      error: (error:any) => {
-        console.error('Fehler beim Abrufen der Nutzerdaten', error);
-      },
-      complete: () => {
-        return
-      }
-    });
-  }
-
-  toMain(){
-    if(this.token != ''){
-      this.router.navigateByUrl(`main/${this.token}/${this.uid}`)
-    } else {
-      this.router.navigateByUrl('login')
-    }
-  }
+toTop(){
+window.scrollTo(0, 0);
+}
 }

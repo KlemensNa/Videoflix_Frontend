@@ -11,6 +11,7 @@ import { UserService } from '../services/user.service';
 export class LandingComponent {
 
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  boundAdjustLayout: any;
 
   constructor(
     private router: Router, 
@@ -21,9 +22,9 @@ export class LandingComponent {
    * checks if a user token exists in localStorage, and if it does, sets the login status to true.
    */
   ngOnInit() {
-    let token = this.userService.getUserToken(); // Retrieve the token from localStorage
+    let token = this.userService.getUserToken(); 
     if (token != null) {
-      this.userService.setLoginStatus(true); // Set login status to true if token exists
+      this.userService.setLoginStatus(true); 
     }    
   }
 
@@ -32,16 +33,16 @@ export class LandingComponent {
    * call the adjustLayout method immediately.
    */
   ngAfterViewInit() {
-    window.addEventListener('resize', this.adjustLayout.bind(this)); // Adjust layout on window resize
-    this.adjustLayout(); // Initial layout adjustment
+    this.boundAdjustLayout = this.adjustLayout.bind(this);
+    window.addEventListener('resize', this.boundAdjustLayout);
+    this.adjustLayout(); 
   }
 
   /**
    * removes the resize event listener when the component is destroyed.
    */
   ngOnDestroy(){
-    window.removeEventListener('resize', this.adjustLayout.bind(this)); // Clean up event listener
-  }
+    window.removeEventListener('resize', this.boundAdjustLayout);  }
 
   /**
    * navigates to the login page when called.
@@ -74,9 +75,9 @@ export class LandingComponent {
   adjustLayout() {
     const landingMain = document.querySelector('.landingMain')! as HTMLElement;
     if (this.hasScrollbar()) {
-      landingMain.style.width = "calc(100vw - 20px)"; // Adjust width if a scrollbar is present
+      landingMain.style.width = "calc(100vw - 20px)"; 
     } else {
-      landingMain.style.width = "100vw"; // Full width if no scrollbar
+      landingMain.style.width = "100vw"; 
     }
   }
 }

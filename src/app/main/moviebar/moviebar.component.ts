@@ -35,6 +35,7 @@ export class MoviebarComponent {
   actualTitle: string = '';
   actualDescription: string = '';
   videoURL: string = '';
+  boundAdjustLayout: any;
 
 
   constructor(
@@ -74,8 +75,8 @@ export class MoviebarComponent {
     this.sportsData.forEach(sport => {
       setTimeout(() => this.checkScrollButtons((sport.name + 'Scroll')), 500);
     });
-    window.addEventListener('resize', this.adjustLayout.bind(this));
-    this.adjustLayout(); // Call it here after the view is initialized
+    this.boundAdjustLayout = this.adjustLayout.bind(this);
+    window.addEventListener('resize', this.boundAdjustLayout);
   }
 
 
@@ -83,8 +84,7 @@ export class MoviebarComponent {
    * remove Eventlistener and SearchTerm, when close this component
    */
   ngOnDestroy() {
-    window.removeEventListener('resize', this.resizeListener);
-
+    window.removeEventListener('resize', this.boundAdjustLayout);
     if (this.searchTermSubscription) {
       this.searchTermSubscription.unsubscribe();
     }

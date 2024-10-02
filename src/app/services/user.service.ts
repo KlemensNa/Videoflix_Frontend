@@ -6,7 +6,6 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-
   
   private apiUrl: string = 'http://127.0.0.1:8000/api/users/me';
 

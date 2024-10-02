@@ -13,6 +13,7 @@ export class FooterComponent {
   isLoggedIn: boolean = false;
   uid: string = '';
   token: string = '';
+  boundAdjustLayout: any;
   private subscriptions: Subscription = new Subscription();
 
   constructor(
@@ -38,8 +39,9 @@ export class FooterComponent {
    * Adds a resize event listener to adjust the layout of the footer based on window size.
    */
   ngAfterViewInit() {
-    window.addEventListener('resize', this.adjustLayout.bind(this));
-    this.adjustLayout(); // Adjust layout after the view is initialized
+    this.boundAdjustLayout = this.adjustLayout.bind(this);
+    window.addEventListener('resize', this.boundAdjustLayout);
+    this.adjustLayout(); 
   }
 
   /**
@@ -47,7 +49,7 @@ export class FooterComponent {
    * Removes the resize event listener and unsubscribes from all active subscriptions.
    */
   ngOnDestroy() {
-    window.removeEventListener('resize', this.adjustLayout.bind(this));
+    window.removeEventListener('resize', this.boundAdjustLayout);
     this.subscriptions.unsubscribe();
   }
 
