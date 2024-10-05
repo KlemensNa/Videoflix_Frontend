@@ -16,7 +16,7 @@ import { UploadComponent } from './video/upload/upload.component';
 
 const routes: Routes = [
   { path: '', component:  LandingComponent},
-  { path: 'signIn', component:  SignInComponent},
+  { path: 'signUp', component:  SignInComponent},
   { path: 'confirm/:uid', component:  ConfirmComponent},
   { path: 'confirminfo', component:  ConfirminfoComponent},
   { path: 'login', component:  LoginComponent},

@@ -55,7 +55,7 @@ export class LandingComponent {
    * navigates to the sign-in (registration) page when called.
    */
   toRegister() {
-    this.router.navigateByUrl('signIn');
+    this.router.navigateByUrl('signUp');
   }
 
   /**
