@@ -1,5 +1,8 @@
 /src/assets/*
+!/src/assets/img/
+
 !/src/assets/img/ai-generated-8937475_1280.png
+!/src/assets/img/favicon.png
 
 # Compiled output
 /dist

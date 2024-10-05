@@ -27,13 +27,16 @@ export class MoviebarComponent {
   boxing: any[] = [];
   amfootball: any[] = [];
   sportsData: any[] = [];
+  filteredVideos: any[] = [];
   currentlyPlayingVideoID: any = null;
   resizeListener: any;
   searchTermSubscription: Subscription | undefined;
   preview: boolean = false;
+  isSearching: boolean = false;
   actualThumbnail: any;
   actualTitle: string = '';
   actualDescription: string = '';
+  searchText: string = ''
   videoURL: string = '';
   boundAdjustLayout: any;
 
@@ -310,22 +313,38 @@ export class MoviebarComponent {
 
   /**
    * filter videos when trigger search function and render new when changes detected
-   * filter by title
+   * filter by title, hide Categories
+   * if video in more categories, only show it one time
    * @param term input of the searchfield
    */
   filterVideos(term: string) {
-    this.sportsData.forEach(sport => {
-      if (term === '') {
-        sport.filteredVideos = [...sport.videos];
-      } else {
-        sport.filteredVideos = ''
-        sport.filteredVideos = sport.videos.filter((video: any) =>
+    const filteredVideos: any[] = [];
+    this.searchText = term;
+    window.scrollTo(0, 0);
+    if (term === '') {
+      this.isSearching = false;
+      this.sportsData.forEach(sport => {
+              sport.filteredVideos = [...sport.videos];
+            });
+    } else {
+      this.isSearching = true;
+  
+      this.sportsData.forEach(sport => {
+        const filtered = sport.videos.filter((video: any) =>
           video.title.toLowerCase().includes(term.toLowerCase())
         );
-      }
-    });
+  
+        filtered.forEach((video: any) => {
+          if (!filteredVideos.some(v => v.id === video.id)) {
+            filteredVideos.push(video);
+          }
+        });
+      });  
+      this.filteredVideos = filteredVideos;
+    }  
     this.cdr.detectChanges();
   }
+
 
   /**
    * sets JSON variable of videoData and calls the videoURL

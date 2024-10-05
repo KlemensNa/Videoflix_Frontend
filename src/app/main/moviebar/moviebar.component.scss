@@ -1,6 +1,7 @@
 .moviecontainer {
 
     width: calc(100% - 80px);
+    min-height: 100vh;
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -109,34 +110,7 @@
             display: flex;
             overflow: hidden;
 
-            .videoContainer {
 
-                max-width: 200px !important;
-                min-width: 250px !important;
-                max-height: 163px !important;
-                margin-right: 20px;
-
-                &:last-child {
-                    margin-right: 0;
-                }
-
-
-                .thumbnail {
-                    width: 100%;
-                    height: 100% !important;
-                    cursor: pointer;
-
-                    img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: fill;
-                    }
-
-                    &:hover {
-                        scale: 1.05
-                    }
-                }
-            }
         }
     }
 }
@@ -145,6 +119,54 @@
     margin-top: 0;
     margin-bottom: 0;
 }
+
+.noVideoSearch{
+    color: white;
+    font-size: 24px;
+}
+
+.searchedVideos {
+
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+.searchText{
+    color: white;
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+.videoContainer {
+
+    max-width: 200px !important;
+    min-width: 250px !important;
+    max-height: 163px !important;
+    margin-right: 20px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+
+    .thumbnail {
+        width: 100%;
+        height: 100% !important;
+        cursor: pointer;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+        }
+
+        &:hover {
+            scale: 1.05
+        }
+    }
+}
+
 
 
 

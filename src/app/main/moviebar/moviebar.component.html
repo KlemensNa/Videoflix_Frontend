@@ -1,5 +1,5 @@
 <div class="moviecontainer">
-    <div *ngIf="preview" class="previewWindow" >
+    <div *ngIf="preview" class="previewWindow">
         <div class="previewThumbnail">
             <img [src]="loadThumbnail()">
         </div>
@@ -9,10 +9,25 @@
             <div class="loginBtns">
                 <button class="loginBtn" mat-raised-button color="primary" (click)="openVideo()">Play</button>
             </div>
+        </div>
+    </div>
+
+    <div *ngIf="isSearching">
+        <div *ngIf="searchText.valueOf" class="searchText">Results for "{{ searchText }}"</div>
+        <div *ngIf="videos.length === 0" class="noVideoSearch">No results found.</div>
+        <div class="searchedVideos">
+            <div class="videoContainer" *ngFor="let video of filteredVideos">
+                <div class="thumbnail" (click)="openPreview(video.thumbnail, video)">
+                    <img [src]="getVideoUrl(video.thumbnail)">
+                </div>
+            </div>
         </div>        
     </div>
+
+    <div *ngIf="!isSearching">
         <div *ngFor="let sport of sportsData">
-            <div *ngIf="sport.filteredVideos.length != 0" class="sportscontainer" [ngClass]="{'no-videos': sport.filteredVideos.length === 0}">
+            <div *ngIf="sport.filteredVideos.length != 0" class="sportscontainer"
+                [ngClass]="{'no-videos': sport.filteredVideos.length === 0}">
                 <div class="categoryname">{{ sport.name }}</div>
                 <div class="videoScrollContainer">
                     <div class="scrollArrow left" [id]="sport.name + 'ScrollLeft'"
@@ -27,6 +42,7 @@
                     <div class="scrollArrow right" [id]="sport.name + 'ScrollRight'"
                         (click)="scrollRight(sport.name + 'Scroll')">&#9654;</div>
                 </div>
-            </div>    
+            </div>
         </div>
     </div>
+</div>
