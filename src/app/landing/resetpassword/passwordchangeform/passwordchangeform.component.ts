@@ -16,7 +16,7 @@ export class PasswordchangeformComponent {
   succesfulSet: boolean = false;
   uid: string;
   token: string;
-  BACKENDURL: string = "http://127.0.0.1:8000";
+  BACKENDURL: string = "http://34.159.79.177";
 
   constructor(
     private router: Router,

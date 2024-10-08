@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class VideoService {
 
-  private apiURL = 'http://127.0.0.1:8000/video/'
+  private apiURL = 'http://34.159.79.177/video/'
   private videoData: any;
 
   constructor(private http: HttpClient) { }

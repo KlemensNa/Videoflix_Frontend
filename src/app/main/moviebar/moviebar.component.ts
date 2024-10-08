@@ -191,6 +191,8 @@ export class MoviebarComponent {
       { name: 'Ballsport', videos: this.ballsport },
       { name: 'US-Sport', videos: this.ussport },
     ];
+
+    console.log(this.sportsData)
   }
 
 
@@ -200,7 +202,7 @@ export class MoviebarComponent {
    * @returns full URL of the video
    */
   getVideoUrl(videoPath: string): string {
-    return `http://127.0.0.1:8000${videoPath}`;
+    return `http://34.159.79.177${videoPath}`;
   }
 
 
@@ -222,6 +224,7 @@ export class MoviebarComponent {
   openPreview(videoThumbnail: any, video: any) {
     this.preview = true;
     this.actualThumbnail = this.getVideoUrl(videoThumbnail)
+    console.log(this.actualThumbnail)
     this.actualTitle = video.title
     this.actualDescription = video.description
     this.videoURL = video.videos_file

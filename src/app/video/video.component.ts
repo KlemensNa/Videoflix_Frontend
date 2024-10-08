@@ -33,7 +33,7 @@ export class VideoComponent {
    * @returns full videoURL to HTML
    */
   getVideoUrl(videoPath: string): string {
-    return `http://127.0.0.1:8000${videoPath}`;
+    return `http://34.159.79.177${videoPath}`;
   }
 
 

@@ -96,7 +96,7 @@ export class NavbarComponent {
    */
   loadIcon(): void {
     let imageURL = this.profilData.icon.image;
-    this.icon = "http://127.0.0.1:8000/" + imageURL; 
+    this.icon = "http://34.159.79.177/" + imageURL; 
   }
 
   /**

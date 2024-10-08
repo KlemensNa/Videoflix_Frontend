@@ -6,17 +6,57 @@ import { Observable } from 'rxjs';
 export class AuthInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // Token aus dem Local Storage abrufen (hier als Beispiel)
+    
     const authToken = localStorage.getItem('token');
-    // Wenn der Token vorhanden ist, klonen wir die Anfrage und fügen den Token zum Header hinzu
+  
     if (authToken) {
       const authReq = req.clone({
         headers: req.headers.set('Authorization', `Token ${authToken}`)
       });
+      console.log(authReq)
       return next.handle(authReq);
     }
 
-    // Wenn kein Token vorhanden ist, wird die Anfrage ohne Änderungen weitergeleitet
     return next.handle(req);
   }
+
+
+  // intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  //   const token = localStorage.getItem('token'); // Hier sicherstellen, dass der Token korrekt geladen wird
+
+  //   if (token) {
+  //     const cloned = req.clone({
+  //       setHeaders: {
+  //         Authorization: `Bearer ${token}`
+  //       }
+  //     });
+
+  //     console.log("Cloned Request with Authorization Header:", cloned);
+  //     return next.handle(cloned);
+  //   } else {
+  //     console.log("No token found, sending request without Authorization Header:", req);
+  //     return next.handle(req);
+  //   }
+  // }
+  
+
+
+  // intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  //   const token = localStorage.getItem('token');
+    
+  //   // Überprüfen, ob es sich um den Login-Endpunkt handelt
+  //   if (req.url.includes('/login/') || req.url.includes('/register/')) {
+  //     return next.handle(req);  // Keine Token hinzufügen
+  //   }
+  
+  //   if (token) {
+  //     const cloned = req.clone({
+  //       headers: req.headers.set('Authorization', 'Bearer ' + token)
+  //     });
+  //     console.log(cloned)
+  //     return next.handle(cloned);
+  //   } else {
+  //     return next.handle(req);
+  //   }
+  // }
 }
