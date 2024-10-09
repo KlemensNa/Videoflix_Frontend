@@ -16,7 +16,7 @@ export class PasswordchangeformComponent {
   succesfulSet: boolean = false;
   uid: string;
   token: string;
-  BACKENDURL: string = "https://34.159.79.177";
+  BACKENDURL: string = "https://sportflixapi.naueka.de";
 
   constructor(
     private router: Router,

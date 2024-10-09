@@ -7,7 +7,7 @@ import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
 })
 export class UserService {
   
-  private apiUrl: string = 'https://34.159.79.177/api/users/me';
+  private apiUrl: string = 'https://sportflixapi.naueka.de/api/users/me';
 
   // BehaviorSubject to store and make status observable
   private isLoggedIn = new BehaviorSubject<boolean>(false);

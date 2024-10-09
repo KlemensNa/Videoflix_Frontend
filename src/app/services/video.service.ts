@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class VideoService {
 
-  private apiURL = 'https://34.159.79.177/video/'
+  private apiURL = 'https://sportflixapi.naueka.de/video/'
   private videoData: any;
 
   constructor(private http: HttpClient) { }

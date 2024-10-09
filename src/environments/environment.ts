@@ -1,3 +1,3 @@
 export const environment = {
-    baseURL: "https://34.159.79.177"
+    baseURL: "https://sportflixapi.naueka.de"
 };

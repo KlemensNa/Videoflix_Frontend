@@ -13,7 +13,7 @@ export class ResetpasswordComponent {
   mail: string = '';
   emailSended: boolean = false;
   sendDataLoading: boolean = false;
-  BACKEND_URL: string = "https://34.159.79.177";
+  BACKEND_URL: string = "https://sportflixapi.naueka.de";
 
   constructor(
     private router: Router,
