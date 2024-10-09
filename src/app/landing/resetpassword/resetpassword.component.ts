@@ -13,7 +13,7 @@ export class ResetpasswordComponent {
   mail: string = '';
   emailSended: boolean = false;
   sendDataLoading: boolean = false;
-  BACKEND_URL: string = "http://34.159.79.177";
+  BACKEND_URL: string = "https://34.159.79.177";
 
   constructor(
     private router: Router,

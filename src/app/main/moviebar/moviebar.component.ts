@@ -200,7 +200,7 @@ export class MoviebarComponent {
    * @returns full URL of the video
    */
   getVideoUrl(videoPath: string): string {
-    return `http://34.159.79.177${videoPath}`;
+    return `https://34.159.79.177${videoPath}`;
   }
 
 

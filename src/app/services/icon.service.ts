@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class IconService {
 
   
-  private apiUrl = 'http://34.159.79.177/icons/';  // Hier musst du die URL deiner Django API angeben
+  private apiUrl = 'https://34.159.79.177/icons/';  // Hier musst du die URL deiner Django API angeben
 
   constructor(private http: HttpClient) { }
 
