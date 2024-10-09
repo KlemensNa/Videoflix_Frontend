@@ -191,8 +191,6 @@ export class MoviebarComponent {
       { name: 'Ballsport', videos: this.ballsport },
       { name: 'US-Sport', videos: this.ussport },
     ];
-
-    console.log(this.sportsData)
   }
 
 
