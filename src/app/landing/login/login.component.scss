@@ -153,29 +153,36 @@
     }
 }
 
+:host input:-webkit-autofill {
+    -webkit-box-shadow: #171717; 
+    box-shadow: #171717; 
+    -webkit-text-fill-color:white;
+}
+
+
 .has-error{
     margin-bottom: 24px;
 }
 
-::ng-deep .mat-mdc-form-field .mdc-text-field {
+:host ::ng-deep .mat-mdc-form-field .mdc-text-field {
     background-color: #171717 !important;
     padding: 0
 }
 
-::ng-deep .mat-mdc-form-field .mat-mdc-text-field-wrapper .mat-mdc-form-field-infix {
+:host ::ng-deep .mat-mdc-form-field .mat-mdc-text-field-wrapper .mat-mdc-form-field-infix {
     background-color: #171717 !important;
     padding-top: 12px;
     padding-bottom: 8px;
 }
 
-::ng-deep .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
+:host ::ng-deep .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
     top: 50% !important;
     left: 16px !important;
     font-size: 24px;
     letter-spacing: 1.5px;
 }
 
-::ng-deep .mat-mdc-input-elementinput{
+:host ::ng-deep .mat-mdc-input-elementinput{
     background-color: #171717;
     font-size: 24px;
 }

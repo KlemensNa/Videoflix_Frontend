@@ -262,12 +262,14 @@
 }
 
 
-::ng-deep .mat-mdc-form-field .mdc-text-field {
-    background-color: #fff;
+
+
+:host ::ng-deep .mat-mdc-form-field .mdc-text-field {
+    background-color: #fff !important;
     padding: 0
 }
 
-::ng-deep .mat-mdc-form-field .mat-mdc-text-field-wrapper .mat-mdc-form-field-infix {
+:host ::ng-deep .mat-mdc-form-field .mat-mdc-text-field-wrapper .mat-mdc-form-field-infix {
     background-color: #fff !important;
     padding-top: 16px;
     padding-bottom: 8px;
@@ -275,7 +277,7 @@
     border-radius: 3px;
 }
 
-::ng-deep .mat-mdc-form-field .mat-mdc-text-field-wrapper .mat-mdc-form-field-infix:before {
+:host ::ng-deep .mat-mdc-form-field .mat-mdc-text-field-wrapper .mat-mdc-form-field-infix:before {
     background-color: #fff !important;
     top: 4px;
     left: 4px;
@@ -285,7 +287,7 @@
     border-radius: 3px;
 }
 
-::ng-deep .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
+:host ::ng-deep .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
     top: 50% !important;
     left: 16px !important;
     font-size: 24px;

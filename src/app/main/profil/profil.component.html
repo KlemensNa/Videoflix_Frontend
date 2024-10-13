@@ -64,7 +64,8 @@
                 #form="ngForm" 
                 [class.error-visible]="isErrorVisible" 
                 (ngSubmit)="changePassword()" 
-                class="passwordChangeContainer">
+                class="passwordChangeContainer"
+                autocomplete="off">
 
                 <mat-form-field class="formField">
                     <mat-label>Actual password</mat-label>
@@ -90,7 +91,8 @@
                         name="newPassword" 
                         required
                         minlength="8" 
-                        #newPasswordModel="ngModel">
+                        #newPasswordModel="ngModel"
+                        autocomplete="new-password">
                     <mat-error *ngIf="newPasswordModel.errors?.['required']">
                         Password is required
                     </mat-error>
@@ -108,7 +110,8 @@
                         name="newPasswordConfirm" 
                         required
                         minlength="8" 
-                        #passwordConfirmModel="ngModel">
+                        #passwordConfirmModel="ngModel"
+                        autocomplete="new-password">
                     <mat-error *ngIf="passwordConfirmModel.errors?.['required']">
                         Please confirm your new password
                     </mat-error>
