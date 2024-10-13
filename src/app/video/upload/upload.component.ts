@@ -17,6 +17,7 @@ export class UploadComponent {
   }
 
   uploadSuccessful: boolean = false;
+  updatingProcessRunning:boolean = false;
   videofile?: File;
   thumbnailfile?: File;
   description: string = '';
@@ -84,13 +85,16 @@ export class UploadComponent {
     formData.append('category', this.selectedCategory);
 
     try {
+      this.updatingProcessRunning = true;
       const response: any = await lastValueFrom(this.http.post(url, formData));
       this.uploadSuccessful = true;
+      this.updatingProcessRunning = false;
       setTimeout(() => {
         this.location.back();
       }, 3000)
   
     } catch (error) {
+      this.updatingProcessRunning = false;
       console.error('Registrierung fehlgeschlagen:', error);
     }
 }
@@ -98,10 +102,10 @@ export class UploadComponent {
 
 
   onDragOver(event: DragEvent) {
-    event.preventDefault();  // Verhindert, dass das Standardverhalten der Seite ausgelöst wird (z.B. Datei öffnen)
+    event.preventDefault();  
     event.stopPropagation();
     const element = event.target as HTMLElement;
-    element.classList.add('dragover');  // Optional: CSS-Klasse hinzufügen, um visuelles Feedback zu geben
+    element.classList.add('dragover');  
   }
 
   // Handle the dragleave event
@@ -109,7 +113,7 @@ export class UploadComponent {
     event.preventDefault();
     event.stopPropagation();
     const element = event.target as HTMLElement;
-    element.classList.remove('dragover');  // CSS-Klasse entfernen
+    element.classList.remove('dragover');  
   }
 
   // Handle the drop event for videos
@@ -122,8 +126,8 @@ export class UploadComponent {
     const files = event.dataTransfer?.files;
     if (files && files.length > 0) {
       
-      const videoFile = files[0];  // Hole die Datei
-      this.onVideoChange({ target: { files: [videoFile] } });  // Auf die bestehende onVideoChange Funktion anwenden
+      const videoFile = files[0];  
+      this.onVideoChange({ target: { files: [videoFile] } }); 
     }
   }
 
@@ -137,14 +141,14 @@ export class UploadComponent {
   const files = event.dataTransfer?.files;
   if (files && files.length > 0) {
     const thumbnailFile = files[0];
-    // Simulate the event structure expected by onThumbnailChange
+    
     const fakeEvent = {
       target: {
         files: [thumbnailFile]
       }
     };
     
-    this.onThumbnailChange(fakeEvent);  // Auf die angepasste onThumbnailChange Funktion anwenden
+    this.onThumbnailChange(fakeEvent);  
   }
 }
 

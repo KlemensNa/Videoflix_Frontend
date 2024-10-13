@@ -84,5 +84,10 @@
 </div>
 
 <div class="uploadSuccessful" *ngIf="uploadSuccessful">
-    <h1>Your Video will be uploaded. You will be forwarded in 3 seconds</h1>
+    <h1>Uploading process is running. You will be forwarded in 3 seconds</h1>
+</div>
+
+<div class="uploadLoading" *ngIf="updatingProcessRunning">
+    <mat-spinner [diameter]="240"></mat-spinner>
+    Upload Video
 </div>
