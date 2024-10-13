@@ -69,14 +69,20 @@
 
                 <mat-form-field class="formField">
                     <mat-label>Actual password</mat-label>
-                    <input 
-                        type="password" 
+                    <input
+                        [type]="passwordOldVisible ? 'text' : 'password'"
                         matInput 
                         [(ngModel)]="oldPassword" 
                         name="oldPassword" 
                         required
                         minlength="8" 
                         #OldPasswordModel="ngModel">
+                    <button mat-icon-button 
+                        type="button" 
+                        (click)="toggleOldPasswordVisibility()" 
+                        class="password-toggle-icon">
+                    <mat-icon>{{ passwordOldVisible ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
                     <mat-error *ngIf="OldPasswordModel.errors?.['minlength']">
                         Password must be at least 8 characters long
                     </mat-error>
@@ -85,7 +91,7 @@
                 <mat-form-field class="formField">
                     <mat-label>New password</mat-label>
                     <input 
-                        type="password" 
+                        [type]="passwordNewVisible ? 'text' : 'password'"
                         matInput 
                         [(ngModel)]="newPassword" 
                         name="newPassword" 
@@ -93,6 +99,12 @@
                         minlength="8" 
                         #newPasswordModel="ngModel"
                         autocomplete="new-password">
+                    <button mat-icon-button 
+                            type="button" 
+                            (click)="toggleNewPasswordVisibility()" 
+                            class="password-toggle-icon">
+                            <mat-icon>{{ passwordNewVisible ? 'visibility_off' : 'visibility' }}</mat-icon>
+                     </button>
                     <mat-error *ngIf="newPasswordModel.errors?.['required']">
                         Password is required
                     </mat-error>
@@ -104,7 +116,7 @@
                 <mat-form-field class="formField">
                     <mat-label>Confirm password</mat-label>
                     <input 
-                        type="password" 
+                        [type]="passwordNewConfirmVisible ? 'text' : 'password'" 
                         matInput 
                         [(ngModel)]="newPasswordConfirm" 
                         name="newPasswordConfirm" 
@@ -112,6 +124,12 @@
                         minlength="8" 
                         #passwordConfirmModel="ngModel"
                         autocomplete="new-password">
+                    <button mat-icon-button 
+                            type="button" 
+                            (click)="toggleNewConfirmPasswordVisibility()" 
+                            class="password-toggle-icon">
+                            <mat-icon>{{ passwordNewConfirmVisible ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
                     <mat-error *ngIf="passwordConfirmModel.errors?.['required']">
                         Please confirm your new password
                     </mat-error>

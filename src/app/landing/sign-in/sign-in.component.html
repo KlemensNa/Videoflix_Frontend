@@ -42,12 +42,18 @@
                 <mat-form-field class="formField" [ngClass]="{'has-error': passwordModel.errors?.['minlength'] && passwordModel.touched}">
                     <mat-label>Password</mat-label>
                     <input 
-                        type="password" 
+                        [type]="passwordVisible ? 'text' : 'password'" 
                         matInput [(ngModel)]="password" 
                         name="password" 
                         required 
                         minlength="8"
                         #passwordModel="ngModel">
+                    <button mat-icon-button 
+                            type="button" 
+                            (click)="togglePasswordVisibility()" 
+                            class="password-toggle-icon">
+                        <mat-icon>{{ passwordVisible ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
                     <mat-error *ngIf="passwordModel.errors?.['required']">
                         Password is required
                     </mat-error>
@@ -59,13 +65,19 @@
                 <mat-form-field class="formField" [ngClass]="{'has-error': passwordConfirmModel.errors?.['minlength'] && passwordConfirmModel.touched}">
                     <mat-label>Confirm Password</mat-label>
                     <input 
-                        type="password" 
+                        [type]="passwordConfirmVisible ? 'text' : 'password'" 
                         matInput 
                         [(ngModel)]="passwordConfirm" 
                         name="passwordConfirm" 
                         required
                         minlength="8" 
                         #passwordConfirmModel="ngModel">
+                    <button mat-icon-button 
+                        type="button" 
+                        (click)="togglePasswordConfirmVisibility()" 
+                        class="password-toggle-icon">
+                        <mat-icon>{{ passwordConfirmVisible ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
                     <mat-error *ngIf="passwordConfirmModel.errors?.['required']">
                         Confirm Password is required
                     </mat-error>

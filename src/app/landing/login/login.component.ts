@@ -16,10 +16,9 @@ export class LoginComponent {
   password: string = '';
   disableInput: boolean = false;
   wrongData: boolean = false;
-  isUsernameRequired: boolean = false;
-  isPasswordRequired: boolean = false;
   isErrorVisible: boolean = false;
   isEmailValid: boolean = false;
+  passwordVisible: boolean = false;
   boundAdjustLayout: any;
 
   constructor(
@@ -46,23 +45,8 @@ export class LoginComponent {
   }
 
 
-  /**
-   * Handles changes to the email input.
-   * Validates the email and sets `isUsernameRequired` if the email is invalid.
-   * @param value The email input value.
-   */
-  onEmailChange(value: string) {
-    this.isEmailValid = this.validateEmail(value);
-    this.isUsernameRequired = !this.isEmailValid; // Sets to true if the email is invalid
-  }
-
-  /**
-   * Handles changes to the password input.
-   * Sets `isPasswordRequired` to true if the password is less than 8 characters long.
-   * @param value The password input value.
-   */
-  onPasswordChange(value: string) {
-    this.isPasswordRequired = value.length < 8; // True if the password is too short
+  togglePasswordVisibility(): void{
+    this.passwordVisible = !this.passwordVisible
   }
 
   /**

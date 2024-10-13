@@ -22,7 +22,10 @@ export class ProfilComponent {
   error: boolean = false;
   menuOpen: boolean = false;
   sendDataLoading: boolean = false; 
-  loadingFinished: boolean = false; 
+  loadingFinished: boolean = false;
+  passwordOldVisible: boolean = false;
+  passwordNewVisible: boolean = false;
+  passwordNewConfirmVisible: boolean = false;
   errorMessage: string = '';
   boundAdjustLayout: any;
   uid: string = '';
@@ -113,6 +116,21 @@ export class ProfilComponent {
    */
   toggleLoading() {
     this.sendDataLoading = !this.sendDataLoading;
+  }
+
+
+  toggleOldPasswordVisibility(): void{
+    this.passwordOldVisible = !this.passwordOldVisible
+  }
+
+
+  toggleNewPasswordVisibility(): void{
+    this.passwordNewVisible = !this.passwordNewVisible
+  }
+
+
+  toggleNewConfirmPasswordVisibility(): void{
+    this.passwordNewConfirmVisible = !this.passwordNewConfirmVisible
   }
 
   /**

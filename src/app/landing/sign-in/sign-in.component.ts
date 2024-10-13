@@ -18,6 +18,8 @@ export class SignInComponent {
   signInPageOne: boolean = true;
   menuOpen: boolean = false;
   passwordNotMatch: boolean = false;
+  passwordVisible: boolean = false;
+  passwordConfirmVisible: boolean = false;
   email: string = "";
   username: string = "";
   password: string = "";
@@ -36,6 +38,15 @@ export class SignInComponent {
    */
   ngOnInit(): void {
     this.loadIcons();
+  }
+
+
+  togglePasswordVisibility(): void{
+    this.passwordVisible = !this.passwordVisible
+  }
+
+  togglePasswordConfirmVisibility(): void{
+    this.passwordConfirmVisible = !this.passwordConfirmVisible
   }
 
   /**

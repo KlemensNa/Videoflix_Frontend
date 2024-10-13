@@ -15,6 +15,8 @@ export class PasswordchangeformComponent {
   passwordNotMatch: boolean = false;
   emailSended: boolean = false;
   succesfulSet: boolean = false;
+  passwordVisible: boolean = false;
+  passwordConfirmVisible: boolean = false;
   uid: string;
   token: string;
   BACKENDURL: string = "https://sportflixapi.naueka.de";
@@ -27,6 +29,15 @@ export class PasswordchangeformComponent {
     // Extracts the UID and token from the URL parameters
     this.uid = this.route.snapshot.paramMap.get('uid') || '';
     this.token = this.route.snapshot.paramMap.get('token') || '';
+  }
+
+
+  togglePasswordVisibility(): void{
+    this.passwordVisible = !this.passwordVisible
+  }
+
+  togglePasswordConfirmVisibility(): void{
+    this.passwordConfirmVisible = !this.passwordConfirmVisible
   }
 
   /**
