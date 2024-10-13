@@ -12,6 +12,7 @@ export class PasswordchangeformComponent {
 
   password: string = '';
   passwordconfirm: string = '';
+  passwordNotMatch: boolean = false;
   emailSended: boolean = false;
   succesfulSet: boolean = false;
   uid: string;
@@ -40,6 +41,8 @@ export class PasswordchangeformComponent {
    * On success, it navigates the user to the login page after a delay.
    */
   setNewPassword() {
+    if (this.passwordsMatch()) {
+      this.passwordNotMatch = false
     this.http.post(`${this.BACKENDURL}/reset/${this.uid}/${this.token}/`, {
       new_password1: this.password,
       new_password2: this.passwordconfirm
@@ -48,6 +51,18 @@ export class PasswordchangeformComponent {
       catchError(error => this.handleErrorResponse(error)),
       finalize(() => this.finalizePasswordChange())
     ).subscribe();
+  } else {
+    this.passwordNotMatch = true;
+  }
+  }
+
+
+  /**
+   * checks if the entered passwords match.
+   * @returns a boolean indicating whether the password and confirmation match.
+   */
+  private passwordsMatch(): boolean {
+    return this.password === this.passwordconfirm;
   }
 
   /**

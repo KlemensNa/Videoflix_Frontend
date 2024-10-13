@@ -409,15 +409,3 @@
     font-size: 24px;
     letter-spacing: 1.5px;
 }
-
-
-// funktioniert
-mat-form-field+mat-form-field {
-    margin-top: 16px;
-    /* Anfangsabstand zwischen den Formularfeldern */
-}
-
-.error-visible mat-form-field+mat-form-field {
-    margin-top: 32px;
-    /* Abstand, wenn ein Fehler sichtbar ist */
-}

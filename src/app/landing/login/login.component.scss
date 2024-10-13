@@ -153,11 +153,11 @@
     }
 }
 
-:host input:-webkit-autofill {
-    -webkit-box-shadow: #171717; 
-    box-shadow: #171717; 
-    -webkit-text-fill-color:white;
-}
+:host  input:-webkit-autofill {
+       -webkit-box-shadow: 0 0 0 1000px #171717 inset;
+       box-shadow: 0 0 0 1000px #171717 inset;
+       -webkit-text-fill-color: white; 
+    }
 
 
 .has-error{
