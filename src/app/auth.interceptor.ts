@@ -19,32 +19,11 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(req);
   }
 
-
-  // intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-  //   const token = localStorage.getItem('token'); // Hier sicherstellen, dass der Token korrekt geladen wird
-
-  //   if (token) {
-  //     const cloned = req.clone({
-  //       setHeaders: {
-  //         Authorization: `Bearer ${token}`
-  //       }
-  //     });
-
-  //     console.log("Cloned Request with Authorization Header:", cloned);
-  //     return next.handle(cloned);
-  //   } else {
-  //     console.log("No token found, sending request without Authorization Header:", req);
-  //     return next.handle(req);
-  //   }
-  // }
-  
-
-
   // intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
   //   const token = localStorage.getItem('token');
     
   //   // Überprüfen, ob es sich um den Login-Endpunkt handelt
-  //   if (req.url.includes('/login/') || req.url.includes('/register/')) {
+  //   if (req.url.includes('/login') || req.url.includes('/register')) {
   //     return next.handle(req);  // Keine Token hinzufügen
   //   }
   

@@ -40,8 +40,8 @@ export class FooterComponent {
    */
   ngAfterViewInit() {
     this.boundAdjustLayout = this.adjustLayout.bind(this);
-    window.addEventListener('resize', this.boundAdjustLayout);
     this.adjustLayout(); 
+    window.addEventListener('resize', this.boundAdjustLayout);
   }
 
   /**

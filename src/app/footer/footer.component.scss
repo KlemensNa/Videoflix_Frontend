@@ -55,20 +55,6 @@
 }
 
 
-
-//WEG EVTL
-// @media only screen and (min-height: 901px) and (max-width: 1200px){
-
-//     .footerContainer{
-//         width: 100vw;
-        
-        
-        
-//     }
-
-// }
-
-
 @media only screen and (max-height: 900px) and (max-width: 1200px){
 
     .footerContainer{
@@ -162,10 +148,10 @@
 
 }
 
-@media only screen and (max-width: 768px) and (max-height: 1020px){
+@media only screen and (max-width: 768px) and (max-height: 900px){
 
     .footerContainer{
-        width: calc(100vw - 20px);
+        width: 100vw !important;
     
         .questionContainer{
             padding: 20px 30px;
@@ -203,10 +189,10 @@
 
 }
 
-@media only screen and (max-width: 768px) and (min-height: 1021px){
+@media only screen and (max-width: 768px) and (min-height: 901px){
 
     .footerContainer{
-        width: 100vw;
+        width: calc(100vw - 20px) !important;
     
         .questionContainer{
             padding: 20px 30px;
@@ -240,6 +226,32 @@
                 }
             }
         }
+    }
+
+}
+
+
+@media only screen and (max-width: 768px) and (min-height: 1051px){
+
+    .footerContainer{
+        width: 100vw !important;
+    }
+
+}
+
+
+@media only screen and (max-width: 576px) and (min-height: 901px){
+
+    .footerContainer{
+        width: calc(100vw - 20px) !important;
+    }
+}
+
+
+@media only screen and (max-width: 576px) and (max-height: 900px){
+
+    .footerContainer{
+        width: 100vw !important;
     }
 
 }

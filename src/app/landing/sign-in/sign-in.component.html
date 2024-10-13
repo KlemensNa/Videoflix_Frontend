@@ -27,7 +27,7 @@
                     </mat-error>
                 </mat-form-field>
 
-                <mat-form-field class="formField">
+                <mat-form-field class="formField" [ngClass]="{'has-error': passwordModel.errors?.['minlength'] && passwordModel.touched}">
                     <mat-label>Password</mat-label>
                     <input type="password" matInput [(ngModel)]="password" name="password" required minlength="8"
                         #passwordModel="ngModel">
@@ -39,7 +39,7 @@
                     </mat-error>
                 </mat-form-field>
 
-                <mat-form-field class="formField">
+                <mat-form-field class="formField" [ngClass]="{'has-error': passwordConfirmModel.errors?.['minlength'] && passwordConfirmModel.touched}">
                     <mat-label>Confirm Password</mat-label>
                     <input type="password" matInput [(ngModel)]="passwordConfirm" name="passwordConfirm" required
                         minlength="8" #passwordConfirmModel="ngModel">

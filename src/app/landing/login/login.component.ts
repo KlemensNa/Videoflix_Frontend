@@ -20,6 +20,7 @@ export class LoginComponent {
   isPasswordRequired: boolean = false;
   isErrorVisible: boolean = false;
   isEmailValid: boolean = false;
+  boundAdjustLayout: any;
 
   constructor(
     private router: Router,
@@ -32,6 +33,18 @@ export class LoginComponent {
    * Currently does not perform any actions.
    */
   ngOnInit() { }
+
+
+  /**
+  * after Init checkScroll to hide LeftScrollArrows 
+  * and only show RightArrows when enough Videos
+  */
+  ngAfterViewInit() {
+    this.boundAdjustLayout = this.adjustLayout.bind(this);
+    this.adjustLayout();
+    window.addEventListener('resize', this.boundAdjustLayout);
+  }
+
 
   /**
    * Handles changes to the email input.
@@ -134,6 +147,18 @@ export class LoginComponent {
       "password": this.password
     };
     return lastValueFrom(this.http.post(url, body));
+  }
+
+  /**
+   * sets width of mainContainer, depends if its shown on desktop or mobilescreen
+   */
+  adjustLayout() {
+    const logincontainer = document.querySelector('.loginMain')! as HTMLElement;
+    if (window.innerWidth > document.documentElement.clientWidth) {
+      logincontainer.style.width = "calc(100vw - 20px)";
+    } else {
+      logincontainer.style.width = "100vw";
+    }
   }
 }
 

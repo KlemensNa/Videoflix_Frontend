@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class IconService {
 
   
-  private apiUrl = 'https://sportflixapi.naueka.de/icons/';  // Hier musst du die URL deiner Django API angeben
+  private apiUrl = 'https://sportflixapi.naueka.de/icons/';  
 
   constructor(private http: HttpClient) { }
 
@@ -17,7 +17,7 @@ export class IconService {
   }
 
   getSpecificIcon(iconID: number): Observable<any>{
-    const url = `${this.apiUrl}${iconID}/`;  // API-Endpunkt für Icon mit ID
+    const url = `${this.apiUrl}${iconID}/`;
     return this.http.get<any>(url);
   }
 }

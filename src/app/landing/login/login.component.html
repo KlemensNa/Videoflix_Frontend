@@ -7,40 +7,43 @@
     <div class="loginContainer">
         <div class="loginForm">
             <h1>Login</h1>
-            <form (ngSubmit)="login()">
-                <mat-form-field class="formField">
+            <form (ngSubmit)="login()" #form="ngForm">
+                <mat-form-field class="formField" [ngClass]="{'has-error': emailModel.errors?.['email'] && emailModel.touched}">
                     <mat-label>Email</mat-label>
-                    <input type="email" 
+                    <input 
+                        type="email"
+                        [email]="true"
                         matInput 
                         [(ngModel)]="email" 
                         name="email" 
                         [required]="isUsernameRequired" 
                         [disabled]="disableInput" 
-                        (ngModelChange)="onEmailChange($event)">
-                    <div class="requiredError" *ngIf="isUsernameRequired && (!email || !isEmailValid)">
-                        <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
+                        (ngModelChange)="onEmailChange($event)"
+                        #emailModel="ngModel">
+                    <mat-error *ngIf="emailModel.errors?.['email']">
                         Please insert your email here.
-                    </div>
+                    </mat-error>
                 </mat-form-field>
-                <mat-form-field class="formField">
+                <mat-form-field class="formField" [ngClass]="{'has-error': passwordModel.errors?.['minlength'] && passwordModel.touched}">
                     <mat-label>Password</mat-label>
                     <input 
                         matInput 
                         [(ngModel)]="password" 
-                        name="password" 
+                        name="password"
+                        minlength="8"
                         [required]="isPasswordRequired" 
                         [disabled]="disableInput" 
-                        (ngModelChange)="onPasswordChange($event)">
-                    <div class="requiredError" *ngIf="isPasswordRequired">
-                        <!-- Hier wird die Fehlermeldung angezeigt, wenn das Feld ungültig ist -->
-                        Please enter password here
-                    </div>
+                        (ngModelChange)="onPasswordChange($event)"
+                        #passwordModel="ngModel">
+                    <mat-error *ngIf="passwordModel.errors?.['minlength']">
+                        Password must contain least 8 characters
+                    </mat-error>
                 </mat-form-field>
                 <div class="loginBtns">
                     <div class="wrongDataError" *ngIf="wrongData">
                         The email address or password is incorrect
                     </div>
-                    <button class="loginBtn" mat-raised-button color="primary" type="submit">Login</button>
+                    <button class="loginBtn" mat-raised-button color="primary" type="submit" [disabled]="!form.valid || !passwordModel.touched || !emailModel.touched">Login</button>
                     <div class="passwordForgotten" (click)="toResetPassword()">Forgot Password?</div>
                     <div class="new">
                         New on Sportsflix?
