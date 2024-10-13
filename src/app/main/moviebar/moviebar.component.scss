@@ -93,8 +93,6 @@
             position: absolute;
             top: 0;
             bottom: 0;
-
-
         }
 
         .left {
@@ -109,8 +107,6 @@
             width: 100%;
             display: flex;
             overflow: hidden;
-
-
         }
     }
 }
@@ -261,6 +257,55 @@
         }
     }
 
+    @media only screen and (max-width: 992px) and (min-height:1050px){
+
+        .moviecontainer {
+
+            .previewWindow {
+                height: 220px;
+
+                .previewThumbnail {
+                    height: 100%;
+                    width: 40% !important;
+
+                    img {
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+
+                .previewInformations {
+
+                    gap: 16px;
+
+                    #previewTitle {
+                        font-size: 44px;
+                        line-height: 52px;
+                    }
+
+                    #previewDescription {
+                        font-size: 26px;
+                        line-height: 29px;
+                    }
+                }
+            }
+        }
+
+        .sportscontainer {
+                
+            .scrollArrow {
+                display: none !important; 
+            }
+
+            .allVideosOfCategory {
+                overflow-x: scroll !important;
+                -webkit-overflow-scrolling: touch; 
+                scrollbar-width: none;
+                scroll-snap-type: x mandatory;
+            }
+        }
+    }
+
     @media only screen and (max-width: 768px) {
 
         .moviecontainer {
@@ -289,7 +334,17 @@
             }
 
             .sportscontainer {
+                
+                .scrollArrow {
+                    display: none !important; 
+                }
                 .allVideosOfCategory {
+
+                    overflow-x: scroll;
+                    -webkit-overflow-scrolling: touch; 
+                    scrollbar-width: none;
+                    scroll-snap-type: x mandatory;
+
                     .videoContainer {
                         width: 160px !important;
                         min-width: 160px !important;
@@ -298,7 +353,7 @@
                         margin-right: 20px;
                     }
                 }
-            }
+            }            
         }
     }
 
