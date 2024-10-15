@@ -45,6 +45,10 @@ export class LoginComponent {
   }
 
 
+  ngOnDestroy() {
+    window.removeEventListener('resize', this.boundAdjustLayout);
+  }
+
   togglePasswordVisibility(): void{
     this.passwordVisible = !this.passwordVisible
   }
